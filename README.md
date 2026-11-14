@@ -22,6 +22,15 @@ Visit http://localhost:8000.
 
 Host the contents of [dist/](dist/) with any static web host.
 
+## GitHub Pages hosting
+
+The portfolio's GitHub Pages address is https://coder4421.github.io/vrund-portfolio/.
+The artifacts page is https://coder4421.github.io/vrund-portfolio/artifact.html.
+
+[The Pages workflow](.github/workflows/pages.yml) runs the Python and JavaScript tests, builds into a clean temporary directory, validates the output, and publishes only those public files when `main` changes. Pull requests run the checks without deploying. In repository **Settings → Pages**, the publishing source must be **GitHub Actions**. You can also deploy the latest `main` from the workflow's **Run workflow** button. To roll back, revert the relevant commit on `main`; the same checks run before publishing the previous content.
+
+PDFs, source files, project reports and the local Site checkout are not uploaded to Pages. Navigation and assets use relative links so the repository URL works without path rewrites. The previous ChatGPT-hosted site is retained separately; this workflow does not update or remove it.
+
 ## Optional authoring workflow
 Edit the source files, then build:
 
