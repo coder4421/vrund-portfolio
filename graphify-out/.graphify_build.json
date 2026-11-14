@@ -1,0 +1,7 @@
+{
+  "excludes": [
+    ".sites-review/**",
+    "project-graph.svg",
+    "FILE-AUDIT.csv"
+  ]
+}

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Vrund portfolio project graph</title>
+  <desc id="desc">Architecture graph showing content and artifact sources flowing through page rendering and the build validator into the generated five-page dist site, including three learning artifacts, the interactive slide deck, browser assets, managed output cleanup and regression tests.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1025"/><stop offset=".55" stop-color="#111a36"/><stop offset="1" stop-color="#182342"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#a892ff"/><stop offset="1" stop-color="#68e0d6"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#020611" flood-opacity=".45"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#8d9ac5"/></marker>
+    <style>
+      .box{fill:#121a33;stroke:#6673a8;stroke-width:2;rx:18;filter:url(#shadow)}
+      .source{fill:#171b39;stroke:#806ed0}.core{fill:#182a3b;stroke:#58cfc7}.output{fill:#20213f;stroke:#a892ff}.test{fill:#182d3a;stroke:#68e0d6}
+      .title{font:700 30px system-ui,-apple-system,sans-serif;fill:#f4f6ff}.subtitle{font:400 16px system-ui,-apple-system,sans-serif;fill:#aeb9d6}.label{font:700 19px system-ui,-apple-system,sans-serif;fill:#f1f4ff}.small{font:400 14px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#aeb9d6}.eyebrow{font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:2px;fill:#68e0d6}.arrow{fill:none;stroke:#8d9ac5;stroke-width:3;marker-end:url(#arrow)}.dashed{stroke-dasharray:9 9}.legend{font:400 13px system-ui,-apple-system,sans-serif;fill:#aeb9d6}
+    </style>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1420" cy="130" r="260" fill="#8065e0" opacity=".12"/><circle cx="110" cy="830" r="220" fill="#22b8bb" opacity=".1"/>
+  <text x="90" y="86" class="eyebrow">VRUND PORTFOLIO / PROJECT GRAPH</text>
+  <text x="90" y="132" class="title">From source content to the published static site</text>
+  <text x="90" y="164" class="subtitle">Source data flow; build() orchestrates loading, rendering, copying, and validation.</text>
+
+  <path class="arrow" d="M320 300H380V440H420"/><path class="arrow" d="M320 440H355V340H865V370"/><path class="arrow" d="M320 580H1185V510"/>
+  <path class="arrow" d="M650 440H760"/><path class="arrow" d="M970 440H1080"/><path class="arrow" d="M1290 440H1390"/>
+  <path class="arrow dashed" d="M535 690V545H1120V510"/><path class="arrow dashed" d="M865 690V565H1250V510"/><path class="arrow dashed" d="M1185 690V510"/>
+
+  <rect class="box source" x="80" y="230" width="240" height="140"/>
+  <text x="108" y="266" class="eyebrow">CONTENT</text><text x="108" y="304" class="label">content-data.json</text><text x="108" y="334" class="small">jobs · expertise · AI notes</text><text x="108" y="357" class="small">validated by load_content()</text>
+  <rect class="box source" x="80" y="370" width="240" height="140"/>
+  <text x="108" y="406" class="eyebrow">ARTIFACT</text><text x="108" y="444" class="label">artifacts/*.html</text><text x="108" y="474" class="small">3 learning artifacts</text><text x="108" y="497" class="small">ScreenWise · ML/DL · deck</text>
+  <rect class="box source" x="80" y="510" width="240" height="140"/>
+  <text x="108" y="546" class="eyebrow">STYLES</text><text x="108" y="584" class="label">6 source stylesheets</text><text x="108" y="614" class="small">glass · deck · cursor CSS</text><text x="108" y="637" class="small">concatenated by build()</text>
+
+  <rect class="box core" x="420" y="370" width="230" height="140"/>
+  <text x="448" y="406" class="eyebrow">LOAD</text><text x="448" y="444" class="label">load_content()</text><text x="448" y="474" class="small">content.py</text><text x="448" y="497" class="small">shared data boundary</text>
+  <rect class="box core" x="760" y="370" width="210" height="140"/>
+  <text x="788" y="406" class="eyebrow">RENDER</text><text x="788" y="444" class="label">render_pages()</text><text x="788" y="474" class="small">pages.py</text><text x="788" y="497" class="small">five HTML pages</text>
+  <rect class="box core" x="1080" y="370" width="210" height="140"/>
+  <text x="1108" y="406" class="eyebrow">BUILD</text><text x="1108" y="444" class="label">build()</text><text x="1108" y="474" class="small">build.py</text><text x="1108" y="497" class="small">stage · validate · publish</text>
+  <rect class="box output" x="1390" y="370" width="170" height="140"/>
+  <text x="1418" y="406" class="eyebrow">OUTPUT</text><text x="1418" y="444" class="label">dist/</text><text x="1418" y="474" class="small">5 HTML pages</text><text x="1418" y="497" class="small">CSS · JS · images</text>
+
+  <rect class="box test" x="420" y="690" width="230" height="140"/>
+  <text x="448" y="726" class="eyebrow">VALIDATE</text><text x="448" y="764" class="label">validate_site()</text><text x="448" y="794" class="small">PageParser</text><text x="448" y="817" class="small">links · assets · PDFs</text>
+  <rect class="box test" x="760" y="690" width="210" height="140"/>
+  <text x="788" y="726" class="eyebrow">TEST</text><text x="788" y="764" class="label">test_build.py</text><text x="788" y="794" class="small">12 Python checks</text><text x="788" y="817" class="small">2 Node.js suites</text>
+  <rect class="box test" x="1080" y="690" width="210" height="140"/>
+  <text x="1108" y="726" class="eyebrow">BROWSER</text><text x="1108" y="764" class="label">assets/</text><text x="1108" y="794" class="small">theme · menu · cursor</text><text x="1108" y="817" class="small">deck · workstation</text>
+
+  <rect x="90" y="900" width="1420" height="1" fill="#6673a8" opacity=".55"/>
+  <circle cx="110" cy="940" r="7" fill="#806ed0"/><text x="128" y="946" class="legend">source</text><circle cx="235" cy="940" r="7" fill="#58cfc7"/><text x="253" y="946" class="legend">core build step</text><circle cx="415" cy="940" r="7" fill="#a892ff"/><text x="433" y="946" class="legend">generated output</text><circle cx="590" cy="940" r="7" fill="#68e0d6"/><text x="608" y="946" class="legend">validation/runtime</text><text x="1160" y="946" class="legend">SVG · generated locally · 2026-11-13</text>
+</svg>

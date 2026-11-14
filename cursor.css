@@ -1,0 +1,5 @@
+/* Additive overlay only: keep system arrow, text and link cursors intact. */
+.cascading-dots{position:fixed;inset:0;z-index:2147483646;pointer-events:none!important;overflow:hidden;contain:strict;opacity:0}
+.cascading-dots.is-active{opacity:1}
+.cascading-dot{position:absolute;top:0;left:0;border-radius:50%;background:#FFFFFF;pointer-events:none!important;will-change:transform;opacity:.72}
+@media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse){.cascading-dots{display:none!important}}

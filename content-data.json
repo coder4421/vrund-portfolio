@@ -1,0 +1,101 @@
+{
+  "jobs": [
+    {
+      "date": "DEC 2023 – PRESENT",
+      "company": "Cigna Evernorth",
+      "role": "Full Stack Developer",
+      "summary": "Migrated ColdFusion application functionality to Java and implemented healthcare API and authentication components.",
+      "bullets": [
+        "Built integration APIs using healthcare standards including FHIR.",
+        "Developed Spring Security authentication with OAuth2/OpenID Connect.",
+        "Tested application changes with unit/system tests and static/dynamic security scans."
+      ],
+      "tech": "Java · Spring Boot · Angular · React · PostgreSQL",
+      "resume_summary": "Contributed to ColdFusion-to-Java migration. Built healthcare integration APIs using FHIR and Spring Security authentication with OAuth2/OpenID Connect. Implemented and tested application changes, with static/dynamic security scanning and production support."
+    },
+    {
+      "date": "MAR 2023 – DEC 2023",
+      "company": "Centene",
+      "role": "Contract Development",
+      "summary": "Delivered Java/Python automation tools and a Django REST API framework for production workflows.",
+      "bullets": [
+        "Handled datasets with Pandas and MySQL.",
+        "Integrated AWS storage and data access with application workflows."
+      ],
+      "tech": "Python · Django · Java · Pandas · AWS",
+      "resume_summary": "Developed Java/Python automation and a Django REST API framework. Worked with Pandas and MySQL datasets and integrated AWS services for storage and data access."
+    },
+    {
+      "date": "MAY 2022 – MAR 2023",
+      "company": "Gentiva Health",
+      "role": "Full Stack Developer",
+      "summary": "Delivered Spring Boot REST services and reusable Angular components for healthcare applications.",
+      "bullets": [
+        "Built Hibernate persistence layers and database queries.",
+        "Worked on AWS deployment configuration, Docker containers, and Jenkins integration.",
+        "Developed JUnit tests and participated in integration and acceptance testing."
+      ],
+      "tech": "Java 11 · Spring Boot · Angular · AWS · Docker",
+      "resume_summary": "Built Spring Boot REST APIs, Hibernate persistence, and reusable Angular/TypeScript components. Worked with AWS, Docker, Jenkins, MongoDB, and JUnit testing."
+    },
+    {
+      "date": "JUN 2018 – MAR 2021",
+      "company": "MyMonograph Software Solutions",
+      "role": "Java Developer",
+      "summary": "Implemented Java/Spring Boot microservices and Angular interfaces with database integration.",
+      "bullets": [
+        "Built REST endpoints and Hibernate data access layers.",
+        "Created Docker images and contributed to Jenkins CI/CD workflows.",
+        "Worked with AWS deployment services, JUnit testing, and Oracle/MongoDB data operations."
+      ],
+      "tech": "Java 8 · Spring Boot · Angular · Hibernate",
+      "resume_summary": "Implemented Java/Spring Boot microservices, Angular interfaces, and Hibernate data access. Contributed to AWS deployments, Docker images, Jenkins pipelines, and automated testing."
+    },
+    {
+      "date": "MAY 2015 – JUN 2018",
+      "company": "EPU IT Services",
+      "role": "Web Developer",
+      "summary": "Implemented service-booking functionality in a Professional Service Management System.",
+      "bullets": [
+        "Built registration, service selection, job cards, complaint management, and payment functionality.",
+        "Integrated Java/JSP backend functionality with Firebase.",
+        "Connected user and employee workflows as part of an Agile development team."
+      ],
+      "tech": "Java · JSP · Firebase · Agile",
+      "resume_summary": "Developed Java/JSP and Firebase functionality for a Professional Service Management System, including registration, service booking, job cards, complaints, and payment workflows."
+    }
+  ],
+  "groups": [
+    [
+      "Backend & architecture",
+      "Services designed around clear responsibilities.",
+      "Java, Spring Boot, Spring MVC, Spring Security, Hibernate, JPA, REST, SOAP, microservices"
+    ],
+    [
+      "Frontend development",
+      "Interfaces connected to real application workflows.",
+      "Angular, React, JavaScript, TypeScript, HTML5, CSS3, Bootstrap"
+    ],
+    [
+      "Data & integration",
+      "Connecting applications with the information they need.",
+      "Oracle, MySQL, PostgreSQL, SQL Server, MongoDB, Kafka, JMS"
+    ],
+    [
+      "Cloud & delivery",
+      "From source control through application deployment.",
+      "AWS, Docker, Jenkins, Maven, Git, Azure DevOps repositories"
+    ],
+    [
+      "Testing & quality",
+      "Making changes with visibility into application behavior.",
+      "JUnit, Mockito, Postman, SonarQube, unit testing, integration testing"
+    ],
+    [
+      "Python & continued learning",
+      "Building on a Java foundation with additional tools.",
+      "Python, Django, Flask, Pandas, AI and machine learning coursework"
+    ]
+  ],
+  "artifact": "<div class=\"pagehead\"><div class=\"eyebrow\">AI learning / Historical reference</div><h1>AI learning notes.<br><em>Selected milestones, 2022–2024.</em></h1><p>I compiled these notes for my October 2026 coursework. The three announcements took place between November 2022 and March 2024.</p><span class=\"tag\">Technical research</span><span class=\"tag\">Visual communication</span><span class=\"tag\">Continuing education</span></div><section><div class=\"heading\"><div><div class=\"eyebrow\">Source-linked reference</div><h2>Three announcements and their developer context.</h2></div></div><div class=\"timeline\"><article class=\"event\"><div class=\"sectionlabel\">NOVEMBER 30, 2022 / OPENAI</div><h3>ChatGPT launches as a research preview.</h3><p>OpenAI introduced a conversational system that could respond to follow-up questions. Its launch provided a public way to explore the strengths and limitations of conversational AI.</p><p><strong>Developer perspective:</strong> A conversational interface creates opportunities for assistance inside applications, while making accuracy and user expectations important design concerns.</p><a href=\"https://openai.com/index/chatgpt/\" target=\"_blank\" rel=\"noopener noreferrer\">Read OpenAI’s announcement ↗</a></article><article class=\"event\"><div class=\"sectionlabel\">DECEMBER 2023 / GOOGLE</div><h3>Gemini expands the multimodal model landscape.</h3><p>Google introduced Gemini, with developer access to Gemini Pro through Google AI Studio and Vertex AI beginning December 13.</p><p><strong>Developer perspective:</strong> Managed APIs offer a path for integrating model capabilities into software without training a foundation model from scratch.</p><a href=\"https://developers.googleblog.com/its-time-for-developers-and-enterprises-to-build-with-gemini-pro/\" target=\"_blank\" rel=\"noopener noreferrer\">Read Google’s developer announcement ↗</a></article><article class=\"event\"><div class=\"sectionlabel\">MARCH 4, 2024 / ANTHROPIC</div><h3>Claude 3 introduces a family of models.</h3><p>Anthropic announced Claude 3 Haiku, Sonnet, and Opus, presenting different options within one model family.</p><p><strong>Developer perspective:</strong> Choosing a model involves tradeoffs among capability, response time, and cost. Application requirements should guide that choice.</p><a href=\"https://www.anthropic.com/research/claude-3-family\" target=\"_blank\" rel=\"noopener noreferrer\">Read Anthropic’s announcement ↗</a></article></div></section><section class=\"grid\"><article class=\"card\"><div class=\"eyebrow\">Purpose & audience</div><h3>Purpose of these notes.</h3><p>These notes are intended for software developers. The milestones establish context; the developer perspectives explain why they are relevant to someone building software.</p><p>It demonstrates research and technical communication. It does not represent a deployed AI application or model training project.</p></article><article class=\"card featured\"><div class=\"eyebrow\">Professional reflection</div><h3>What I am learning.</h3><p>My background is in enterprise web development. Studying AI gives me another area in which to apply research, evaluation, and clear communication.</p><p>The next step in my learning is to connect this understanding with practical projects that include working code, testing, and documented limitations.</p></article></section><div class=\"note\"><div class=\"eyebrow\">AI assistance & source notes</div><p>ChatGPT assisted with the portfolio structure, website code, and wording of this artifact. Milestone summaries link to the original company announcements. Developer perspectives are interpretations, rather than claims made by those sources.</p><p>Coverage ends March 4, 2024. The page is retained as a dated learning artifact, separate from the engineering case studies.</p></div><section><div class=\"eyebrow\">Portfolio context</div><h2>Next step: implementation and evaluation.</h2><p class=\"intro\">APIs, authentication, data handling, testing, and deployment are familiar parts of my development work. These provide a foundation for learning how AI capabilities can fit into real applications.</p><a class=\"button\" href=\"experience.html\">Explore my development background ↗</a></section>"
+}

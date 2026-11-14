@@ -1,0 +1,42 @@
+[graphify] MultiDiGraph edge-collapse diagnostic
+input: <in-memory>
+input_stage: provided JSON (normal graph.json is post-build)
+effective_directed: <direct-call>
+nodes: 245
+unverified_code_nodes: 0
+raw_edges: 370
+valid_candidate_edges: 370
+missing_endpoint_edges: 0
+dangling_endpoint_edges: 0
+external_reference_edges: 0
+self_loop_edges: 0
+exact_duplicate_edges: 0
+directed_unique_endpoint_pairs: 341
+directed_same_endpoint_collapsed_edges: 29
+undirected_unique_endpoint_pairs: 338
+undirected_same_endpoint_collapsed_edges: 32
+same_endpoint_group_count: 27
+relation_variant_groups: 27
+source_file_variant_groups: 0
+source_location_variant_groups: 0
+context_variant_groups: 0
+post_build_graph_type: Graph
+post_build_edges: 328
+producer_suppression_sites: 12
+producer_suppression_examples:
+  - L1859 seen_ids arity=unknown
+  - L2554 seen_ids arity=unknown
+  - L2556 seen_doc_refs arity=unknown
+  - L3223 seen_ids arity=unknown
+  - L3370 seen_ids arity=unknown
+  - L4784 seen_keys arity=unknown
+  - L4970 seen_keys arity=unknown
+  - L8790 seen_ids arity=unknown
+examples:
+  - assets_cascading_dots_mount -> assets_cascading_dots_mount_hide edges=3 relations=['calls', 'contains', 'indirect_call'] locations=['L55', 'L87', 'L92'] contexts=['', 'argument', 'call']
+  - assets_cascading_dots -> assets_cascading_dots_sync edges=3 relations=['calls', 'contains', 'indirect_call'] locations=['L105', 'L122', 'L126'] contexts=['', 'argument', 'call']
+  - assets_cascading_dots_mount -> assets_cascading_dots_mount_move edges=2 relations=['contains', 'indirect_call'] locations=['L62', 'L85'] contexts=['', 'argument']
+  - assets_cascading_dots_mount -> assets_cascading_dots_mount_leave edges=2 relations=['contains', 'indirect_call'] locations=['L73', 'L86'] contexts=['', 'argument']
+  - assets_cascading_dots_mount -> assets_cascading_dots_mount_visibility edges=2 relations=['contains', 'indirect_call'] locations=['L76', 'L90'] contexts=['', 'argument']
+note: normal graph.json is post-build; raw producer loss must be measured earlier.
+All retained edge endpoints exist. Raw unresolved AST relations are documented in UPDATE_HEALTH.txt.
