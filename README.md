@@ -1,6 +1,6 @@
 # Vrund Patel Portfolio
 
-A static AI learning artifact collection built with HTML, CSS and vanilla JavaScript. No React or npm is needed. The published site is ready to view; Python 3.9 or newer is needed only for authoring.
+A static AI learning artifact collection built with HTML, CSS and vanilla JavaScript. The public site uses the Python static build. Python 3.9 or newer is required to regenerate it.
 
 ## Run locally
 Open [dist/index.html](dist/index.html) in a browser, or serve the site from this folder:
@@ -28,7 +28,7 @@ The artifacts page is https://coder4421.github.io/vrund-portfolio/artifact.html.
 
 PDFs, source files, project reports and the local Site checkout are not uploaded to Pages. Navigation and assets use relative links so the repository URL works without path rewrites. The previous ChatGPT-hosted site is retained separately; this workflow does not update or remove it.
 
-## Optional authoring workflow
+## Authoring
 Edit the source files, then build:
 
 ```sh
@@ -44,9 +44,9 @@ The build uses only the Python standard library. It creates [dist/](dist/) if mi
 | [base.css](base.css), [redesign.css](redesign.css), [glass.css](glass.css), [fixes.css](fixes.css), [key-points-deck.css](key-points-deck.css), [cursor.css](cursor.css) | Styles in their build order |
 | [assets/](assets/) | Source JavaScript, slide diagrams and favicon; the private résumé is generated here only on request |
 | [artifacts/key-concepts.html](artifacts/key-concepts.html), [key-points-deck.css](key-points-deck.css) | Artifact 3 presentation and its scoped styles, adapted from the supplied static deck |
-| [content.py](content.py) | Content validation shared by the generators |
+| [content.py](content.py) | Private résumé data validation and the project root path |
 
-Jobs are named JSON objects; keep each job's summary, bullets and résumé description together. Plain text is escaped when rendered. The artifact field intentionally contains trusted HTML. Theme selectors use `data-theme` consistently in both source and output CSS.
+The artifact pages use the three HTML files in [artifacts/](artifacts/). The résumé generator uses the job entries in [content-data.json](content-data.json). The earlier AI notes and expertise data remain in the source archive. Theme styles use `data-theme`.
 
 Edits made directly in [dist/](dist/) are overwritten by the next build. Update source JavaScript and the favicon in [assets/](assets/).
 
@@ -68,9 +68,9 @@ python3 validate.py
 python3 -m unittest -v
 ```
 
-[validate.py](validate.py) checks local link targets, fragments, duplicate IDs, page headings, skip-link targets and required assets. It does not make network requests. For the optional PDF text and page-count regression check, install `pypdf` in the same environment as ReportLab, then run `.venv/bin/python -m unittest -v`. Without these dependencies, that PDF check is reported as skipped. An installed dependency that fails to import is a test failure.
+[validate.py](validate.py) checks local link targets, fragments, duplicate IDs, page headings, skip-link targets, required assets and unexpected HTML pages. It does not make network requests. For the optional PDF text and page-count regression check, install `pypdf` in the same environment as ReportLab, then run `.venv/bin/python -m unittest -v`. Without these dependencies, that PDF check is reported as skipped. An installed dependency that fails to import is a test failure.
 
-For browser logic, run the two small Node.js checks when Node is installed:
+For the deck and the archived workstation script, run the Node.js checks:
 
 ```sh
 node tests/key-points-deck.test.cjs
@@ -83,10 +83,9 @@ The validator also requires every slide diagram and social-preview asset, includ
 
 - [AUDIT.md](AUDIT.md): current findings, fixes, cleanup decisions and validation limits.
 - [FILE-AUDIT.csv](FILE-AUDIT.csv): every inventoried file, its purpose/category and whether it was retained, changed, added or deleted.
-- [project-graph.svg](project-graph.svg): compact architecture overview.
-- [graphify-out/GRAPH_REPORT.md](graphify-out/GRAPH_REPORT.md), [graphify-out/graph.html](graphify-out/graph.html): source relationship report and interactive graph.
+- [project-graph.svg](project-graph.svg) and [Graphify snapshot](graphify-out/GRAPH_REPORT.md) document the November 13, 2026 architecture, which included separate career pages.
 
-The local [.sites-review/](.sites-review/) checkout retains the hosting manifest and Git history. Its application source is synchronized after this audit; no deployment is performed. Its private résumé stays out of both public build directories. The stale release archive and unused AppMap/design-gate configuration were removed.
+The deck advances every four seconds while visible. Visitors can pause it or use its manual controls. Keyboard focus pauses autoplay, and reduced-motion settings disable autoplay and slide animation.
 
 ## Accessibility and behavior
 The system cursor stays visible. The white dot trail runs only for hover-capable fine pointers and is disabled with reduced motion. Theme preferences are saved locally. Google Fonts loads directly from the page head with preconnected origins; system fonts are the fallback. Touch devices use opaque glass colors without backdrop filtering or hover movement. Desktop glass effects and reduced-motion handling remain available.

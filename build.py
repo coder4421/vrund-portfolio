@@ -24,7 +24,7 @@ def build(output_dir=None):
     with TemporaryDirectory(prefix=".portfolio-build-", dir=output.parent) as temp:
         staged = Path(temp)
         for asset in (ROOT / "assets").iterdir():
-            if asset.is_file() and asset.suffix.lower() != ".pdf":
+            if asset.is_file() and asset.suffix.lower() != ".pdf" and asset.name != "workstation.js":
                 shutil.copyfile(asset, staged / asset.name)
         (staged / "style.css").write_text(css, encoding="utf-8")
         for filename, html in pages.items():

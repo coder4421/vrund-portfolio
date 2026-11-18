@@ -9,3 +9,4 @@ assets/*.pdf
 graphify-out/cache/
 graphify-out/.graphify_python
 graphify-out/.graphify_root
+.vscode/mcp.json

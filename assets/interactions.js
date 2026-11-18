@@ -17,26 +17,3 @@
     try { localStorage.setItem('vp-theme', root.dataset.theme); } catch {}
   });
 })();
-
-(() => {
-  const button = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('#main-nav');
-  if (!button || !nav) return;
-  const mobile = matchMedia('(max-width:760px)');
-  function setOpen(open) {
-    button.setAttribute('aria-expanded', String(open));
-    nav.classList.toggle('is-open', open);
-  }
-  button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
-  nav.addEventListener('click', event => {
-    if (event.target.closest('a')) setOpen(false);
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
-      setOpen(false);
-      button.focus();
-    }
-  });
-  mobile.addEventListener('change', () => setOpen(false));
-  document.documentElement.classList.add('nav-ready');
-})();

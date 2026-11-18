@@ -7,11 +7,13 @@ from urllib.parse import unquote, urlsplit
 
 from content import ROOT
 
+PUBLIC_PAGES = {"index.html", "artifact.html"}
+
 REQUIRED = (
-    "index.html", "artifact.html",
+    *sorted(PUBLIC_PAGES),
     "style.css", "theme-init.js", "interactions.js", "cascading-dots.js",
     "favicon.svg",
-    "workstation.js", "key-points-deck.js", "portfolio-social.png", "ml-vs-dl-infographic.png",
+    "key-points-deck.js", "portfolio-social.png", "ml-vs-dl-infographic.png",
     *(f"key-points-{name}.png" for name in (
         "activations", "ann", "audience", "cnn", "ethics", "fit_danger", "gan", "overlap", "rnn",
     )),
@@ -48,6 +50,10 @@ def validate_site(directory):
         if not path.is_file() or path.stat().st_size == 0:
             errors.append(f"Missing or empty asset: {name}")
     parsed = {}
+    public_html = {path.relative_to(directory).as_posix() for path in directory.rglob("*")
+                   if path.is_file() and path.suffix.lower() == ".html"}
+    for name in sorted(public_html - PUBLIC_PAGES):
+        errors.append(f"Unexpected public page: {name}")
     for path in directory.glob("*.html"):
         parser = PageParser()
         parser.feed(path.read_text(encoding="utf-8"))

@@ -3,6 +3,7 @@
 import importlib
 import importlib.util
 import json
+import re
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
@@ -23,6 +24,7 @@ class PortfolioBuildTests(unittest.TestCase):
             first = {path.name: path.read_bytes() for path in output.iterdir()}
             build(output)
             self.assertEqual(first, {path.name: path.read_bytes() for path in output.iterdir()})
+            self.assertFalse((output / "workstation.js").exists())
             self.assertNotIn("body.light", (output / "style.css").read_text(encoding="utf-8"))
 
     def test_imports_do_not_write_files(self):
@@ -104,7 +106,19 @@ class PortfolioBuildTests(unittest.TestCase):
         pages = render_pages()
         self.assertEqual(set(pages), {"index.html", "artifact.html"})
         self.assertEqual(pages["index.html"], pages["artifact.html"])
-        self.assertEqual(pages["index.html"].count('class="case-detail card artifact-information"'), 3)
+        labels = ["Title", "Introduction", "Description", "Objective", "Process",
+                  "Tools and Technologies Used", "Value Proposition", "Unique Value",
+                  "Relevance", "References"]
+        blocks = re.findall(r'<section class="case-detail card artifact-information">(.*?)</section>',
+                            pages["artifact.html"], re.S)
+        self.assertEqual(len(blocks), 3)
+        for block in blocks:
+            self.assertEqual(re.findall(r'<dt>(.*?)</dt>', block), labels)
+            descriptions = re.findall(r'<dd>(.*?)</dd>', block, re.S)
+            self.assertEqual(len(descriptions), len(labels))
+            self.assertTrue(all(description.strip() for description in descriptions))
+        self.assertNotRegex(pages["artifact.html"], r'(?i)portfolio reflection|2026-11-05')
+        self.assertNotRegex(pages["artifact.html"], r'href="https?://(?:www\.)?(?:github|linkedin)\.com/')
         for extra in ('work.html', 'experience.html', 'skills.html', 'ai-notes'):
             self.assertNotIn(extra, pages["index.html"])
 
@@ -119,6 +133,14 @@ class PortfolioBuildTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "missing.html"):
                     build(output)
             self.assertEqual(before, {path.name: path.read_bytes() for path in output.iterdir()})
+
+    def test_unexpected_public_page_is_reported(self):
+        with TemporaryDirectory() as temp:
+            output = build(Path(temp) / "site")
+            (output / "archive").mkdir()
+            (output / "archive" / "work.html").touch()
+            with self.assertRaisesRegex(ValueError, "Unexpected public page: archive/work.html"):
+                validate_site(output)
 
     def test_missing_fragment_is_reported(self):
         with TemporaryDirectory() as temp:
