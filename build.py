@@ -6,7 +6,7 @@ from pathlib import Path
 import shutil
 from tempfile import TemporaryDirectory
 
-from content import ROOT, load_content
+from content import ROOT
 from pages import render_pages
 from validate import validate_site
 
@@ -18,7 +18,7 @@ def build(output_dir=None):
     output = (Path(output_dir) if output_dir is not None else ROOT / "dist").resolve()
     if output == ROOT or output in ROOT.parents or (ROOT in output.parents and output != ROOT / "dist"):
         raise ValueError("Choose dist or an output directory outside the source directory.")
-    pages = render_pages(load_content())
+    pages = render_pages()
     css = "\n".join((ROOT / name).read_text(encoding="utf-8") for name in CSS_FILES)
     output.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(prefix=".portfolio-build-", dir=output.parent) as temp:
@@ -60,7 +60,7 @@ def main():
         output = build(args.output)
     except (OSError, ValueError) as error:
         parser.exit(1, f"Build failed: {error}\n")
-    print(f"Built and validated five pages in {output}")
+    print(f"Built and validated the artifact collection in {output}")
 
 
 if __name__ == "__main__":

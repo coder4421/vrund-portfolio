@@ -1,6 +1,6 @@
 # Vrund Patel Portfolio
 
-A static, five-page website built with HTML, CSS and vanilla JavaScript. No React or npm is needed. The published site is ready to view; Python 3.9 or newer is needed only for authoring.
+A static AI learning artifact collection built with HTML, CSS and vanilla JavaScript. No React or npm is needed. The published site is ready to view; Python 3.9 or newer is needed only for authoring.
 
 ## Run locally
 Open [dist/index.html](dist/index.html) in a browser, or serve the site from this folder:
@@ -12,11 +12,8 @@ python3 -m http.server 8000 --directory dist
 Visit http://localhost:8000.
 
 ## Published files
-- [dist/index.html](dist/index.html): healthcare-focused homepage
-- [dist/work.html](dist/work.html): three engineering case studies
-- [dist/experience.html](dist/experience.html): professional experience
-- [dist/skills.html](dist/skills.html): technical expertise
-- [dist/artifact.html](dist/artifact.html): ScreenWise team lab, ML/deep-learning comparison, Key Concepts in AI & Machine Learning slide presentation, and dated research notes
+- [dist/index.html](dist/index.html): the artifact collection homepage
+- [dist/artifact.html](dist/artifact.html): ScreenWise team lab, ML/deep-learning comparison, Key Concepts in AI & Machine Learning slide presentation, also available through this instructor link
 - [dist/style.css](dist/style.css): combined styles
 - [dist/](dist/): also contains JavaScript, favicon
 
@@ -38,12 +35,12 @@ Edit the source files, then build:
 python3 build.py
 ```
 
-The build uses only the Python standard library. It creates [dist/](dist/) if missing, renders five pages, copies assets, and checks local links and required files before publishing. Run it from any working directory using the script's absolute path. Use `--output /path/to/output` for a separate output directory. Only the default [dist/](dist/) is allowed inside the source tree; other output directories must be outside it. Source ancestors and symlink aliases into source are rejected. A [.build-files.json](dist/.build-files.json) manifest removes only retired generated files on rebuild, while unrelated author files are kept. Running [pages.py](pages.py) directly also builds the complete site.
+The build uses only the Python standard library. It creates [dist/](dist/) if missing, renders the collection at both URLs, copies assets, and checks local links and required files before publishing. Run it from any working directory using the script's absolute path. Use `--output /path/to/output` for a separate output directory. Only the default [dist/](dist/) is allowed inside the source tree; other output directories must be outside it. Source ancestors and symlink aliases into source are rejected. A [.build-files.json](dist/.build-files.json) manifest removes only retired generated files on rebuild, while unrelated author files are kept. Running [pages.py](pages.py) directly also builds the complete site.
 
 | Source | Purpose |
 | --- | --- |
 | [content-data.json](content-data.json) | Job summaries, bullets, résumé descriptions, expertise groups and trusted AI-notes HTML |
-| [pages.py](pages.py) | Page layout, case studies and HTML rendering |
+| [pages.py](pages.py) | Artifact collection layout and HTML rendering |
 | [base.css](base.css), [redesign.css](redesign.css), [glass.css](glass.css), [fixes.css](fixes.css), [key-points-deck.css](key-points-deck.css), [cursor.css](cursor.css) | Styles in their build order |
 | [assets/](assets/) | Source JavaScript, slide diagrams and favicon; the private résumé is generated here only on request |
 | [artifacts/key-concepts.html](artifacts/key-concepts.html), [key-points-deck.css](key-points-deck.css) | Artifact 3 presentation and its scoped styles, adapted from the supplied static deck |

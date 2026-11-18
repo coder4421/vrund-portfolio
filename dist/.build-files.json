@@ -1,7 +1,6 @@
 [
   "artifact.html",
   "cascading-dots.js",
-  "experience.html",
   "favicon.svg",
   "index.html",
   "interactions.js",
@@ -17,9 +16,7 @@
   "key-points-rnn.png",
   "ml-vs-dl-infographic.png",
   "portfolio-social.png",
-  "skills.html",
   "style.css",
   "theme-init.js",
-  "work.html",
   "workstation.js"
 ]

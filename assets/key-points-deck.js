@@ -124,4 +124,36 @@ deck.addEventListener("keydown", function(e){
   if (e.key === "End") goTo(total - 1);
 });
 render();
+
+const autoplay = deck.querySelector("#autoplay");
+if (!autoplay || !("IntersectionObserver" in window)) return;
+
+const motion = matchMedia("(prefers-reduced-motion: reduce)");
+let visible = false;
+let paused = false;
+let timer;
+function syncAutoplay() {
+  clearInterval(timer);
+  const running = visible && !paused && !motion.matches && !document.hidden;
+  autoplay.hidden = motion.matches;
+  autoplay.textContent = paused ? "Play slides" : "Pause autoplay";
+  counterEl.setAttribute("aria-live", running ? "off" : "polite");
+  if (running) timer = setInterval(() => goTo(index + 1), 4000);
+}
+autoplay.addEventListener("click", () => {
+  paused = !paused;
+  syncAutoplay();
+});
+deck.addEventListener("focusin", () => {
+  if (!deck.matches(":focus-visible, :has(:focus-visible)")) return;
+  paused = true;
+  syncAutoplay();
+});
+document.addEventListener("visibilitychange", syncAutoplay);
+motion.addEventListener("change", syncAutoplay);
+new IntersectionObserver(([entry]) => {
+  visible = entry.intersectionRatio >= 0.5;
+  syncAutoplay();
+}, { threshold: 0.5 }).observe(deck);
+syncAutoplay();
 })();

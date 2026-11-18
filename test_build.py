@@ -1,9 +1,7 @@
 """Regression checks for standalone builds, content edits, and failed builds."""
 
-import copy
 import importlib
 import importlib.util
-from html import escape
 import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -21,7 +19,7 @@ class PortfolioBuildTests(unittest.TestCase):
         with TemporaryDirectory() as temp:
             output = Path(temp) / "site"
             build(output)
-            self.assertEqual(validate_site(output), 5)
+            self.assertEqual(validate_site(output), 2)
             first = {path.name: path.read_bytes() for path in output.iterdir()}
             build(output)
             self.assertEqual(first, {path.name: path.read_bytes() for path in output.iterdir()})
@@ -41,7 +39,7 @@ class PortfolioBuildTests(unittest.TestCase):
             private.write_bytes(b"private source")
             alias = Path(temp) / "assets-alias"
             alias.symlink_to(assets, target_is_directory=True)
-            with patch("build.ROOT", root), patch("build.load_content", side_effect=AssertionError("Unsafe output reached source loading")) as load:
+            with patch("build.ROOT", root), patch("build.render_pages", side_effect=AssertionError("Unsafe output reached source loading")) as load:
                 for output in (root, root.parent, assets, assets / "public", alias,
                                root / "artifacts", root / ".venv", root / ".sites-review"):
                     with self.subTest(output=output):
@@ -100,20 +98,15 @@ class PortfolioBuildTests(unittest.TestCase):
             build(output)
             self.assertTrue(all(not pdf.exists() for pdf in pdfs))
             self.assertEqual(keep.read_text(encoding="utf-8"), "Keep this file.")
-            self.assertEqual(validate_site(output), 5)
+            self.assertEqual(validate_site(output), 2)
 
-    def test_added_and_reordered_jobs_keep_their_content_and_escape_html(self):
-        data = load_content()
-        extra = copy.deepcopy(data["jobs"][0])
-        extra.update(company="A&B <Example>", summary="Built <APIs> & integrations.")
-        data["jobs"] = [extra] + list(reversed(data["jobs"]))
-        html = render_pages(data)["experience.html"]
-        self.assertEqual(html.count('<article class="job">'), 6)
-        self.assertIn("A&amp;B &lt;Example&gt;", html)
-        self.assertIn("Built &lt;APIs&gt; &amp; integrations.", html)
-        for job in data["jobs"][1:]:
-            company = html.index(f'<h2>{escape(job["company"])}</h2>')
-            self.assertIn(escape(job["summary"]), html[company:html.index("</article>", company)])
+    def test_home_and_instructor_link_show_only_the_collection(self):
+        pages = render_pages()
+        self.assertEqual(set(pages), {"index.html", "artifact.html"})
+        self.assertEqual(pages["index.html"], pages["artifact.html"])
+        self.assertEqual(pages["index.html"].count('class="case-detail card artifact-information"'), 3)
+        for extra in ('work.html', 'experience.html', 'skills.html', 'ai-notes'):
+            self.assertNotIn(extra, pages["index.html"])
 
     def test_invalid_links_do_not_overwrite_published_files(self):
         with TemporaryDirectory() as temp:
@@ -131,7 +124,7 @@ class PortfolioBuildTests(unittest.TestCase):
         with TemporaryDirectory() as temp:
             output = build(Path(temp) / "site")
             index = output / "index.html"
-            index.write_text(index.read_text(encoding="utf-8") + '<a href="work.html#missing">Link</a>', encoding="utf-8")
+            index.write_text(index.read_text(encoding="utf-8") + '<a href="artifact.html#missing">Link</a>', encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "missing fragment"):
                 validate_site(output)
 

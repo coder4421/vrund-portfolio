@@ -54,4 +54,41 @@ key('End');
 assert.equal(elements.counter.textContent, '11 / 11');
 assert.equal(prevented, 3);
 vm.runInNewContext(source, { document: { getElementById: () => null } });
+const motion = { matches: false, addEventListener(_, handler) { this.change = handler; } };
+let observer, tick;
+elements.autoplay = { events: {}, addEventListener: elements.prev.addEventListener };
+vm.runInNewContext(source, {
+  document: { getElementById: () => deck, addEventListener() {} },
+  window: { IntersectionObserver: true },
+  matchMedia: () => motion,
+  IntersectionObserver: class {
+    constructor(callback) { observer = callback; }
+    observe(target) { assert.equal(target, deck); }
+  },
+  clearInterval() { tick = undefined; },
+  setInterval(callback, duration) {
+    assert.equal(duration, 4000);
+    tick = callback;
+    return 1;
+  },
+});
+assert.equal(tick, undefined);
+observer([{ intersectionRatio: 1 }]);
+tick();
+assert.equal(elements.counter.textContent, '2 / 11');
+elements.autoplay.events.click();
+assert.equal(tick, undefined);
+elements.autoplay.events.click();
+assert.equal(typeof tick, 'function');
+deck.matches = () => true;
+deck.events.focusin();
+assert.equal(tick, undefined);
+elements.autoplay.events.click();
+observer([{ intersectionRatio: 0 }]);
+assert.equal(tick, undefined);
+observer([{ intersectionRatio: 1 }]);
+motion.matches = true;
+motion.change();
+assert.equal(tick, undefined);
+assert.equal(elements.autoplay.hidden, true);
 console.log('All 11 slides, 9 diagrams, navigation, focus-safe keys, and absent-deck checks passed.');

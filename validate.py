@@ -8,7 +8,7 @@ from urllib.parse import unquote, urlsplit
 from content import ROOT
 
 REQUIRED = (
-    "index.html", "work.html", "experience.html", "skills.html", "artifact.html",
+    "index.html", "artifact.html",
     "style.css", "theme-init.js", "interactions.js", "cascading-dots.js",
     "favicon.svg",
     "workstation.js", "key-points-deck.js", "portfolio-social.png", "ml-vs-dl-infographic.png",
