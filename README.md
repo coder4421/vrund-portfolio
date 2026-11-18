@@ -83,7 +83,7 @@ The validator also requires every slide diagram and social-preview asset, includ
 
 - [AUDIT.md](AUDIT.md): current findings, fixes, cleanup decisions and validation limits.
 - [FILE-AUDIT.csv](FILE-AUDIT.csv): every inventoried file, its purpose/category and whether it was retained, changed, added or deleted.
-- [project-graph.svg](project-graph.svg) and [Graphify snapshot](graphify-out/GRAPH_REPORT.md) document the November 13, 2026 architecture, which included separate career pages.
+- [Project graph](project-graph.svg) shows the current build and deployment flow. The [Graphify snapshot](graphify-out/GRAPH_REPORT.md) documents the November 13, 2026 architecture with separate career pages.
 
 The deck advances every four seconds while visible. Visitors can pause it or use its manual controls. Keyboard focus pauses autoplay, and reduced-motion settings disable autoplay and slide animation.
 

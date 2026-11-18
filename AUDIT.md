@@ -9,7 +9,7 @@ Reviewed November 17, 2026 against commit `c7577b3`. The public site is an artif
 | High | The release tests counted the artifact information blocks but could miss a missing or mislabeled field. The validator also accepted additional HTML pages. | Tests now verify all ten ordered labels and nonempty descriptions in each of the three blocks. The validator rejects extra HTML routes, including nested files. |
 | Medium | Social previews still advertised healthcare career pages. | The 1200 × 630 preview now identifies Vrund Patel’s AI learning collection and its three artifacts. |
 | Low | The output shipped an unused workstation script and a menu handler for a removed header. | The build retires the public workstation copy through its manifest. The original workstation source and test remain available. The active interaction script handles theme switching. |
-| Low | Authoring notes and diagrams mixed the old career portfolio and the current collection. | The README now documents the artifact-only build and deck behavior. The November 13 architecture snapshot is labeled historical. |
+| Low | Authoring notes and diagrams mixed the old career portfolio and the current collection. | The README now documents the artifact-only build and deck behavior. The standalone SVG shows the current build and deployment flow. The November 13 Graphify snapshot is labeled historical in the README. |
 | Low | Local editor MCP configuration could be staged accidentally. | The exact local configuration path is ignored. Its contents were outside the audit scope. |
 
 ## Verification
