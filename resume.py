@@ -67,8 +67,8 @@ def generate_resume(output=None, data=None):
         add(f'{escape(job["date"])}<br/>{escape(job["resume_summary"])}')
     add("SELECTED WORK", "section")
     add(
-        '<link href="https://vrund-patel-dev-portfolio.tartleaf23.chatgpt.site/work.html">'
-        'Portfolio: migration, healthcare integration, and automation case studies</link>'
+        '<link href="https://coder4421.github.io/vrund-portfolio/artifact.html">'
+        'Portfolio: AI Learning Artifacts</link>'
     )
     destination.parent.mkdir(parents=True, exist_ok=True)
     with NamedTemporaryFile(suffix=".pdf", dir=destination.parent, delete=False) as temporary:

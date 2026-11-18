@@ -24,3 +24,19 @@ Reviewed November 17, 2026 against commit `c7577b3`. The public site is an artif
 - The supplied patch and React deck were absent at review. The current release uses the approved Python build. The source deck labels the reported 99.8% spirals result as 32+32 hidden units. The alternate 8+8 result and 4+4 seed-sensitivity claim still need source evidence.
 - Physical devices, assistive technology sessions, live Poe behavior, third-party reference availability, dependency source internals, and historical Git object content were outside the audit scope.
 - GitHub Actions builds a clean export on `main`. To roll back a release, revert its commit on `main` and let the workflow publish the reverted output. The [repository Actions history](https://github.com/coder4421/vrund-portfolio/actions) records build and deploy results.
+
+## Follow-up review of unchanged files
+
+| File | Evidence and disposition |
+| --- | --- |
+| `.github/workflows/pages.yml` | Reviewed the clean export and permissions. Pull requests run the checks, and only `main` can deploy. The workflow passed on commit `32f766d`. |
+| `graphify-out/` | Parsed the JSON files and confirmed all 370 saved edges resolve to the 245 saved nodes. Retained as a dated historical snapshot. Its HTML viewer references a CDN, which was outside this check. |
+| `PONYTAIL-LICENSE.txt` | Confirmed the MIT text and attribution are present. Kept the license intact. |
+| `base.css` | Reviewed base layout and mobile gutters. Checked that the collection fits desktop and mobile in Chrome. |
+| `redesign.css` | Reviewed the responsive defaults and verified the artifact selectors override the legacy palette in the combined build. |
+| `glass.css` | Reviewed the theme and transparency fallbacks. In Chrome the cards use blur on desktop and disable it for a coarse pointer. |
+| `cursor.css` | Confirmed the native cursor remains visible. The trail was present on desktop and absent with touch emulation. |
+| `content-data.json` | Loaded with the real content validator and exercised the job entries through the private résumé test. Historical notes and expertise remain outside the public build. |
+| `content.py` | Checked the schema validation and reran the regression for a missing job field. The public build imports the project root without loading archived résumé data. |
+| `requirements.txt` | Installed dependencies passed `pip check`. The PDF test ran with Python 3.9.5 and ReportLab 4.4.10. The newer Python marker was reviewed, but dependency installation on that branch was outside this follow-up. |
+| `resume.py` | Replaced its legacy work-page URL with the current artifact collection. The PDF test verifies the new hyperlink, one-page output, escaped text and job details. PDFs remain outside the export. |

@@ -173,6 +173,8 @@ class PortfolioBuildTests(unittest.TestCase):
             self.assertEqual(len(pdf.pages), 1)
             text = pdf.pages[0].extract_text()
             normalized = " ".join(text.split())
+            links = [ref.get_object()["/A"]["/URI"] for ref in pdf.pages[0]["/Annots"]]
+            self.assertIn("https://coder4421.github.io/vrund-portfolio/artifact.html", links)
             for job in data["jobs"]:
                 self.assertIn(job["company"], text)
                 self.assertIn(job["date"], text)
