@@ -2,18 +2,18 @@
 input: graphify-out/graph.json
 input_stage: provided JSON (normal graph.json is post-build)
 effective_directed: False
-nodes: 312
+nodes: 317
 unverified_code_nodes: 0
-raw_edges: 408
-valid_candidate_edges: 408
+raw_edges: 417
+valid_candidate_edges: 417
 missing_endpoint_edges: 0
 dangling_endpoint_edges: 0
 external_reference_edges: 0
 self_loop_edges: 0
 exact_duplicate_edges: 0
-directed_unique_endpoint_pairs: 408
+directed_unique_endpoint_pairs: 417
 directed_same_endpoint_collapsed_edges: 0
-undirected_unique_endpoint_pairs: 408
+undirected_unique_endpoint_pairs: 417
 undirected_same_endpoint_collapsed_edges: 0
 same_endpoint_group_count: 0
 relation_variant_groups: 0
@@ -21,7 +21,7 @@ source_file_variant_groups: 0
 source_location_variant_groups: 0
 context_variant_groups: 0
 post_build_graph_type: Graph
-post_build_edges: 408
+post_build_edges: 417
 producer_suppression_sites: 12
 producer_suppression_examples:
   - L1859 seen_ids arity=unknown

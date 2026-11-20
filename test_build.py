@@ -12,7 +12,7 @@ from unittest.mock import patch
 from build import build
 from content import load_content
 from pages import render_pages
-from validate import validate_site
+from validate import PUBLIC_ASSETS, validate_site
 
 
 class PortfolioBuildTests(unittest.TestCase):
@@ -26,6 +26,28 @@ class PortfolioBuildTests(unittest.TestCase):
             self.assertEqual(first, {path.name: path.read_bytes() for path in output.iterdir()})
             self.assertFalse((output / "workstation.js").exists())
             self.assertNotIn("body.light", (output / "style.css").read_text(encoding="utf-8"))
+
+    def test_only_allowlisted_regular_assets_are_published(self):
+        with TemporaryDirectory() as temp:
+            root = Path(temp) / "source"
+            assets = root / "assets"
+            assets.mkdir(parents=True)
+            output = Path(temp) / "site"
+            source = Path(__file__).resolve().parent
+            for name in PUBLIC_ASSETS:
+                (assets / name).write_bytes((source / "assets" / name).read_bytes())
+            (root / "base.css").write_text("body { color: black; }", encoding="utf-8")
+            private = assets / "author-notes.txt"
+            private.write_text("private", encoding="utf-8")
+            with patch("build.ROOT", root), patch("build.CSS_FILES", ("base.css",)):
+                build(output)
+                self.assertFalse((output / private.name).exists())
+                asset = assets / "favicon.svg"
+                asset.unlink()
+                asset.symlink_to(private)
+                with self.assertRaisesRegex(ValueError, "regular file: favicon.svg"):
+                    build(output)
+                self.assertEqual((output / "favicon.svg").read_bytes(), (source / "assets" / "favicon.svg").read_bytes())
 
     def test_imports_do_not_write_files(self):
         with patch.object(Path, "write_text", side_effect=AssertionError("Import wrote a file")):
@@ -108,9 +130,20 @@ class PortfolioBuildTests(unittest.TestCase):
         self.assertEqual(pages["index.html"], pages["artifact.html"])
         for page in pages.values():
             self.assertIn('href="#main-content"', page)
+            self.assertIn('http-equiv="Content-Security-Policy"', page)
+            self.assertIn("script-src 'self'", page)
+            self.assertNotIn("<script>", page)
+            self.assertNotRegex(page, r'\son[a-z]+="')
             self.assertRegex(page, r'<main[^>]*id="main-content" tabindex="-1"')
+        self.assertIn('<h2 class="artifact-details-heading">Artifact details</h2>', pages["artifact.html"])
+        self.assertEqual(len(re.findall(r'<div class="pagehead[^"]*">\s*<div class="eyebrow">Artifact [1-4][^<]*</div>\s*<h3\b', pages["artifact.html"])), 4)
+        landmarks = re.findall(r'<section [^>]*id="artifact-([1-4])" aria-labelledby="([^"]+)"', pages["artifact.html"])
+        self.assertEqual([number for number, _ in landmarks], list("1234"))
+        for _, title_id in landmarks:
+            self.assertIn(f'<h3 id="{title_id}"', pages["artifact.html"])
+        self.assertRegex(pages["artifact.html"], r'<summary>Design process notes</summary>\s*<ol class="design-stages">')
         self.assertIn('href="#proof-title"', pages["artifact.html"])
-        self.assertRegex(pages["artifact.html"], r'<h3 id="proof-title" tabindex="-1"')
+        self.assertRegex(pages["artifact.html"], r'<h4 id="proof-title" tabindex="-1"')
         self.assertRegex(pages["artifact.html"], r'<img src="ml-vs-dl-preview.jpg" alt="[^"]+"')
         self.assertIn('href="data-challenge-scenarios.html"', pages["artifact.html"])
         scenarios = pages["data-challenge-scenarios.html"]

@@ -1,5 +1,30 @@
 # AI Learning Artifacts audit
 
+## November 19, 2026 release audit
+
+Reviewed the tracked workspace against `8d507a2`, including source HTML and CSS, browser scripts, build and validation code, the optional résumé generator, regression tests, the generated public files, the GitHub Pages workflow, and graph artifacts. [FILE-AUDIT.csv](FILE-AUDIT.csv) records each tracked path, its release disposition, and hashes of the final files. The inventory omits its own hash because it is self-referential.
+
+| Area | Finding and resolution |
+| --- | --- |
+| Public file exposure | The build could publish any ordinary file dropped into `assets/`. The export now copies only explicitly allowlisted assets and rejects symlinks in that list. The clean release retires the two original slide PNGs replaced by HTML diagrams. Their originals remain in source. |
+| Browser policy | All three public pages now apply a content policy that restricts scripts to the same origin and blocks inline script execution, external connections, form submissions, and base URL overrides. Theme initialization and the split-demo handlers run from local scripts. Inline styles and the two Google Fonts origins are allowed for the existing design. |
+| Deployment supply chain | The Pages workflow pins all six directly invoked Actions to full commits resolved from their official release tags and disables checkout credential persistence. Deploy permissions stay at the deploy job. |
+| Link validation | The validator checks exact-case local paths and HTTPS for external links. It validates the lightweight overview thumbnail alongside the full-size detail image. |
+| Structure and design | The four cards share preview dimensions. Artifact 4 uses a train/test table preview. The detailed artifact H3s have an H2 parent, and their sections derive accessible names from those headings. ScreenWise’s disclosure contains its design-process list directly. New-tab cues precede decorative arrows. |
+
+### Verification
+
+- A clean export matched `dist/` byte for byte. The homepage and instructor page are identical. The release contains three public HTML routes and excludes PDFs, private source files, and audit artifacts.
+- All 14 Python tests and both Node suites passed. Tracked raster images, JSON and SVG files parsed. Git integrity and installed package compatibility checks passed.
+- Chrome checked all three routes at 320, 390, 768, and 1440 CSS pixels, including touch emulation at the two phone widths. Expanded disclosures fit without horizontal overflow in both themes. Verified all five collection jump links, all 11 slides, the two split-demo states, and image decoding. No console warnings or errors appeared. Keyboard focus and the accessible link names were also checked in the preceding release preflight.
+- The tracked working tree scan found no matches for common private-key or API-token patterns. OSV returned no known advisories for the checked optional PDF dependency versions. This was a point-in-time advisory check, not a guarantee for future resolutions of dependency ranges.
+- Eight external links returned HTTP 200 after following redirects. Poe and OpenAI returned HTTP 403 to the automated check, so their interactive availability was inconclusive.
+- Refreshed the Graphify code extraction and verified the overview, thumbnail, and standalone Artifact 4 source links. The graph contains 317 nodes and 417 resolved links. Other document and image semantics carry forward from the previous snapshot.
+
+### Boundaries
+
+The public site is static and has no account system, data submission, or backend API. GitHub Pages provides HTTPS and HSTS. The content policy is delivered in HTML. Host-level response-header configuration and frame-embedding restrictions are outside this repository’s deployment control. The review did not inspect historical Git objects, private ignored files, physical devices, screen-reader speech, or third-party dependency internals.
+
 ## November 19, 2026 follow-up
 
 Reviewed the local four-artifact update. The homepage and instructor page contain the same collection, and Artifact 4 opens at its own validated route. The four cards use a single column on narrow screens and two columns on wider screens. Chrome checks at 320, 390, 768, and 1440 CSS pixels found no horizontal page overflow. The collection theme switch and 44-pixel navigation targets worked, and the preview images decoded. Artifact 4 uses its own system light or dark setting. Its split demo and five navigation targets passed the earlier Chrome review at 320, 390, 761, and 1440 pixels.

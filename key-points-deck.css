@@ -40,7 +40,7 @@
   margin: 0 0 12px;
 }
 
-.kpd h3 {
+.kpd h4 {
   font-size: clamp(26px, 3.4vw, 40px);
   line-height: 1.15;
   margin: 0 0 16px;
@@ -63,7 +63,7 @@
   padding: clamp(26px,5vw,54px);
 }
 
-.kpd-cover h3 {
+.kpd-cover h4 {
   font-size: clamp(48px, 7vw, 84px);
   margin-bottom: 18px;
 }
@@ -250,7 +250,7 @@
   }
 }
 
-.kpd h3 { font-family: Arial, Helvetica, sans-serif; letter-spacing: -.02em; }
+.kpd h4 { font-family: Arial, Helvetica, sans-serif; letter-spacing: -.02em; }
 .kpd-dots { min-width: 0; flex-wrap: wrap; }
 .kpd-nav .kpd-dot { padding: 0; border: 0; background: transparent; display: grid; place-items: center; }
 .kpd-dot::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #65718a; }

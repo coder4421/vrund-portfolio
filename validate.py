@@ -9,15 +9,16 @@ from content import ROOT
 
 PUBLIC_PAGES = {"index.html", "artifact.html", "data-challenge-scenarios.html"}
 
-REQUIRED = (
-    *sorted(PUBLIC_PAGES),
-    "style.css", "theme-init.js", "interactions.js", "cascading-dots.js",
+PUBLIC_ASSETS = (
+    "theme-init.js", "interactions.js", "cascading-dots.js", "data-challenge-scenarios.js",
     "favicon.svg",
     "key-points-deck.js", "portfolio-social.png", "ml-vs-dl-infographic.png", "ml-vs-dl-preview.jpg",
     *(f"key-points-{name}.png" for name in (
-        "activations", "ann", "audience", "cnn", "ethics", "fit_danger", "gan", "overlap", "rnn",
+        "activations", "ann", "ethics", "fit_danger", "gan", "overlap", "rnn",
     )),
 )
+
+REQUIRED = (*sorted(PUBLIC_PAGES), "style.css", *PUBLIC_ASSETS)
 
 
 class PageParser(HTMLParser):
@@ -45,13 +46,13 @@ class PageParser(HTMLParser):
 def validate_site(directory):
     directory = Path(directory).resolve()
     errors = []
+    public_names = {path.relative_to(directory).as_posix() for path in directory.rglob("*") if path.is_file()}
     for name in REQUIRED:
         path = directory / name
-        if not path.is_file() or path.stat().st_size == 0:
+        if name not in public_names or not path.is_file() or path.stat().st_size == 0:
             errors.append(f"Missing or empty asset: {name}")
     parsed = {}
-    public_html = {path.relative_to(directory).as_posix() for path in directory.rglob("*")
-                   if path.is_file() and path.suffix.lower() == ".html"}
+    public_html = {name for name in public_names if Path(name).suffix.lower() == ".html"}
     for name in sorted(public_html - PUBLIC_PAGES):
         errors.append(f"Unexpected public page: {name}")
     for path in directory.glob("*.html"):
@@ -68,11 +69,13 @@ def validate_site(directory):
         for link in parser.links:
             url = urlsplit(link)
             if url.scheme or url.netloc:
+                if url.scheme != "https" or not url.hostname:
+                    errors.append(f"{path.name}: expected HTTPS for external link: {link}")
                 continue
             target = (path.parent / unquote(url.path)).resolve() if url.path else path
             if directory not in target.parents:
                 errors.append(f"{path.name}: local link escapes output: {link}")
-            elif not target.is_file():
+            elif target.relative_to(directory).as_posix() not in public_names or not target.is_file():
                 errors.append(f"{path.name}: missing link target: {link}")
             elif url.fragment and target in parsed and unquote(url.fragment) not in parsed[target].ids:
                 errors.append(f"{path.name}: missing fragment: {link}")

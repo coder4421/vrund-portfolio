@@ -1,4 +1,8 @@
 {
+  ".github/workflows/pages.yml": {
+    "kind": "detected",
+    "sha256": "2f3273ad82abc98ba20d09b320447fa24956c3e0cf065e6a37f69e6f6b5f47c7"
+  },
   ".gitignore": {
     "coverage_lines": 12,
     "kind": "manual",
@@ -10,9 +14,9 @@
     "sha256": "bf9f7cf89b68f8888574dbc4a31642222094fab5fe2400b0abe1ae1e19e811bf"
   },
   "AUDIT.md": {
-    "coverage_lines": 52,
+    "coverage_lines": 77,
     "kind": "detected",
-    "sha256": "ca7e77723bde4aa3282d163337fcc2b4ed446ba6240f36fbfc817879592642a1"
+    "sha256": "784c05f9fc596f54a9477e41d9ca5fd28f702fcbc5c1a976248022c1003eb0b1"
   },
   "PONYTAIL-LICENSE.txt": {
     "coverage_lines": 21,
@@ -22,27 +26,31 @@
   "README.md": {
     "coverage_lines": 94,
     "kind": "detected",
-    "sha256": "81ee1dfa77735c7191bc18e84239da43a2eb744b910633042b846905e342cdef"
+    "sha256": "b602e2cd83e2c06c16d04a01950bb96b11891eb681826a19fa61d46b7b78db3a"
   },
   "artifacts/data-challenge-scenarios.html": {
-    "coverage_lines": 462,
+    "coverage_lines": 472,
     "kind": "detected",
-    "sha256": "81ac8e3a1ef425985640a7fc1b7a22e6ee147aa11ff4b883f45a28e0e0463de2"
+    "sha256": "b87c3807207c042353e7587b90f7c808e957b0d8eaa2aa370485d47ecaab6e5d"
+  },
+  "artifacts/data-challenges-overview.html": {
+    "kind": "detected",
+    "sha256": "088b8bf482f3a6a71968fbd046fdeda8aa5f6325424340f114679bea9c6019ee"
   },
   "artifacts/key-concepts.html": {
-    "coverage_lines": 26,
+    "coverage_lines": 28,
     "kind": "detected",
-    "sha256": "b5d51cdef44d7624437f58ef3d1973dd1b1ec466918603cae402bf8d28e82287"
+    "sha256": "f5c19eca16738ea688644025aa0f2c4cbb7f95eaed52c496102faf91ac7d5bcf"
   },
   "artifacts/ml-vs-dl.html": {
-    "coverage_lines": 30,
+    "coverage_lines": 33,
     "kind": "detected",
-    "sha256": "bb67a2005d360405248c68b718d8ab595d97547f99babbbfb6ed4bbb9bc6f355"
+    "sha256": "c5f43eac1dcc4cd484917d00761ff62c15e9b5eabdcaa453b0866102ecbe0d1e"
   },
   "artifacts/screenwise.html": {
-    "coverage_lines": 22,
+    "coverage_lines": 25,
     "kind": "detected",
-    "sha256": "777189dec83f499c91333fd5138ec97a9e5f8c7a0e2e2305655c4038e4b671e8"
+    "sha256": "ebf3aa23cc300799e7622554fcee25fe1bd14bb83a2fd5b3204d0f6b799c3933"
   },
   "assets/cascading-dots.js": {
     "coverage_lines": 127,
@@ -50,9 +58,9 @@
     "sha256": "434a255318c47a381b787888160e30a6627d0f0c699338bc15a23170dc75b4a5"
   },
   "assets/data-challenge-scenarios.js": {
-    "coverage_lines": 36,
+    "coverage_lines": 38,
     "kind": "detected",
-    "sha256": "d35f47336cd429b7564c31445ba9fec3d7427530efe0848a29a0027d8518f8e0"
+    "sha256": "d0de410c6d3042f4427364a96c3e4dec4d86522c60b51884ab8d545bafefe16c"
   },
   "assets/favicon.svg": {
     "coverage_lines": 1,
@@ -60,9 +68,9 @@
     "sha256": "e395d19f2ab3b20a2fe7ccb6ef1cc38e1a50fa9986cc929152c5819e316881c8"
   },
   "assets/interactions.js": {
-    "coverage_lines": 19,
+    "coverage_lines": 45,
     "kind": "detected",
-    "sha256": "8a38f604ebde3d9c7d750310d6dfa4f83648e90b831a819ff2d2fa2163980811"
+    "sha256": "1f7d04227cfb6cf0f74b7da8201303af5095ac27e779305246ac7596dae123ee"
   },
   "assets/key-points-activations.png": {
     "coverage_lines": 359,
@@ -85,9 +93,9 @@
     "sha256": "e68332e681e7736cd2ad22de05fb4dd6c7d4037cae63a89deb151792416ff634"
   },
   "assets/key-points-deck.js": {
-    "coverage_lines": 159,
+    "coverage_lines": 171,
     "kind": "detected",
-    "sha256": "accf658c67f919a7e0e9992c6155279dd5da05a81684605086d897c184cc7f42"
+    "sha256": "49c59c56a561bd2299bf0bcf3fe51f3f4a0af380c91752f16a248c779ca95215"
   },
   "assets/key-points-ethics.png": {
     "coverage_lines": 393,
@@ -119,6 +127,10 @@
     "kind": "detected",
     "sha256": "03c35e4342c9dfadde57401d20634ed223f2bc4efeb2afc5b566445565013528"
   },
+  "assets/ml-vs-dl-preview.jpg": {
+    "kind": "detected",
+    "sha256": "6360d1d052479df6e227cf61e1c197d2a00d45d8a0c8bff0c8f10b26c67d6d33"
+  },
   "assets/portfolio-social.png": {
     "coverage_lines": 5259,
     "kind": "detected",
@@ -140,14 +152,14 @@
     "sha256": "bebc2e1312fe5ff8ef360c035cdd44098caf6cd287359181e713604857639186"
   },
   "build.py": {
-    "coverage_lines": 67,
+    "coverage_lines": 69,
     "kind": "detected",
-    "sha256": "ce74af67a16bc5e1e80dcb0b6d61a6b202cc14ae13efa7d8c0716ff38d6b2302"
+    "sha256": "ae5bf4b65bda8f961cb26e37125b12d8b5b46ab3c8b25fd170adc3c74f53ec94"
   },
   "content-data.json": {
     "coverage_lines": 101,
     "kind": "detected",
-    "sha256": "9fb42e3c645b52a21e7ef217a3084222fde9882bc817973d4badf963196f7c82"
+    "sha256": "623bd1baeffa185b8032a4c72a4a9a3f8272aedb73a9d216baf8d17b3b834ff3"
   },
   "content.py": {
     "coverage_lines": 34,
@@ -160,9 +172,9 @@
     "sha256": "9522a5ac278461a0be35615ee2613a96656cad869a90b6512b09a97c020e2061"
   },
   "fixes.css": {
-    "coverage_lines": 394,
+    "coverage_lines": 444,
     "kind": "manual",
-    "sha256": "f7aa7b989c70ab1545258e6402b0b1935487779afc07a1738440e0b2cc200b0f"
+    "sha256": "6e97ab15e80e6d507cde72895694bfc0069ab7bbac47eea99ec70603dbe1e5c3"
   },
   "glass.css": {
     "coverage_lines": 11,
@@ -170,14 +182,14 @@
     "sha256": "bdf9f0f217249a1a5723c47dbf758c019870b4098ebe05dfdab06e32565d3e9d"
   },
   "key-points-deck.css": {
-    "coverage_lines": 275,
+    "coverage_lines": 279,
     "kind": "manual",
-    "sha256": "1ee1d34b7a2c53b5b70cd00f0221bd682d55a9b0596695ccd99e8f0e9562968b"
+    "sha256": "62faac1c24962ce3cf111760ce577100e97c5eb4f668a5bfee1fb2fa2f5b5cea"
   },
   "pages.py": {
-    "coverage_lines": 75,
+    "coverage_lines": 92,
     "kind": "detected",
-    "sha256": "b42d5bb812fa29b46c17e9a2243f4a2d6a3108b68d3b1d9f1499f549937daa70"
+    "sha256": "67c279e0cf41deaca0221f9bac5743f825e2c9cdbca140374bc632971788f438"
   },
   "redesign.css": {
     "coverage_lines": 3,
@@ -195,14 +207,14 @@
     "sha256": "604a2075d14d4bee1e76677eabdc729338f1f4b858ce537819dda65d421b507b"
   },
   "test_build.py": {
-    "coverage_lines": 190,
+    "coverage_lines": 242,
     "kind": "detected",
-    "sha256": "6f1571e45d5d4ab3d2d5e565a5a8c531fda392daabff5ddec646c8a9fff6ef71"
+    "sha256": "52e4b0301e3f71e69f97d39c322c4d9eb2ab905e785b93930f4ca9fcd1d5bb1d"
   },
   "tests/key-points-deck.test.cjs": {
-    "coverage_lines": 94,
+    "coverage_lines": 102,
     "kind": "detected",
-    "sha256": "688af843600ea8edef4cc2ff6b04a641498220d1df8eae9b098b8b2132fa3234"
+    "sha256": "9f25da045d484dfaab6f220833bfe25fa9a831b35b32339ea0b74fe99d2f12c3"
   },
   "tests/workstation.test.cjs": {
     "coverage_lines": 38,
@@ -210,8 +222,8 @@
     "sha256": "2c6cc04cd7cb7612a044a375d4e935ecb2305e9a260ec220ebef47695bd9d693"
   },
   "validate.py": {
-    "coverage_lines": 95,
+    "coverage_lines": 98,
     "kind": "detected",
-    "sha256": "6e3162a91b240f0bc7549b4481eedac24bd70e22e2631688141ab9207034d45e"
+    "sha256": "0de0cb417893281df60489dfdf9498067bf068bb5f39e8f465d252923fa6aa1d"
   }
 }

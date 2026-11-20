@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Four AI learning artifacts by Vrund Patel covering ScreenWise, machine learning and deep learning, AI key concepts, and data challenges.">
@@ -20,9 +21,7 @@
 <meta name="twitter:image:alt" content="Vrund Patel’s AI learning artifacts.">
 <link rel="canonical" href="https://coder4421.github.io/vrund-portfolio/artifact.html">
 <title>AI Learning Artifacts | Vrund Patel</title>
-<script>// Apply the saved theme before styles paint to prevent a theme flash.
-try { document.documentElement.dataset.theme = localStorage.getItem('vp-theme') === 'light' ? 'light' : 'dark'; }
-catch { document.documentElement.dataset.theme = 'dark'; }
+<script src="theme-init.js">
 </script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,15 +97,36 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
 </a>
 <a class="card artifact-choice" href="#artifact-4">
-<div class="artifact-preview screenwise-preview" aria-hidden="true">
-<div>
-<strong>Split by row</strong>
-<span>Duplicate reviews leak into the test set</span>
-</div>
-<div>
-<strong>Split by cluster</strong>
-<span>Related reviews stay together</span>
-</div>
+<div class="artifact-preview data-preview" aria-hidden="true">
+<table>
+<thead>
+<tr>
+<th>Split</th>
+<th>Train</th>
+<th>Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>By row</th>
+<td>
+<span class="split-leak">Cluster A</span>
+</td>
+<td>
+<span class="split-leak">Cluster A</span>
+</td>
+</tr>
+<tr>
+<th>By cluster</th>
+<td>
+<span class="split-clean">Cluster A</span>
+</td>
+<td>
+<span class="split-clean">Cluster B</span>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="artifact-card-copy">
 <span class="sectionlabel">Artifact 4</span>
@@ -117,12 +137,11 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
 </a>
 </div>
-<section class="first-artifact" id="artifact-1" aria-label="Artifact 1: ScreenWise Family Companion">
+<h2 class="artifact-details-heading">Artifact details</h2>
+<section class="first-artifact" id="artifact-1" aria-labelledby="screenwise-title">
 <div class="pagehead screenwise-head">
 <div class="eyebrow">Artifact 1 / Team prototype</div>
-<h2>ScreenWise<br>
-<em>Family Companion.</em>
-</h2>
+<h3 id="screenwise-title">ScreenWise Family Companion case study</h3>
 <p>A two-mode chatbot prototype that suggests offline activities for children and helps parents prepare screen-time conversations.</p>
 <p class="updated-label">Portfolio updated <time datetime="2026-11-13">November 13, 2026</time>
 </p>
@@ -134,7 +153,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
 <div class="buttons">
 <a class="button primary" href="#proof-title">See the documented test</a>
-<a class="button" href="https://poe.com/s/iKVuEs558cgSFTlOib4o" target="_blank" rel="noopener noreferrer">Open shared Poe link <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+<a class="button" href="https://poe.com/s/iKVuEs558cgSFTlOib4o" target="_blank" rel="noopener noreferrer">Open shared Poe link <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span>
 </a>
 </div>
 <p class="artifact-link-note">The Poe link is optional. The documented test is summarized below, without an account.</p>
@@ -162,7 +181,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <figure class="lab-proof card" id="lab-test" aria-labelledby="proof-title">
 <figcaption>
 <div class="eyebrow">Documented lab interaction</div>
-<h3 id="proof-title" tabindex="-1">One input. Three offline quests.</h3>
+<h4 id="proof-title" tabindex="-1">One input. Three offline quests.</h4>
 <p>The team simulated a child-mode conversation. This summary shows the interaction recorded in the lab submission.</p>
 </figcaption>
 <div class="mode-map" role="group" aria-label="ScreenWise conversation routes">
@@ -195,7 +214,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </figure>
 <section class="case-detail card" id="screenwise">
 <div class="eyebrow">Project brief</div>
-<h3>From screen-time limits to practical alternatives.</h3>
+<h4>From screen-time limits to practical alternatives.</h4>
 <dl>
 <dt>Problem</dt>
 <dd>Our team focused on the tension families can face around phone use: children may struggle to find something else to do, while parents may find it difficult to discuss boundaries calmly.</dd>
@@ -211,20 +230,20 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <div class="heading">
 <div>
 <div class="eyebrow">Interaction design</div>
-<h3>Two audiences. Different responses.</h3>
+<h4>Two audiences. Different responses.</h4>
 </div>
 </div>
 <div class="grid">
 <article class="card">
 <span class="sectionlabel">01 / CHILD MODE</span>
-<h4>Quest Master</h4>
+<h5>Quest Master</h5>
 <p>Uses a playful tone and suggests offline activities based on the information the user supplies, such as available time and energy level.</p>
 <span class="tag">Activity ideas</span>
 <span class="tag">Creative play</span>
 </article>
 <article class="card featured">
 <span class="sectionlabel">02 / PARENT MODE</span>
-<h4>Family Coach</h4>
+<h5>Family Coach</h5>
 <p>Uses a calm tone and provides draft conversation scripts and media agreements for a parent to review and adapt.</p>
 <span class="tag">Conversation support</span>
 <span class="tag">Human judgment</span>
@@ -234,7 +253,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <section class="grid lab-analysis">
 <article class="card">
 <div class="eyebrow">What worked in the lab</div>
-<h3>Fast conversational prototyping.</h3>
+<h4>Fast conversational prototyping.</h4>
 <ul>
 <li>A custom system prompt allowed the team to build the prototype without application code.</li>
 <li>Role-based instructions gave the assistant different tones and tasks for children and parents.</li>
@@ -243,7 +262,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </article>
 <article class="card">
 <div class="eyebrow">Limitations and next steps</div>
-<h3>More testing before broader use.</h3>
+<h4>More testing before broader use.</h4>
 <ul>
 <li>Test longer conversations for context retention and ask users to confirm important details.</li>
 <li>Recognize that suggestions depend on the family information supplied in the conversation.</li>
@@ -254,13 +273,6 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </section>
 <details class="artifact-more">
 <summary>Design process notes</summary>
-<section>
-<div class="heading">
-<div>
-<div class="eyebrow">Design thinking</div>
-<h3>How the team approached the problem.</h3>
-</div>
-</div>
 <ol class="design-stages">
 <li>
 <div>
@@ -293,7 +305,6 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
 </li>
 </ol>
-</section>
 </details>
 <details class="artifact-more artifact-information">
 <summary>Coursework details</summary>
@@ -318,7 +329,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <dt>Relevance</dt>
 <dd>Role-specific prompt design and evaluation</dd>
 <dt>References</dt>
-<dd>ALML-500 team lab submission, October 24, 2026, and the shared Poe session</dd>
+<dd>Team lab submission and shared Poe session</dd>
 </dl>
 </div>
 </details>
@@ -326,9 +337,9 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <section class="ml-artifact" id="artifact-2" aria-labelledby="ml-title">
   <div class="pagehead">
 <div class="eyebrow">Artifact 2 / Academic AI/ML analysis</div>
-<h2 id="ml-title">Machine learning.<br>
+<h3 id="ml-title">Machine learning.<br>
 <em>Deep learning. Different tradeoffs.</em>
-</h2>
+</h3>
 <p>A comparison of email spam detection and medical image analysis, written for recruiters, engineering managers, and technical professionals.</p>
 <p class="updated-label">Portfolio updated <time datetime="2026-11-13">November 13, 2026</time>
 </p>
@@ -368,14 +379,14 @@ catch { document.documentElement.dataset.theme = 'dark'; }
     <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size machine learning versus deep learning infographic in a new tab">
       <img src="ml-vs-dl-infographic.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Coursework infographic showing deep learning within machine learning, contrasting a feature-selection workflow with a neural-network workflow, and using spam detection and medical image analysis as examples.">
     </a>
-    <figcaption>Coursework visual summary. <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer">Open the full-size infographic <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+    <figcaption>Coursework visual summary. <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer">Open the full-size infographic <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span>
 </a> or <a href="#ml-comparison">read the text comparison</a>. The analysis below adds nuance to these simplified comparisons; this artifact does not include a trained model or medical results.</figcaption>
   </figure>
   <div class="grid ml-examples">
     <article class="card">
 <span class="sectionlabel">01 / TEXT CLASSIFICATION</span>
 <div class="ml-symbol" aria-hidden="true">@</div>
-<h3>Email spam detection</h3>
+<h4>Email spam detection</h4>
 <p>Classify a message as spam or legitimate. A traditional ML baseline can turn email text into numerical features and learn from labeled messages.</p>
 <div class="ml-flow" role="group" aria-label="Spam classification workflow. Extract TF-IDF features from email text, then pass them to a classifier.">
 <span>Email text</span>
@@ -396,7 +407,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
     <article class="card featured">
 <span class="sectionlabel">02 / IMAGE CLASSIFICATION</span>
 <div class="ml-symbol ml-image-symbol" aria-hidden="true">▧</div>
-<h3>Medical image analysis</h3>
+<h4>Medical image analysis</h4>
 <p>Explore how a convolutional neural network could learn visual features from labeled images for a defined classification task.</p>
 <div class="ml-flow" role="group" aria-label="Image classification workflow. Learn features from the image, then use them to make a prediction.">
 <span>Image</span>
@@ -417,7 +428,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
   </div>
   <div class="ml-comparison card" id="ml-comparison">
 <div class="eyebrow">Side-by-side comparison</div>
-<h3>Start with the problem. Compare the tradeoffs.</h3>
+<h4>Start with the problem. Compare the tradeoffs.</h4>
 <p class="scope-note">These are typical considerations, not fixed rules. Actual requirements depend on the dataset, model, and deployment.</p>
 <div class="ml-table-wrap">
 <table class="compare-table" role="table">
@@ -476,8 +487,8 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
   <aside class="ml-sources" id="ml-references">
 <span class="sectionlabel">SUPPORTING REFERENCES</span>
-<p>For further reading: <a href="https://scikit-learn.org/1.3/tutorial/text_analytics/working_with_text_data.html" target="_blank" rel="noopener noreferrer">scikit-learn: Working with text data <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
-</a> and <a href="https://www.tensorflow.org/tutorials/images/cnn" target="_blank" rel="noopener noreferrer">TensorFlow: Convolutional neural networks <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+<p>For further reading: <a href="https://scikit-learn.org/1.3/tutorial/text_analytics/working_with_text_data.html" target="_blank" rel="noopener noreferrer">scikit-learn: Working with text data <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span>
+</a> and <a href="https://www.tensorflow.org/tutorials/images/cnn" target="_blank" rel="noopener noreferrer">TensorFlow: Convolutional neural networks <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span>
 </a>. These explain text and general image classification; they do not validate a medical application.</p>
 </aside>
 <details class="artifact-more artifact-information">
@@ -513,7 +524,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <section class="first-artifact" id="artifact-3" aria-labelledby="key-concepts-title">
   <div class="pagehead">
 <div class="eyebrow">Artifact 3 / Course presentation</div>
-<h2 id="key-concepts-title">Key Concepts in AI &amp; Machine Learning: From Neural Networks to Leading Change</h2>
+<h3 id="key-concepts-title">Key Concepts in AI &amp; Machine Learning: From Neural Networks to Leading Change</h3>
 <p>An 11-slide presentation connecting neural-network foundations, learning with AI, ethical questions, and the communication needed to lead change.</p>
 <div class="artifact-tags">
 <span class="tag">Neural networks</span>
@@ -546,7 +557,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
     <div id="slide" role="group">
 <div class="kpd-cover">
-<h3>Key Points</h3>
+<h4>Key Points</h4>
 <p>Neural networks · Learning with AI · Leading change · Showing the work</p>
 <noscript>
 <p>Enable JavaScript to navigate the 11-slide presentation.</p>
@@ -565,7 +576,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
   <details class="artifact-more">
 <summary>Presentation overview and source notes</summary>
 <div class="case-detail">
-<h3>From model foundations to adoption.</h3>
+<h4>From model foundations to adoption.</h4>
 <dl>
 <dt>Neural networks</dt>
 <dd>ANNs, CNNs, RNNs, GANs, activation functions, and their accompanying diagrams.</dd>
@@ -622,24 +633,24 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <section class="first-artifact" id="artifact-4" aria-labelledby="data-challenges-title">
   <div class="pagehead">
 <div class="eyebrow">Artifact 4 / Applied judgment</div>
-<h2 id="data-challenges-title">Data Challenge Scenarios</h2>
+<h3 id="data-challenges-title">Data Challenge Scenarios walkthrough</h3>
 <p>Three ALML-500 exercises on preparing data, evaluating models in new settings, and protecting sensitive records.</p>
 </div>
   <div class="case-grid">
     <article class="card">
-<h3>Audit review labels</h3>
+<h4>Audit review labels</h4>
 <p>Compare star-derived labels with blind annotations and keep near-duplicates together when splitting the data.</p>
 <a href="data-challenge-scenarios.html#s1">Read the data quality scenario <span aria-hidden="true">→</span>
 </a>
 </article>
     <article class="card">
-<h3>Validate a hiring model locally</h3>
+<h4>Validate a hiring model locally</h4>
 <p>Test whether the model predicts job outcomes and assess subgroup performance before expanding to a new country.</p>
 <a href="data-challenge-scenarios.html#s2">Read the responsible scaling scenario <span aria-hidden="true">→</span>
 </a>
 </article>
     <article class="card">
-<h3>Collaborate across hospitals</h3>
+<h4>Collaborate across hospitals</h4>
 <p>Keep raw records at each hospital, define the privacy guarantees of shared updates, and evaluate results per site.</p>
 <a href="data-challenge-scenarios.html#s3">Read the privacy scenario <span aria-hidden="true">→</span>
 </a>
@@ -677,7 +688,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>OpenAI introduced a conversational system that could respond to follow-up questions. Its launch provided a public way to explore the strengths and limitations of conversational AI.</p>
 <p>
 <strong>Developer perspective:</strong> A conversational interface creates opportunities for assistance inside applications, while making accuracy and user expectations important design concerns.</p>
-<a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener noreferrer">Read OpenAI’s announcement <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+<a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener noreferrer">Read OpenAI’s announcement <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span>
 </a>
 </article>
 <article class="event">
@@ -686,7 +697,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>Google introduced Gemini, with developer access to Gemini Pro through Google AI Studio and Vertex AI beginning December 13.</p>
 <p>
 <strong>Developer perspective:</strong> Managed APIs offer a path for integrating model capabilities into software without training a foundation model from scratch.</p>
-<a href="https://developers.googleblog.com/its-time-for-developers-and-enterprises-to-build-with-gemini-pro/" target="_blank" rel="noopener noreferrer">Read Google’s developer announcement <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+<a href="https://developers.googleblog.com/its-time-for-developers-and-enterprises-to-build-with-gemini-pro/" target="_blank" rel="noopener noreferrer">Read Google’s developer announcement <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span>
 </a>
 </article>
 <article class="event">
@@ -695,7 +706,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>Anthropic announced Claude 3 Haiku, Sonnet, and Opus, presenting different options within one model family.</p>
 <p>
 <strong>Developer perspective:</strong> Choosing a model involves tradeoffs among capability, response time, and cost. Application requirements should guide that choice.</p>
-<a href="https://www.anthropic.com/research/claude-3-family" target="_blank" rel="noopener noreferrer">Read Anthropic’s announcement <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+<a href="https://www.anthropic.com/research/claude-3-family" target="_blank" rel="noopener noreferrer">Read Anthropic’s announcement <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span>
 </a>
 </article>
 </div>

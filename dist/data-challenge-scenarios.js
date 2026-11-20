@@ -19,6 +19,8 @@
       foot.innerHTML = '<strong>✓ Honest evaluation.</strong> Every cluster lives on one side only. Clusters A and B stay together in train; the test set holds genuinely unseen clusters — including the emoji-only review, kept and represented rather than deleted.';
     }
   }
+  document.getElementById('btn-row').addEventListener('click', () => setSplit('row'));
+  document.getElementById('btn-cluster').addEventListener('click', () => setSplit('cluster'));
   setSplit('row');
   var links = Array.prototype.slice.call(document.querySelectorAll('#scenav a[data-target]'));
   var obs = new IntersectionObserver(function(entries){

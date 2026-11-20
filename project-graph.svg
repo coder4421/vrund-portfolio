@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img" aria-labelledby="title desc">
   <title id="title">AI Learning Artifacts project graph</title>
-  <desc id="desc">Four artifact sources feed pages.py. build.py combines the rendered HTML with styles and browser assets, validates the staged output, and writes identical collection pages to index.html and artifact.html plus a standalone route for Data Challenge Scenarios. GitHub Actions runs the regression tests and deploys a clean export to GitHub Pages from main.</desc>
+  <desc id="desc">Four artifact sources feed pages.py. build.py combines the rendered HTML with styles and allowlisted browser assets, validates the staged output, and writes identical collection pages to index.html and artifact.html plus a standalone route for Data Challenge Scenarios. GitHub Actions runs the regression tests and deploys a clean export to GitHub Pages from main.</desc>
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M0 0L8 4L0 8Z" fill="#8ec9ff"/>
@@ -40,7 +40,7 @@
   <text x="464" y="221" class="eyebrow">STATIC BUILD</text>
   <text x="464" y="259" class="label">pages.py → build.py</text>
   <text x="464" y="294" class="note">Render one collection at both URLs</text>
-  <text x="464" y="320" class="note">Stage HTML, CSS and browser assets</text>
+  <text x="464" y="320" class="note">Stage HTML, CSS and public assets</text>
   <text x="464" y="346" class="note">Validate before writing the export</text>
 
   <rect class="panel output" x="832" y="184" width="320" height="210" rx="18"/>

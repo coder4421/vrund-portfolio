@@ -36,7 +36,7 @@ Edit the source files, then build:
 python3 build.py
 ```
 
-The build uses only the Python standard library. It creates [dist/](dist/) if missing, renders the collection at both URLs, copies assets, and checks local links and required files before publishing. Run it from any working directory using the script's absolute path. Use `--output /path/to/output` for a separate output directory. Only the default [dist/](dist/) is allowed inside the source tree; other output directories must be outside it. Source ancestors and symlink aliases into source are rejected. A [.build-files.json](dist/.build-files.json) manifest removes only retired generated files on rebuild, while unrelated author files are kept. Running [pages.py](pages.py) directly also builds the complete site.
+The build uses only the Python standard library. It creates [dist/](dist/) if missing, renders the collection at both URLs, copies allowlisted public assets, and checks local links and required files before publishing. Run it from any working directory using the script's absolute path. Use `--output /path/to/output` for a separate output directory. Only the default [dist/](dist/) is allowed inside the source tree; other output directories must be outside it. Source ancestors and symlink aliases into source are rejected. A [.build-files.json](dist/.build-files.json) manifest removes only retired generated files on rebuild, while unrelated author files are kept. Running [pages.py](pages.py) directly also builds the complete site.
 
 | Source | Purpose |
 | --- | --- |
@@ -78,7 +78,7 @@ node tests/key-points-deck.test.cjs
 node tests/workstation.test.cjs
 ```
 
-The validator also requires every slide diagram and social-preview asset, including images loaded dynamically by JavaScript.
+The validator requires the seven raster slide diagrams and the social-preview assets, including images loaded dynamically by JavaScript. Two slides draw diagrams from HTML. Their original PNGs remain in source.
 
 ## Audit and project map
 

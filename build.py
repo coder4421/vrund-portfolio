@@ -8,7 +8,7 @@ from tempfile import TemporaryDirectory
 
 from content import ROOT
 from pages import render_pages
-from validate import validate_site
+from validate import PUBLIC_ASSETS, validate_site
 
 CSS_FILES = ("base.css", "redesign.css", "glass.css", "fixes.css", "key-points-deck.css", "cursor.css")
 
@@ -23,9 +23,11 @@ def build(output_dir=None):
     output.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(prefix=".portfolio-build-", dir=output.parent) as temp:
         staged = Path(temp)
-        for asset in (ROOT / "assets").iterdir():
-            if asset.is_file() and asset.suffix.lower() != ".pdf" and asset.name != "workstation.js":
-                shutil.copyfile(asset, staged / asset.name)
+        for name in PUBLIC_ASSETS:
+            asset = ROOT / "assets" / name
+            if asset.is_symlink():
+                raise ValueError(f"Public asset must be a regular file: {name}")
+            shutil.copyfile(asset, staged / name)
         (staged / "style.css").write_text(css, encoding="utf-8")
         for filename, html in pages.items():
             (staged / filename).write_text(html, encoding="utf-8")

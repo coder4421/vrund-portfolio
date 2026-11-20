@@ -94,17 +94,17 @@ function render(){
   const s = SLIDES[index];
   let html = "";
   if (s.type === "cover") {
-    html = '<div class="kpd-cover"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h3>' + esc(s.title) + '</h3><p class="kpd-subtitle">' + esc(s.subtitle) + '</p><div class="kpd-rule" style="background:' + s.accent + '"></div><p class="kpd-chips">' + s.chips.map(function(c){ return '<span class="kpd-chip">' + esc(c) + '</span>'; }).join("") + '</p></div>';
+    html = '<div class="kpd-cover"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h4>' + esc(s.title) + '</h4><p class="kpd-subtitle">' + esc(s.subtitle) + '</p><div class="kpd-rule" style="background:' + s.accent + '"></div><p class="kpd-chips">' + s.chips.map(function(c){ return '<span class="kpd-chip">' + esc(c) + '</span>'; }).join("") + '</p></div>';
   } else if (s.type === "closing") {
-    html = '<div class="kpd-closing"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h3>' + esc(s.title) + '</h3><div class="kpd-rule" style="background:' + s.accent + '"></div>' + s.rows.map(function(r){ return '<div class="kpd-row"><span class="kpd-row-label" style="color:' + r.color + '">' + esc(r.label) + '</span><span class="kpd-row-body">' + esc(r.body) + '</span></div>'; }).join("") + '<p class="kpd-footer">' + esc(s.footer) + '</p></div>';
+    html = '<div class="kpd-closing"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h4>' + esc(s.title) + '</h4><div class="kpd-rule" style="background:' + s.accent + '"></div>' + s.rows.map(function(r){ return '<div class="kpd-row"><span class="kpd-row-label" style="color:' + r.color + '">' + esc(r.label) + '</span><span class="kpd-row-body">' + esc(r.body) + '</span></div>'; }).join("") + '<p class="kpd-footer">' + esc(s.footer) + '</p></div>';
   } else {
     const diagram = s.diagram
       ? '<ol class="kpd-diagram-steps">' + s.diagram.map(function(step){
           const [label, detail] = step.split("|");
           return '<li><strong>' + esc(label) + '</strong><span>' + esc(detail) + '</span></li>';
         }).join("") + '</ol>'
-      : '<a href="' + s.image + '" target="_blank" rel="noopener noreferrer"><img src="' + s.image + '" alt="' + esc(s.imageAlt) + '" class="kpd-diagram"><span>Open full-size diagram <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span></span></a>';
-    html = '<div class="kpd-slide"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h3>' + esc(s.title) + '</h3><div class="kpd-rule" style="background:' + s.accent + '"></div><div class="kpd-body"><ul>' + s.bullets.map(function(b){ return '<li>' + esc(b) + '</li>'; }).join("") + '</ul><figure class="kpd-figure">' + diagram + (s.diagramNote ? '<figcaption>' + esc(s.diagramNote) + '</figcaption>' : '') + '</figure></div>' + (s.footnote ? '<p class="kpd-footnote">' + esc(s.footnote) + '</p>' : '') + '</div>';
+      : '<a href="' + s.image + '" target="_blank" rel="noopener noreferrer"><img src="' + s.image + '" alt="' + esc(s.imageAlt) + '" class="kpd-diagram"><span>Open full-size diagram <span class="new-tab-note">(opens in new tab)</span> <span aria-hidden="true">↗</span></span></a>';
+    html = '<div class="kpd-slide"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h4>' + esc(s.title) + '</h4><div class="kpd-rule" style="background:' + s.accent + '"></div><div class="kpd-body"><ul>' + s.bullets.map(function(b){ return '<li>' + esc(b) + '</li>'; }).join("") + '</ul><figure class="kpd-figure">' + diagram + (s.diagramNote ? '<figcaption>' + esc(s.diagramNote) + '</figcaption>' : '') + '</figure></div>' + (s.footnote ? '<p class="kpd-footnote">' + esc(s.footnote) + '</p>' : '') + '</div>';
   }
   slideEl.innerHTML = html;
   progressEl.style.width = ((index + 1) / total * 100) + "%";
