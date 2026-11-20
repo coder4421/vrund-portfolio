@@ -15,9 +15,11 @@ def render_pages():
 <p>A team-built chatbot, a comparison of learning models, a course presentation on AI and leading change, and three data challenge scenarios.</p>
 <p class="updated-label">4 artifacts · 11 slides, 9 diagrams · 3 data scenarios</p>
 </div>
+<div class="artifact-layout">
 <nav class="artifact-jumps" aria-label="Artifact sections">
-<a href="#artifact-1">Artifact 1</a><a href="#artifact-2">Artifact 2</a><a href="#artifact-3">Artifact 3</a><a href="#artifact-4">Artifact 4</a><a href="#ai-notes">AI notes archive</a>
+<a href="#artifact-1">Artifact 1</a><a href="#artifact-2">Artifact 2</a><a href="#artifact-3">Artifact 3</a><a href="#artifact-4">Artifact 4</a><a href="#ai-notes">AI notes</a>
 </nav>
+<div class="artifact-content">
 <div class="grid artifact-index">
 <a class="card artifact-choice" href="#artifact-1">
 <div class="artifact-preview screenwise-preview" aria-hidden="true">
@@ -62,7 +64,7 @@ def render_pages():
     a+=(ROOT/'artifacts'/'key-concepts.html').read_text(encoding='utf-8')
     a += (ROOT / 'artifacts' / 'data-challenges-overview.html').read_text(encoding='utf-8')
     notes = load_content()["artifact"].replace("<h1>", "<h2>").replace("</h1>", "</h2>")
-    body = a + '<section id="ai-notes" aria-label="AI notes archive"><details class="artifact-more"><summary>AI notes archive · 2022–2024</summary>' + notes + '</details></section>'
+    body = a + '<section id="ai-notes" aria-label="AI notes archive"><details class="artifact-more"><summary>AI notes archive · 2022–2024</summary>' + notes + '</details></section></div></div>'
     html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="{escape(description,quote=True)}"><meta name="color-scheme" content="dark light"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)} | Vrund Patel"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{site_url}/artifact.html"><meta property="og:image" content="{site_url}/portfolio-social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Vrund Patel’s AI learning artifacts."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(title,quote=True)} | Vrund Patel"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{site_url}/portfolio-social.png"><meta name="twitter:image:alt" content="Vrund Patel’s AI learning artifacts."><link rel="canonical" href="{site_url}/artifact.html"><title>{escape(title)} | Vrund Patel</title><script>{theme_init}</script><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"><link rel="stylesheet" href="style.css"></head><body class="artifact-page"><div class="safe-area-shield" aria-hidden="true"></div><a class="skip-link" href="#main-content">Skip to content</a><button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button><main id="main-content" tabindex="-1">{body}</main><footer><span>© 2026 Vrund Patel</span><span>AI Learning Artifacts</span></footer><script src="interactions.js" defer></script><script src="cascading-dots.js" defer></script><script src="key-points-deck.js" defer></script></body></html>'''
     html = html.replace('><', '>\n<') + '\n'
     return {

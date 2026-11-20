@@ -18,14 +18,28 @@
   });
 })();
 
-const artifactJumps = document.querySelectorAll('.artifact-jumps a');
-if (artifactJumps.length) {
+const artifactNav = document.querySelector('.artifact-jumps');
+if (artifactNav) {
+  const links = [...artifactNav.querySelectorAll('a')];
+  const sections = links.map((link) => document.getElementById(link.hash.slice(1)));
   const markCurrentArtifact = () => {
-    artifactJumps.forEach((link) => {
-      if (link.hash === location.hash) link.setAttribute('aria-current', 'location');
+    const nav = artifactNav.getBoundingClientRect();
+    const readingLine = Math.max(nav.height + 32, window.innerHeight * 0.25);
+    let current = -1;
+    sections.forEach((section, index) => {
+      if (section.getBoundingClientRect().top <= readingLine) current = index;
+    });
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+      // The last two anchors can share the same scroll position near the footer.
+      current = location.hash === links.at(-2).hash ? links.length - 2 : links.length - 1;
+    }
+    links.forEach((link, index) => {
+      if (index === current) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
   };
+  window.addEventListener('scroll', markCurrentArtifact, {passive:true});
+  window.addEventListener('resize', markCurrentArtifact);
   window.addEventListener('hashchange', markCurrentArtifact);
   markCurrentArtifact();
 }

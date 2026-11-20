@@ -124,6 +124,11 @@ class PortfolioBuildTests(unittest.TestCase):
             self.assertTrue(all(description.strip() for description in descriptions))
         self.assertNotRegex(pages["artifact.html"], r'(?i)portfolio reflection|2026-11-05')
         self.assertNotRegex(pages["artifact.html"], r'href="https?://(?:www\.)?(?:github|linkedin)\.com/')
+        nav = re.search(r'<nav class="artifact-jumps".*?</nav>', pages["artifact.html"], re.S)
+        self.assertIsNotNone(nav)
+        self.assertEqual(re.findall(r'href="#([^"]+)"', nav.group()), [
+            "artifact-1", "artifact-2", "artifact-3", "artifact-4", "ai-notes",
+        ])
         for section in ('artifact-4', 'ai-notes'):
             self.assertIn(f'id="{section}"', pages["artifact.html"])
             self.assertIn(f'href="#{section}"', pages["artifact.html"])

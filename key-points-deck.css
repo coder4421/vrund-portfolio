@@ -141,7 +141,7 @@
 /* --- closing --- */
 .kpd-closing {
   flex: 1;
-  padding: 48px 6vw 24px;
+  padding: 24px clamp(18px,4vw,42px) 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -152,7 +152,7 @@
   grid-template-columns: 240px 1fr;
   gap: 24px;
   align-items: baseline;
-  padding: 16px 0;
+  padding: 10px 0;
   border-top: 1px solid #232838;
 }
 
@@ -169,7 +169,7 @@
 .kpd-footer {
   font-size: 13px;
   color: #c3ccdd;
-  margin-top: 32px;
+  margin: 16px 0 0;
 }
 
 /* --- nav --- */
@@ -272,7 +272,7 @@
 .kpd-figure { margin: 0; min-width: 0; }
 .kpd-figure figcaption { font-size: 15px; line-height: 1.6; color: #dde5f2; margin-top: 12px; }
 .kpd-figure a { display: block; color: #a9c5ff; font-size: 15px; }
-.kpd-diagram { display: block; margin-bottom: 8px; }
+.kpd-diagram { display: block; margin-bottom: 8px; filter: contrast(1.13) brightness(1.12); }
 .kpd-diagram-steps { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,125px),1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
 .kpd-diagram-steps li { margin: 0; padding: 10px; border: 1px solid #53617a; border-radius: 8px; background: #1a1f2b; font-size: 15px; }
 .kpd-diagram-steps li::before { content: none; }
