@@ -30,7 +30,8 @@ for (let i = 1; i <= 11; i++) {
   }
   if (i < 11) elements.next.events.click();
 }
-assert.equal(images.size, 9);
+assert.equal(images.size, 7);
+assert.match(elements.slide.innerHTML, /Four portfolio entries/);
 assert.equal(elements.next.disabled, true);
 elements.dots.events.click({ target: { closest: () => buttons[5] } });
 assert.equal(elements.counter.textContent, '6 / 11');
@@ -57,6 +58,7 @@ vm.runInNewContext(source, { document: { getElementById: () => null } });
 const motion = { matches: false, addEventListener(_, handler) { this.change = handler; } };
 let observer, tick;
 elements.autoplay = { events: {}, addEventListener: elements.prev.addEventListener };
+elements.nav = { events: {}, addEventListener: elements.prev.addEventListener };
 vm.runInNewContext(source, {
   document: { getElementById: () => deck, addEventListener() {} },
   window: { IntersectionObserver: true },
@@ -74,12 +76,18 @@ vm.runInNewContext(source, {
 });
 assert.equal(tick, undefined);
 observer([{ intersectionRatio: 1 }]);
+assert.equal(tick, undefined);
+assert.equal(elements.autoplay.textContent, "Play slides");
+elements.autoplay.events.click();
 tick();
 assert.equal(elements.counter.textContent, '2 / 11');
 elements.autoplay.events.click();
 assert.equal(tick, undefined);
 elements.autoplay.events.click();
 assert.equal(typeof tick, 'function');
+elements.nav.events.click({target: {closest: selector => selector === 'button'}});
+assert.equal(tick, undefined);
+elements.autoplay.events.click();
 deck.matches = () => true;
 deck.events.focusin();
 assert.equal(tick, undefined);
@@ -91,4 +99,4 @@ motion.matches = true;
 motion.change();
 assert.equal(tick, undefined);
 assert.equal(elements.autoplay.hidden, true);
-console.log('All 11 slides, 9 diagrams, navigation, focus-safe keys, and absent-deck checks passed.');
+console.log('All 11 slides, 9 diagrams (7 image files and 2 HTML diagrams), navigation, focus-safe keys, and absent-deck checks passed.');

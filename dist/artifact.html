@@ -47,7 +47,8 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <a href="#artifact-1">Artifact 1</a>
 <a href="#artifact-2">Artifact 2</a>
 <a href="#artifact-3">Artifact 3</a>
-<a href="data-challenge-scenarios.html">Artifact 4</a>
+<a href="#artifact-4">Artifact 4</a>
+<a href="#ai-notes">AI notes archive</a>
 </nav>
 <div class="grid artifact-index">
 <a class="card artifact-choice" href="#artifact-1">
@@ -82,8 +83,9 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
 </a>
 <a class="card artifact-choice" href="#artifact-3">
-<div class="artifact-preview deck-preview">
-<img src="key-points-ann.png" alt="">
+<div class="artifact-preview deck-preview" aria-hidden="true">
+<strong>Key Concepts</strong>
+<span>Neural networks · AI ethics · Leading change</span>
 </div>
 <div class="artifact-card-copy">
 <span class="sectionlabel">Artifact 3</span>
@@ -93,7 +95,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </span>
 </div>
 </a>
-<a class="card artifact-choice" href="data-challenge-scenarios.html">
+<a class="card artifact-choice" href="#artifact-4">
 <div class="artifact-preview screenwise-preview" aria-hidden="true">
 <div>
 <strong>Split by row</strong>
@@ -108,7 +110,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <span class="sectionlabel">Artifact 4</span>
 <h2>Data Challenge Scenarios</h2>
 <p>Explore data quality, bias in hiring models, and privacy in collaborative learning.</p>
-<span class="artifact-choice-link">Explore the scenarios <span aria-hidden="true">→</span>
+<span class="artifact-choice-link">Explore the scenarios <span aria-hidden="true">↘</span>
 </span>
 </div>
 </a>
@@ -380,7 +382,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
     <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size machine learning versus deep learning infographic in a new tab">
       <img src="ml-vs-dl-infographic.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Coursework infographic showing deep learning within machine learning, contrasting a feature-selection workflow with a neural-network workflow, and using spam detection and medical image analysis as examples.">
     </a>
-    <figcaption>Coursework visual summary. Open the image to zoom in on a phone. The analysis below adds nuance to these simplified comparisons; this artifact does not include a trained model or medical results.</figcaption>
+    <figcaption>Coursework visual summary. <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer">Open the full-size infographic ↗</a> or <a href="#ml-comparison">read the text comparison</a>. The analysis below adds nuance to these simplified comparisons; this artifact does not include a trained model or medical results.</figcaption>
   </figure>
   <div class="grid ml-examples">
     <article class="card">
@@ -564,7 +566,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
 <span class="kpd-counter" id="counter" role="status" aria-live="polite" aria-atomic="true">1 / 11</span>
 <button id="next" type="button" aria-label="Next slide">Next →</button>
-<button id="autoplay" type="button" hidden>Pause autoplay</button>
+<button id="autoplay" type="button" hidden>Play slides</button>
 </div>
   </div>
   <details class="artifact-more">
@@ -592,6 +594,101 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>
 <a href="https://www.tensorflow.org/api_docs/python/tf/nn/relu" target="_blank" rel="noopener noreferrer">TensorFlow: ReLU</a> · <a href="https://www.tensorflow.org/guide/keras/working_with_rnns" target="_blank" rel="noopener noreferrer">TensorFlow: recurrent networks</a> · <a href="https://visionbook.mit.edu/convolutional_neural_nets.html" target="_blank" rel="noopener noreferrer">MIT: convolution and pooling</a>. These support the concepts, not the source-deck experiment scores.</p>
 </aside>
+</section>
+<section class="first-artifact" id="artifact-4" aria-labelledby="data-challenges-title">
+  <div class="pagehead">
+<div class="eyebrow">Artifact 4 / Applied judgment</div>
+<h2 id="data-challenges-title">Data Challenge Scenarios</h2>
+<p>Three ALML-500 exercises on preparing data, evaluating models in new settings, and protecting sensitive records.</p>
+</div>
+  <div class="case-grid">
+    <article class="card">
+<h3>Audit review labels</h3>
+<p>Compare star-derived labels with blind annotations and keep near-duplicates together when splitting the data.</p>
+<a href="data-challenge-scenarios.html#s1">Read the data quality scenario →</a>
+</article>
+    <article class="card">
+<h3>Validate a hiring model locally</h3>
+<p>Test whether the model predicts job outcomes and assess subgroup performance before expanding to a new country.</p>
+<a href="data-challenge-scenarios.html#s2">Read the responsible scaling scenario →</a>
+</article>
+    <article class="card">
+<h3>Collaborate across hospitals</h3>
+<p>Keep raw records at each hospital, define the privacy guarantees of shared updates, and evaluate results per site.</p>
+<a href="data-challenge-scenarios.html#s3">Read the privacy scenario →</a>
+</article>
+  </div>
+  <p>
+<a class="button primary" href="data-challenge-scenarios.html">Open the full artifact and interactive demo →</a>
+</p>
+</section>
+<section id="ai-notes" aria-label="AI notes archive">
+<details class="artifact-more">
+<summary>AI notes archive · 2022–2024</summary>
+<div class="pagehead">
+<div class="eyebrow">AI learning / Historical reference</div>
+<h2>AI learning notes.<br>
+<em>Selected milestones, 2022–2024.</em>
+</h2>
+<p>I compiled these notes for my October 2026 coursework. The three announcements took place between November 2022 and March 2024.</p>
+<span class="tag">Technical research</span>
+<span class="tag">Visual communication</span>
+<span class="tag">Continuing education</span>
+</div>
+<section>
+<div class="heading">
+<div>
+<div class="eyebrow">Source-linked reference</div>
+<h2>Three announcements and their developer context.</h2>
+</div>
+</div>
+<div class="timeline">
+<article class="event">
+<div class="sectionlabel">NOVEMBER 30, 2022 / OPENAI</div>
+<h3>ChatGPT launches as a research preview.</h3>
+<p>OpenAI introduced a conversational system that could respond to follow-up questions. Its launch provided a public way to explore the strengths and limitations of conversational AI.</p>
+<p>
+<strong>Developer perspective:</strong> A conversational interface creates opportunities for assistance inside applications, while making accuracy and user expectations important design concerns.</p>
+<a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener noreferrer">Read OpenAI’s announcement ↗</a>
+</article>
+<article class="event">
+<div class="sectionlabel">DECEMBER 2023 / GOOGLE</div>
+<h3>Gemini expands the multimodal model landscape.</h3>
+<p>Google introduced Gemini, with developer access to Gemini Pro through Google AI Studio and Vertex AI beginning December 13.</p>
+<p>
+<strong>Developer perspective:</strong> Managed APIs offer a path for integrating model capabilities into software without training a foundation model from scratch.</p>
+<a href="https://developers.googleblog.com/its-time-for-developers-and-enterprises-to-build-with-gemini-pro/" target="_blank" rel="noopener noreferrer">Read Google’s developer announcement ↗</a>
+</article>
+<article class="event">
+<div class="sectionlabel">MARCH 4, 2024 / ANTHROPIC</div>
+<h3>Claude 3 introduces a family of models.</h3>
+<p>Anthropic announced Claude 3 Haiku, Sonnet, and Opus, presenting different options within one model family.</p>
+<p>
+<strong>Developer perspective:</strong> Choosing a model involves tradeoffs among capability, response time, and cost. Application requirements should guide that choice.</p>
+<a href="https://www.anthropic.com/research/claude-3-family" target="_blank" rel="noopener noreferrer">Read Anthropic’s announcement ↗</a>
+</article>
+</div>
+</section>
+<section class="grid">
+<article class="card">
+<div class="eyebrow">Purpose & audience</div>
+<h3>Purpose of these notes.</h3>
+<p>These notes are intended for software developers. The milestones establish context; the developer perspectives explain why they are relevant to someone building software.</p>
+<p>It demonstrates research and technical communication. It does not represent a deployed AI application or model training project.</p>
+</article>
+<article class="card featured">
+<div class="eyebrow">Professional reflection</div>
+<h3>What I am learning.</h3>
+<p>My background is in enterprise web development. Studying AI gives me another area in which to apply research, evaluation, and clear communication.</p>
+<p>The next step in my learning is to connect this understanding with practical projects that include working code, testing, and documented limitations.</p>
+</article>
+</section>
+<div class="note">
+<div class="eyebrow">AI assistance & source notes</div>
+<p>ChatGPT assisted with the portfolio structure, website code, and wording of this artifact. Milestone summaries link to the original company announcements. Developer perspectives are interpretations, rather than claims made by those sources.</p>
+<p>Coverage ends March 4, 2024. The page is retained as a dated learning artifact, separate from the engineering case studies.</p>
+</div>
+</details>
 </section>
 </main>
 <footer>

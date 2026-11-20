@@ -124,7 +124,10 @@ class PortfolioBuildTests(unittest.TestCase):
             self.assertTrue(all(description.strip() for description in descriptions))
         self.assertNotRegex(pages["artifact.html"], r'(?i)portfolio reflection|2026-11-05')
         self.assertNotRegex(pages["artifact.html"], r'href="https?://(?:www\.)?(?:github|linkedin)\.com/')
-        for extra in ('work.html', 'experience.html', 'skills.html', 'ai-notes'):
+        for section in ('artifact-4', 'ai-notes'):
+            self.assertIn(f'id="{section}"', pages["artifact.html"])
+            self.assertIn(f'href="#{section}"', pages["artifact.html"])
+        for extra in ('work.html', 'experience.html', 'skills.html'):
             self.assertNotIn(extra, pages["index.html"])
 
     def test_invalid_links_do_not_overwrite_published_files(self):

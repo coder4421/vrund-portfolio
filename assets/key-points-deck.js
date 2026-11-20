@@ -19,7 +19,7 @@ const SLIDES = [
       "Pooling downsamples feature maps; max pooling keeps the largest value in each region.",
       "AlexNet won ImageNet in 2012; ResNet's skip connections (2015) made very deep nets trainable."],
     diagramNote: "Image → convolution → pooling → convolution → pooling → dense layer → prediction (cat or not cat). Convolution is equivariant to discrete shifts under suitable boundary and stride conditions; it does not guarantee an unchanged prediction.",
-    image: "key-points-cnn.png", imageAlt: "CNN pipeline: image, convolution, pooling, convolution, pooling, dense layer, prediction",
+    diagram: ["Image|Pixels in", "Convolution|Edges and textures", "Pooling|Downsample", "Convolution|Shapes and parts", "Pooling|Downsample again", "Dense layer|Combine features", "Prediction|Cat / not cat"],
     footnote: "Artifact 02: CNN for medical image analysis vs a traditional ML baseline." },
   { kicker: "Neural networks \u00b7 3 of 4", title: "Recurrent Networks \u2014 memory for sequences", accent: "#9B7EDE",
     bullets: ["A hidden state carries information from earlier steps into later ones.",
@@ -68,17 +68,19 @@ const SLIDES = [
       "Every artifact carries the 10-field template: Title \u2192 References.",
       "Reflections go to the professor in Brightspace \u2014 not on the portfolio page."],
     diagramNote: "Recruiters look for outcomes; engineering managers examine process and quality; technical peers examine method. Frame the same artifact for the reader’s question.",
-    image: "key-points-audience.png", imageAlt: "Three audiences: recruiters, engineering managers, technical peers",
-    footnote: "Course target: at least 5 artifacts \u00b7 This portfolio currently presents 3." },
+    diagram: ["Recruiters|Can this person ship real work?", "Engineering managers|Can they lead change and deliver quality?", "Technical peers|Is the method sound?"],
+    footnote: "Course target: at least 5 artifacts \u00b7 This portfolio currently presents 4." },
   { type: "closing", kicker: "HOW IT CONNECTS", title: "Build the models. Learn with AI. Lead the change. Show the work.", accent: "#2EC4B6",
     rows: [
       { label: "Build the models", body: "ANN \u00b7 CNN \u00b7 RNN \u00b7 GAN \u2014 how they learn, and where each one fits.", color: "#5B8DEF" },
       { label: "Learn with AI", body: "Professor Predict \u2014 next-token prediction, the Velmora trap, Good Fit vs Danger Zone.", color: "#2EC4B6" },
       { label: "Lead the change", body: "Communication strategies + presentation principles \u2014 the overlap is where adoption happens.", color: "#4CAF7D" },
-      { label: "Show the work", body: "Three portfolio entries, each presented with its evidence and context.", color: "#9B7EDE" } ],
+      { label: "Show the work", body: "Four portfolio entries, each presented with its evidence and context.", color: "#9B7EDE" } ],
     footer: "ALML-500 \u00b7 Vrund Patel \u00b7 Fall 2026" }
 ];
 const total = SLIDES.length;
+// Fetch the first image while the cover is visible.
+if (typeof Image === "function") new Image().src = SLIDES[1].image;
 let index = 0;
 const slideEl = deck.querySelector("#slide");
 const dotsEl = deck.querySelector("#dots");
@@ -96,7 +98,13 @@ function render(){
   } else if (s.type === "closing") {
     html = '<div class="kpd-closing"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h3>' + esc(s.title) + '</h3><div class="kpd-rule" style="background:' + s.accent + '"></div>' + s.rows.map(function(r){ return '<div class="kpd-row"><span class="kpd-row-label" style="color:' + r.color + '">' + esc(r.label) + '</span><span class="kpd-row-body">' + esc(r.body) + '</span></div>'; }).join("") + '<p class="kpd-footer">' + esc(s.footer) + '</p></div>';
   } else {
-    html = '<div class="kpd-slide"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h3>' + esc(s.title) + '</h3><div class="kpd-rule" style="background:' + s.accent + '"></div><div class="kpd-body"><ul>' + s.bullets.map(function(b){ return '<li>' + esc(b) + '</li>'; }).join("") + '</ul><figure class="kpd-figure"><img src="' + s.image + '" alt="' + esc(s.imageAlt) + '" class="kpd-diagram">' + (s.diagramNote ? '<figcaption>' + esc(s.diagramNote) + '</figcaption>' : '') + '</figure></div>' + (s.footnote ? '<p class="kpd-footnote">' + esc(s.footnote) + '</p>' : '') + '</div>';
+    const diagram = s.diagram
+      ? '<ol class="kpd-diagram-steps">' + s.diagram.map(function(step){
+          const [label, detail] = step.split("|");
+          return '<li><strong>' + esc(label) + '</strong><span>' + esc(detail) + '</span></li>';
+        }).join("") + '</ol>'
+      : '<a href="' + s.image + '" target="_blank" rel="noopener noreferrer"><img src="' + s.image + '" alt="' + esc(s.imageAlt) + '" class="kpd-diagram"><span>Open full-size diagram ↗</span></a>';
+    html = '<div class="kpd-slide"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h3>' + esc(s.title) + '</h3><div class="kpd-rule" style="background:' + s.accent + '"></div><div class="kpd-body"><ul>' + s.bullets.map(function(b){ return '<li>' + esc(b) + '</li>'; }).join("") + '</ul><figure class="kpd-figure">' + diagram + (s.diagramNote ? '<figcaption>' + esc(s.diagramNote) + '</figcaption>' : '') + '</figure></div>' + (s.footnote ? '<p class="kpd-footnote">' + esc(s.footnote) + '</p>' : '') + '</div>';
   }
   slideEl.innerHTML = html;
   progressEl.style.width = ((index + 1) / total * 100) + "%";
@@ -110,7 +118,6 @@ function render(){
   slideEl.setAttribute('aria-label', 'Slide ' + (index + 1) + ': ' + s.title);
 }
 function goTo(i){ index = ((i % total) + total) % total; render(); }
-deck.addEventListener("click", function(e){ if (e.target.closest("#nav")) return; goTo(index + 1); });
 dotsEl.addEventListener("click", function(e){ const b = e.target.closest("button"); if (b) goTo(Number(b.dataset.i)); });
 prevBtn.addEventListener("click", function(){ goTo(index - 1); });
 nextBtn.addEventListener("click", function(){ goTo(index + 1); });
@@ -130,7 +137,7 @@ if (!autoplay || !("IntersectionObserver" in window)) return;
 
 const motion = matchMedia("(prefers-reduced-motion: reduce)");
 let visible = false;
-let paused = false;
+let paused = true;
 let timer;
 function syncAutoplay() {
   clearInterval(timer);
@@ -140,6 +147,11 @@ function syncAutoplay() {
   counterEl.setAttribute("aria-live", running ? "off" : "polite");
   if (running) timer = setInterval(() => goTo(index + 1), 4000);
 }
+deck.querySelector("#nav").addEventListener("click", (event) => {
+  if (!event.target.closest("button") || event.target.closest("#autoplay")) return;
+  paused = true;
+  syncAutoplay();
+});
 autoplay.addEventListener("click", () => {
   paused = !paused;
   syncAutoplay();

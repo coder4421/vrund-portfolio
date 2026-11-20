@@ -17,3 +17,15 @@
     try { localStorage.setItem('vp-theme', root.dataset.theme); } catch {}
   });
 })();
+
+const artifactJumps = document.querySelectorAll('.artifact-jumps a');
+if (artifactJumps.length) {
+  const markCurrentArtifact = () => {
+    artifactJumps.forEach((link) => {
+      if (link.hash === location.hash) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  window.addEventListener('hashchange', markCurrentArtifact);
+  markCurrentArtifact();
+}

@@ -47,7 +47,7 @@ The build uses only the Python standard library. It creates [dist/](dist/) if mi
 | [artifacts/key-concepts.html](artifacts/key-concepts.html), [key-points-deck.css](key-points-deck.css) | Artifact 3 presentation and its scoped styles, adapted from the supplied static deck |
 | [content.py](content.py) | Private résumé data validation and the project root path |
 
-The artifact pages use the four HTML files in [artifacts/](artifacts/). The résumé generator uses the job entries in [content-data.json](content-data.json). The earlier AI notes and expertise data remain in the source archive. Theme styles use `data-theme`.
+The artifact pages use the source HTML files in [artifacts/](artifacts/). The résumé generator uses the job entries in [content-data.json](content-data.json). The earlier AI notes appear in a collapsible archive after Artifact 4. Expertise data stays in the source archive. Theme styles use `data-theme`.
 
 Edits made directly in [dist/](dist/) are overwritten by the next build. Update source JavaScript and the favicon in [assets/](assets/).
 
@@ -86,7 +86,7 @@ The validator also requires every slide diagram and social-preview asset, includ
 - [FILE-AUDIT.csv](FILE-AUDIT.csv): every inventoried file, its purpose/category and whether it was retained, changed, added or deleted.
 - [Project graph](project-graph.svg) shows the current build and deployment flow. The [Graphify report](graphify-out/GRAPH_REPORT.md) and [interactive graph](graphify-out/graph.html) cover the local four-artifact build.
 
-The deck advances every four seconds while visible. Visitors can pause it or use its manual controls. Keyboard focus pauses autoplay, and reduced-motion settings disable autoplay and slide animation.
+The deck opens in manual mode. Play slides opts in to a four-second interval while the deck is visible. Manual controls and keyboard focus pause playback. Reduced-motion settings disable autoplay and slide animation.
 
 ## Accessibility and behavior
 The system cursor stays visible. The white dot trail runs only for hover-capable fine pointers and is disabled with reduced motion. Theme preferences are saved locally. Google Fonts loads directly from the page head with preconnected origins; system fonts are the fallback. Touch devices use opaque glass colors without backdrop filtering or hover movement. Desktop glass effects and reduced-motion handling remain available.
