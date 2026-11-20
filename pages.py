@@ -28,22 +28,22 @@ def render_pages():
 </div>
 <div class="artifact-card-copy"><span class="sectionlabel">Artifact 1</span>
 <h2>ScreenWise Family Companion</h2>
-<p>Two chatbot modes for children and parents, with a documented offline-game test.</p>
-<span class="artifact-choice-link">Read the case study <span aria-hidden="true">↘</span></span></div>
+<p>A two-mode chatbot for offline play and family screen-time conversations.</p>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span></span></div>
 </a>
 <a class="card artifact-choice" href="#artifact-2">
-<div class="artifact-preview model-preview"><img src="ml-vs-dl-infographic.png" alt=""></div>
+<div class="artifact-preview model-preview"><img src="ml-vs-dl-preview.jpg" alt="Infographic comparing manually selected features with features learned by neural networks." width="640" height="427"></div>
 <div class="artifact-card-copy"><span class="sectionlabel">Artifact 2</span>
 <h2>Machine Learning vs. Deep Learning</h2>
-<p>Compare the data, features, and model tradeoffs across two applications.</p>
-<span class="artifact-choice-link">Read the comparison <span aria-hidden="true">↘</span></span></div>
+<p>Model tradeoffs for email spam detection and medical image analysis.</p>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span></span></div>
 </a>
 <a class="card artifact-choice" href="#artifact-3">
 <div class="artifact-preview deck-preview" aria-hidden="true"><strong>Key Concepts</strong><span>Neural networks · AI ethics · Leading change</span></div>
 <div class="artifact-card-copy"><span class="sectionlabel">Artifact 3</span>
 <h2>Key Concepts in AI &amp; Machine Learning</h2>
 <p>Eleven slides on neural networks, AI ethics, communication, and leading change.</p>
-<span class="artifact-choice-link">Explore the slides <span aria-hidden="true">↘</span></span></div>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span></span></div>
 </a>
 <a class="card artifact-choice" href="#artifact-4">
 <div class="artifact-preview screenwise-preview" aria-hidden="true">
@@ -52,8 +52,8 @@ def render_pages():
 </div>
 <div class="artifact-card-copy"><span class="sectionlabel">Artifact 4</span>
 <h2>Data Challenge Scenarios</h2>
-<p>Explore data quality, bias in hiring models, and privacy in collaborative learning.</p>
-<span class="artifact-choice-link">Explore the scenarios <span aria-hidden="true">↘</span></span></div>
+<p>Three scenarios on data quality, hiring bias, and privacy-preserving collaboration.</p>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span></span></div>
 </a>
 </div>'''
     first=(ROOT/'artifacts'/'screenwise.html').read_text(encoding='utf-8')

@@ -106,6 +106,12 @@ class PortfolioBuildTests(unittest.TestCase):
         pages = render_pages()
         self.assertEqual(set(pages), {"index.html", "artifact.html", "data-challenge-scenarios.html"})
         self.assertEqual(pages["index.html"], pages["artifact.html"])
+        for page in pages.values():
+            self.assertIn('href="#main-content"', page)
+            self.assertRegex(page, r'<main[^>]*id="main-content" tabindex="-1"')
+        self.assertIn('href="#proof-title"', pages["artifact.html"])
+        self.assertRegex(pages["artifact.html"], r'<h3 id="proof-title" tabindex="-1"')
+        self.assertRegex(pages["artifact.html"], r'<img src="ml-vs-dl-preview.jpg" alt="[^"]+"')
         self.assertIn('href="data-challenge-scenarios.html"', pages["artifact.html"])
         scenarios = pages["data-challenge-scenarios.html"]
         for section in ("s1", "s2", "s3", "artifact-info", "references"):
@@ -114,9 +120,14 @@ class PortfolioBuildTests(unittest.TestCase):
         labels = ["Title", "Introduction", "Description", "Objective", "Process",
                   "Tools and Technologies Used", "Value Proposition", "Unique Value",
                   "Relevance", "References"]
-        blocks = re.findall(r'<section class="case-detail card artifact-information">(.*?)</section>',
+        blocks = re.findall(r'<details class="artifact-more artifact-information">(.*?)</details>',
                             pages["artifact.html"], re.S)
         self.assertEqual(len(blocks), 3)
+        self.assertIn('<details class="info"><summary>Coursework details</summary>', scenarios)
+        self.assertEqual(pages["artifact.html"].count('src="ml-vs-dl-infographic.png"'), 1)
+        self.assertEqual(pages["artifact.html"].count('class="artifact-choice-link">View artifact'), 4)
+        for link in re.findall(r'<a\b[^>]*target="_blank"[^>]*>.*?</a>', pages["artifact.html"], re.S):
+            self.assertRegex(link, r'opens in new tab|in a new tab')
         for block in blocks:
             self.assertEqual(re.findall(r'<dt>(.*?)</dt>', block), labels)
             descriptions = re.findall(r'<dd>(.*?)</dd>', block, re.S)

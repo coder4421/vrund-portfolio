@@ -13,7 +13,7 @@ REQUIRED = (
     *sorted(PUBLIC_PAGES),
     "style.css", "theme-init.js", "interactions.js", "cascading-dots.js",
     "favicon.svg",
-    "key-points-deck.js", "portfolio-social.png", "ml-vs-dl-infographic.png",
+    "key-points-deck.js", "portfolio-social.png", "ml-vs-dl-infographic.png", "ml-vs-dl-preview.jpg",
     *(f"key-points-{name}.png" for name in (
         "activations", "ann", "audience", "cnn", "ethics", "fit_danger", "gan", "overlap", "rnn",
     )),

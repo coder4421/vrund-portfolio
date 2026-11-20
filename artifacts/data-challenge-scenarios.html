@@ -232,7 +232,7 @@
   <div class="context" aria-label="Where this artifact sits in the portfolio">
     <div class="context-head">
       <h2>In the portfolio</h2>
-      <a href="artifact.html">View all artifacts ↗</a>
+      <a href="artifact.html">View all artifacts <span aria-hidden="true">↗</span></a>
     </div>
     <div class="ctx-grid">
       <a class="ctx-card" href="artifact.html#artifact-1">
@@ -291,7 +291,7 @@
       <article class="card"><span class="label">3 · Don’t erase people</span><h3>Tag, don’t delete</h3><ul><li>Keep a raw view <em>and</em> a cleaned view</li><li>Preserve emoji as tokens / features</li><li>Detect language → multilingual annotation &amp; models</li><li>Flag spam separately from “unusual”</li><li>Stratify the audit: emoji-only, non-English, short, oddly formatted</li></ul></article>
     </div>
 
-    <div class="demo" aria-label="Interactive: row split versus cluster split">
+    <div class="demo" role="region" aria-label="Interactive: row split versus cluster split">
       <div class="demo-head">
         <div><h3>Try it: why the split matters</h3><p>Same reviews, two ways to split. Toggle to see what leaks into the test set.</p></div>
         <div class="toggle" role="group" aria-label="Split method">
@@ -356,7 +356,7 @@
     <div class="fed" aria-label="Federated learning diagram">
       <p class="fed-hint" id="fed-hint">Scroll horizontally to read the full diagram.</p>
       <div class="fed-diagram" tabindex="0" role="region" aria-label="Federated learning diagram" aria-describedby="fed-hint">
-      <svg viewBox="0 0 900 300" role="img" aria-label="Diagram: Riverbend and Lakeside each train locally; only protected model updates go to secure aggregation; raw records never leave either hospital.">
+      <svg viewBox="0 0 900 300" role="img" aria-label="Diagram: Riverbend and Lakeside each train locally; only protected model updates go to secure aggregation; raw records stay local and the shared model returns to both hospitals.">
         <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" opacity=".6"/></marker></defs>
         <rect x="20" y="60" width="250" height="150" rx="16" fill="var(--c3-bg)" stroke="var(--c3-line)"/>
         <text x="145" y="92" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="16" fill="var(--ink)">Riverbend Hospital</text>
@@ -420,21 +420,27 @@
     <div class="tagrow" style="margin-top:12px" aria-label="Methods">
       <span style="border-color:var(--line);color:var(--ink)">MinHash / SimHash</span><span style="border-color:var(--line);color:var(--ink)">Blind annotation</span><span style="border-color:var(--line);color:var(--ink)">Fairness testing</span><span style="border-color:var(--line);color:var(--ink)">Federated learning</span>
     </div>
-    <div class="info">
-      <div class="info-head"><h3>Artifact information</h3></div>
+    <p>Follow-up questions changed the approach in Scenario 1. The exercise shifted to splitting by duplicate cluster, tagging unusual reviews, and checking how exclusions affect results.</p>
+    <dl class="info-summary">
+      <div><dt>Course</dt><dd>ALML-500</dd></div>
+      <div><dt>Format</dt><dd>Three worked scenarios</dd></div>
+      <div><dt>Practice</dt><dd><a href="#s1">Interactive split demo</a></dd></div>
+      <div><dt>Research</dt><dd><a href="#references">Nine references</a></dd></div>
+    </dl>
+    <details class="info"><summary>Coursework details</summary>
       <dl>
         <div class="row"><dt>Title</dt><dd>Data Challenge Scenarios: Data Quality, Bias &amp; Responsible Scaling, and Privacy in Collaborative Learning</dd></div>
-        <div class="row"><dt>Introduction</dt><dd>A guided practice exercise in ALML-500: three realistic data challenges, each probed follow-up by follow-up until the reasoning held up as a complete, defensible workflow.</dd></div>
-        <div class="row"><dt>Description</dt><dd>Covers (1) auditing star-derived sentiment labels with blind human annotation and cluster-aware deduplication, (2) gating a hiring model’s international scale-up behind local validation and fairness evidence, and (3) designing a federated learning consortium for two hospitals with secure aggregation and differential privacy.</dd></div>
-        <div class="row"><dt>Objective</dt><dd>Outline the data challenges in training and deploying ML applications; discuss approaches for data processing and cleaning; and explain the challenges of data sharing, privacy, and security in ML applications.</dd></div>
-        <div class="row"><dt>Process</dt><dd>Worked each scenario conversationally: gave an initial approach, then revised it under targeted probing — e.g., “split by row” became “split by cluster,” and “clean aggressively” became “tag rather than delete, with a stratified audit and sensitivity check.”</dd></div>
+        <div class="row"><dt>Introduction</dt><dd>ALML-500 guided practice exercise</dd></div>
+        <div class="row"><dt>Description</dt><dd>Sentiment-label quality, hiring model expansion, and federated hospital data</dd></div>
+        <div class="row"><dt>Objective</dt><dd>Evaluate data quality, responsible scaling, and data-sharing risks</dd></div>
+        <div class="row"><dt>Process</dt><dd>Initial proposals refined through follow-up questions</dd></div>
         <div class="row"><dt>Tools and Technologies Used</dt><dd><ul><li>MinHash / SimHash, TF-IDF cosine, embedding similarity</li><li>Blind human annotation &amp; stratified sampling</li><li>Federated learning, secure aggregation, differential privacy</li><li>Fairness &amp; calibration testing, leave-one-site-out validation</li></ul></dd></div>
-        <div class="row"><dt>Value Proposition</dt><dd>Shows applied practitioner judgment — not just model-building: how to keep an evaluation honest, how to refuse an unsafe scale-up, and how to collaborate on sensitive data without centralising it.</dd></div>
-        <div class="row"><dt>Unique Value</dt><dd>Every claim is tied to a checkable step: report clusters removed, run the comparison with and without exclusions, test per site with confidence intervals, and account for the privacy budget.</dd></div>
-        <div class="row"><dt>Relevance</dt><dd>Directly transferable to healthcare IT work — FHIR data quality, per-site validation across facilities, and privacy-preserving collaboration — and to text-classification projects that need reliable labels and leakage-free evaluation.</dd></div>
-        <div class="row"><dt>References</dt><dd>See the nine sources below for the research behind the techniques.</dd></div>
+        <div class="row"><dt>Value Proposition</dt><dd>Practical checks for model evaluation, deployment, and collaboration</dd></div>
+        <div class="row"><dt>Unique Value</dt><dd>Cluster counts, sensitivity checks, per-site results, and privacy-budget accounting</dd></div>
+        <div class="row"><dt>Relevance</dt><dd>FHIR data quality, cross-site healthcare validation, and text classification</dd></div>
+        <div class="row"><dt>References</dt><dd><a href="#references">Nine research references</a></dd></div>
       </dl>
-    </div>
+    </details>
   </section>
 
   <!-- REFERENCES -->

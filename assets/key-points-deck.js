@@ -103,7 +103,7 @@ function render(){
           const [label, detail] = step.split("|");
           return '<li><strong>' + esc(label) + '</strong><span>' + esc(detail) + '</span></li>';
         }).join("") + '</ol>'
-      : '<a href="' + s.image + '" target="_blank" rel="noopener noreferrer"><img src="' + s.image + '" alt="' + esc(s.imageAlt) + '" class="kpd-diagram"><span>Open full-size diagram ↗</span></a>';
+      : '<a href="' + s.image + '" target="_blank" rel="noopener noreferrer"><img src="' + s.image + '" alt="' + esc(s.imageAlt) + '" class="kpd-diagram"><span>Open full-size diagram <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span></span></a>';
     html = '<div class="kpd-slide"><p class="kpd-kicker" style="color:' + s.accent + '">' + esc(s.kicker) + '</p><h3>' + esc(s.title) + '</h3><div class="kpd-rule" style="background:' + s.accent + '"></div><div class="kpd-body"><ul>' + s.bullets.map(function(b){ return '<li>' + esc(b) + '</li>'; }).join("") + '</ul><figure class="kpd-figure">' + diagram + (s.diagramNote ? '<figcaption>' + esc(s.diagramNote) + '</figcaption>' : '') + '</figure></div>' + (s.footnote ? '<p class="kpd-footnote">' + esc(s.footnote) + '</p>' : '') + '</div>';
   }
   slideEl.innerHTML = html;

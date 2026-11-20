@@ -67,20 +67,20 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <div class="artifact-card-copy">
 <span class="sectionlabel">Artifact 1</span>
 <h2>ScreenWise Family Companion</h2>
-<p>Two chatbot modes for children and parents, with a documented offline-game test.</p>
-<span class="artifact-choice-link">Read the case study <span aria-hidden="true">↘</span>
+<p>A two-mode chatbot for offline play and family screen-time conversations.</p>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span>
 </span>
 </div>
 </a>
 <a class="card artifact-choice" href="#artifact-2">
 <div class="artifact-preview model-preview">
-<img src="ml-vs-dl-infographic.png" alt="">
+<img src="ml-vs-dl-preview.jpg" alt="Infographic comparing manually selected features with features learned by neural networks." width="640" height="427">
 </div>
 <div class="artifact-card-copy">
 <span class="sectionlabel">Artifact 2</span>
 <h2>Machine Learning vs. Deep Learning</h2>
-<p>Compare the data, features, and model tradeoffs across two applications.</p>
-<span class="artifact-choice-link">Read the comparison <span aria-hidden="true">↘</span>
+<p>Model tradeoffs for email spam detection and medical image analysis.</p>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span>
 </span>
 </div>
 </a>
@@ -93,7 +93,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <span class="sectionlabel">Artifact 3</span>
 <h2>Key Concepts in AI &amp; Machine Learning</h2>
 <p>Eleven slides on neural networks, AI ethics, communication, and leading change.</p>
-<span class="artifact-choice-link">Explore the slides <span aria-hidden="true">↘</span>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span>
 </span>
 </div>
 </a>
@@ -111,8 +111,8 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <div class="artifact-card-copy">
 <span class="sectionlabel">Artifact 4</span>
 <h2>Data Challenge Scenarios</h2>
-<p>Explore data quality, bias in hiring models, and privacy in collaborative learning.</p>
-<span class="artifact-choice-link">Explore the scenarios <span aria-hidden="true">↘</span>
+<p>Three scenarios on data quality, hiring bias, and privacy-preserving collaboration.</p>
+<span class="artifact-choice-link">View artifact <span aria-hidden="true">↘</span>
 </span>
 </div>
 </a>
@@ -134,35 +134,11 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </div>
 <div class="buttons">
 <a class="button primary" href="#proof-title">See the documented test</a>
-<a class="button" href="https://poe.com/s/iKVuEs558cgSFTlOib4o" target="_blank" rel="noopener noreferrer">Open shared Poe link ↗</a>
+<a class="button" href="https://poe.com/s/iKVuEs558cgSFTlOib4o" target="_blank" rel="noopener noreferrer">Open shared Poe link <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+</a>
 </div>
 <p class="artifact-link-note">The Poe link is optional. The documented test is summarized below, without an account.</p>
 </div>
-<section class="case-detail card artifact-information">
-<h3>Artifact information</h3>
-<dl>
-<dt>Title</dt>
-<dd>ScreenWise Family Companion</dd>
-<dt>Introduction</dt>
-<dd>A team lab on screen-time conversations and offline alternatives.</dd>
-<dt>Description</dt>
-<dd>A two-mode chatbot with Quest Master for children and Family Coach for parents.</dd>
-<dt>Objective</dt>
-<dd>Suggest offline activities and help parents prepare for conversations.</dd>
-<dt>Process</dt>
-<dd>The team used design thinking and tested a simulated child-mode conversation.</dd>
-<dt>Tools and Technologies Used</dt>
-<dd>Poe, role-specific prompts, and conversational testing.</dd>
-<dt>Value Proposition</dt>
-<dd>Offers activity ideas and draft conversation scripts families can adapt.</dd>
-<dt>Unique Value</dt>
-<dd>Routes children and parents to different conversational roles.</dd>
-<dt>Relevance</dt>
-<dd>Shows how distinct user needs inform prompt design and evaluation.</dd>
-<dt>References</dt>
-<dd>ALML-500 team lab submission, October 24, 2026, and the shared Poe session linked above.</dd>
-</dl>
-</section>
 <dl class="artifact-meta">
 <div>
 <dt>Team</dt>
@@ -183,17 +159,17 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <dd>Coursework prototype</dd>
 </div>
 </dl>
-<figure class="lab-proof card" aria-labelledby="proof-title">
+<figure class="lab-proof card" id="lab-test" aria-labelledby="proof-title">
 <figcaption>
 <div class="eyebrow">Documented lab interaction</div>
-<h3 id="proof-title">One input. Three offline quests.</h3>
-<p>Reconstructed from the team’s written lab submission. This is a visual summary, not a screenshot or live chatbot.</p>
+<h3 id="proof-title" tabindex="-1">One input. Three offline quests.</h3>
+<p>The team simulated a child-mode conversation. This summary shows the interaction recorded in the lab submission.</p>
 </figcaption>
-<div class="mode-map" aria-label="ScreenWise conversation routes">
+<div class="mode-map" role="group" aria-label="ScreenWise conversation routes">
 <strong>Who needs help?</strong>
 <div>
-<span>Child → Quest Master</span>
-<span>Parent → Family Coach</span>
+<span>Children use Quest Master</span>
+<span>Parents use Family Coach</span>
 </div>
 </div>
 <ol class="conversation-proof">
@@ -217,8 +193,6 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>Separate user intents need separate conversational requirements. The child-mode test gave our team a concrete interaction to examine; parent-mode behavior still needs testing.</p>
 </div>
 </figure>
-<details class="artifact-more">
-<summary>Read the full ScreenWise case study</summary>
 <section class="case-detail card" id="screenwise">
 <div class="eyebrow">Project brief</div>
 <h3>From screen-time limits to practical alternatives.</h3>
@@ -257,6 +231,29 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </article>
 </div>
 </section>
+<section class="grid lab-analysis">
+<article class="card">
+<div class="eyebrow">What worked in the lab</div>
+<h3>Fast conversational prototyping.</h3>
+<ul>
+<li>A custom system prompt allowed the team to build the prototype without application code.</li>
+<li>Role-based instructions gave the assistant different tones and tasks for children and parents.</li>
+<li>The team could test responses and revise the prompt within the same workflow.</li>
+</ul>
+</article>
+<article class="card">
+<div class="eyebrow">Limitations and next steps</div>
+<h3>More testing before broader use.</h3>
+<ul>
+<li>Test longer conversations for context retention and ask users to confirm important details.</li>
+<li>Recognize that suggestions depend on the family information supplied in the conversation.</li>
+<li>Test the parent mode, age appropriateness, and responses to unexpected inputs.</li>
+<li>Explore printable quest cards and a platform with explicit memory controls, with consent and privacy considered in the design.</li>
+</ul>
+</article>
+</section>
+<details class="artifact-more">
+<summary>Design process notes</summary>
 <section>
 <div class="heading">
 <div>
@@ -297,41 +294,33 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </li>
 </ol>
 </section>
-<section class="card lab-test" id="lab-test">
-<div class="eyebrow">Documented test / Simulated child user</div>
-<h3>From a short input to an offline game.</h3>
-<div class="test-input">
-<span class="sectionlabel">USER INPUT</span>
-<p>“2 hours, medium energy”</p>
+</details>
+<details class="artifact-more artifact-information">
+<summary>Coursework details</summary>
+<div class="case-detail">
+<dl>
+<dt>Title</dt>
+<dd>ScreenWise Family Companion</dd>
+<dt>Introduction</dt>
+<dd>A team lab on screen-time conversations and offline alternatives.</dd>
+<dt>Description</dt>
+<dd>A two-mode chatbot with Quest Master for children and Family Coach for parents.</dd>
+<dt>Objective</dt>
+<dd>Suggest offline activities and help parents prepare for conversations.</dd>
+<dt>Process</dt>
+<dd>Design thinking and a simulated child-mode test</dd>
+<dt>Tools and Technologies Used</dt>
+<dd>Poe, role-specific prompts, and conversational testing.</dd>
+<dt>Value Proposition</dt>
+<dd>Offers activity ideas and draft conversation scripts families can adapt.</dd>
+<dt>Unique Value</dt>
+<dd>Routes children and parents to different conversational roles.</dd>
+<dt>Relevance</dt>
+<dd>Role-specific prompt design and evaluation</dd>
+<dt>References</dt>
+<dd>ALML-500 team lab submission, October 24, 2026, and the shared Poe session</dd>
+</dl>
 </div>
-<ol class="test-results">
-<li>The chatbot returned <strong>three offline quests</strong>.</li>
-<li>The tester selected the <strong>Create-a-Game Challenge</strong>.</li>
-<li>The conversation developed <strong>“Jimmie Bimmie,”</strong> including rules and a <strong>two-minute time-out feature</strong>.</li>
-</ol>
-<p class="scope-note">This example is summarized from the team’s lab submission. It was a simulated interaction, not a study involving children or a validation of the parent mode.</p>
-</section>
-<section class="grid lab-analysis">
-<article class="card">
-<div class="eyebrow">What worked in the lab</div>
-<h3>Fast conversational prototyping.</h3>
-<ul>
-<li>A custom system prompt allowed the team to build the prototype without application code.</li>
-<li>Role-based instructions gave the assistant different tones and tasks for children and parents.</li>
-<li>The team could test responses and revise the prompt within the same workflow.</li>
-</ul>
-</article>
-<article class="card">
-<div class="eyebrow">Limitations and next steps</div>
-<h3>More testing before broader use.</h3>
-<ul>
-<li>Test longer conversations for context retention and ask users to confirm important details.</li>
-<li>Recognize that suggestions depend on the family information supplied in the conversation.</li>
-<li>Test the parent mode, age appropriateness, and responses to unexpected inputs.</li>
-<li>Explore printable quest cards and a platform with explicit memory controls, with consent and privacy considered in the design.</li>
-</ul>
-</article>
-</section>
 </details>
 </section>
 <section class="ml-artifact" id="artifact-2" aria-labelledby="ml-title">
@@ -350,31 +339,26 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <span class="tag">Model selection</span>
 </div>
 </div>
-<section class="case-detail card artifact-information">
-<h3>Artifact information</h3>
-<dl>
-<dt>Title</dt>
-<dd>Machine Learning vs. Deep Learning</dd>
-<dt>Introduction</dt>
-<dd>A coursework comparison of two classification problems.</dd>
-<dt>Description</dt>
-<dd>Email spam detection and medical image analysis illustrate different model tradeoffs.</dd>
-<dt>Objective</dt>
-<dd>Explain how task, data, and compute inform model selection.</dd>
-<dt>Process</dt>
-<dd>Compare the candidate workflows and outline evaluation criteria.</dd>
-<dt>Tools and Technologies Used</dt>
-<dd>TF-IDF, Naive Bayes, logistic regression, and convolutional neural networks as candidate approaches.</dd>
-<dt>Value Proposition</dt>
-<dd>Helps readers identify an appropriate baseline and evaluation criteria.</dd>
-<dt>Unique Value</dt>
-<dd>Pairs sparse text features with learned visual features in two different applications.</dd>
-<dt>Relevance</dt>
-<dd>Connects model selection with engineering constraints and the consequences of errors.</dd>
-<dt>References</dt>
-<dd>See the scikit-learn text-classification and TensorFlow CNN references below.</dd>
+  <dl class="artifact-meta">
+<div>
+<dt>Coursework</dt>
+<dd>Model selection</dd>
+</div>
+<div>
+<dt>Text baseline</dt>
+<dd>TF-IDF with Naive Bayes or logistic regression</dd>
+</div>
+<div>
+<dt>Image approach</dt>
+<dd>Convolutional neural network</dd>
+</div>
+<div>
+<dt>Evidence</dt>
+<dd>
+<a href="#ml-comparison">Compare model tradeoffs</a>
+</dd>
+</div>
 </dl>
-</section>
   <div class="ml-takeaway note">
 <span class="sectionlabel">Comparison takeaway</span>
 <p>Start with a baseline. Choose complexity when the task justifies it.</p>
@@ -384,7 +368,8 @@ catch { document.documentElement.dataset.theme = 'dark'; }
     <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size machine learning versus deep learning infographic in a new tab">
       <img src="ml-vs-dl-infographic.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Coursework infographic showing deep learning within machine learning, contrasting a feature-selection workflow with a neural-network workflow, and using spam detection and medical image analysis as examples.">
     </a>
-    <figcaption>Coursework visual summary. <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer">Open the full-size infographic ↗</a> or <a href="#ml-comparison">read the text comparison</a>. The analysis below adds nuance to these simplified comparisons; this artifact does not include a trained model or medical results.</figcaption>
+    <figcaption>Coursework visual summary. <a href="ml-vs-dl-infographic.png" target="_blank" rel="noopener noreferrer">Open the full-size infographic <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+</a> or <a href="#ml-comparison">read the text comparison</a>. The analysis below adds nuance to these simplified comparisons; this artifact does not include a trained model or medical results.</figcaption>
   </figure>
   <div class="grid ml-examples">
     <article class="card">
@@ -392,7 +377,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <div class="ml-symbol" aria-hidden="true">@</div>
 <h3>Email spam detection</h3>
 <p>Classify a message as spam or legitimate. A traditional ML baseline can turn email text into numerical features and learn from labeled messages.</p>
-<div class="ml-flow" aria-label="Example spam classification workflow">
+<div class="ml-flow" role="group" aria-label="Spam classification workflow. Extract TF-IDF features from email text, then pass them to a classifier.">
 <span>Email text</span>
 <span aria-hidden="true">→</span>
 <span>TF-IDF features</span>
@@ -413,7 +398,7 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <div class="ml-symbol ml-image-symbol" aria-hidden="true">▧</div>
 <h3>Medical image analysis</h3>
 <p>Explore how a convolutional neural network could learn visual features from labeled images for a defined classification task.</p>
-<div class="ml-flow" aria-label="Example image classification workflow">
+<div class="ml-flow" role="group" aria-label="Image classification workflow. Learn features from the image, then use them to make a prediction.">
 <span>Image</span>
 <span aria-hidden="true">→</span>
 <span>Learned features</span>
@@ -489,10 +474,41 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </table>
 </div>
 </div>
-  <aside class="ml-sources">
+  <aside class="ml-sources" id="ml-references">
 <span class="sectionlabel">SUPPORTING REFERENCES</span>
-<p>For further reading: <a href="https://scikit-learn.org/1.3/tutorial/text_analytics/working_with_text_data.html" target="_blank" rel="noopener noreferrer">scikit-learn: Working with text data ↗</a> and <a href="https://www.tensorflow.org/tutorials/images/cnn" target="_blank" rel="noopener noreferrer">TensorFlow: Convolutional neural networks ↗</a>. These explain text and general image classification; they do not validate a medical application.</p>
+<p>For further reading: <a href="https://scikit-learn.org/1.3/tutorial/text_analytics/working_with_text_data.html" target="_blank" rel="noopener noreferrer">scikit-learn: Working with text data <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+</a> and <a href="https://www.tensorflow.org/tutorials/images/cnn" target="_blank" rel="noopener noreferrer">TensorFlow: Convolutional neural networks <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+</a>. These explain text and general image classification; they do not validate a medical application.</p>
 </aside>
+<details class="artifact-more artifact-information">
+<summary>Coursework details</summary>
+<div class="case-detail">
+<dl>
+<dt>Title</dt>
+<dd>Machine Learning vs. Deep Learning</dd>
+<dt>Introduction</dt>
+<dd>A coursework comparison of two classification problems.</dd>
+<dt>Description</dt>
+<dd>Email spam detection and medical image analysis</dd>
+<dt>Objective</dt>
+<dd>Explain how task, data, and compute inform model selection.</dd>
+<dt>Process</dt>
+<dd>Workflow comparison and task-specific evaluation criteria</dd>
+<dt>Tools and Technologies Used</dt>
+<dd>TF-IDF, Naive Bayes, logistic regression, CNNs</dd>
+<dt>Value Proposition</dt>
+<dd>Baseline selection and evaluation criteria</dd>
+<dt>Unique Value</dt>
+<dd>Sparse text features compared with learned visual features</dd>
+<dt>Relevance</dt>
+<dd>Model selection under data, compute, and error-cost constraints</dd>
+<dt>References</dt>
+<dd>
+<a href="#ml-references">scikit-learn and TensorFlow</a>
+</dd>
+</dl>
+</div>
+</details>
 </section>
 <section class="first-artifact" id="artifact-3" aria-labelledby="key-concepts-title">
   <div class="pagehead">
@@ -506,31 +522,6 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <span class="tag">Change leadership</span>
 </div>
 </div>
-<section class="case-detail card artifact-information">
-<h3>Artifact information</h3>
-<dl>
-<dt>Title</dt>
-<dd>Key Concepts in AI &amp; Machine Learning: From Neural Networks to Leading Change</dd>
-<dt>Introduction</dt>
-<dd>An ALML-500 course presentation on AI foundations and adoption.</dd>
-<dt>Description</dt>
-<dd>Eleven slides and nine diagrams cover neural networks, learning with AI, ethics, communication, and leading change.</dd>
-<dt>Objective</dt>
-<dd>Explain core AI concepts and connect them to responsible use and communication.</dd>
-<dt>Process</dt>
-<dd>Present network foundations first, then move to ethics, communication, and adoption.</dd>
-<dt>Tools and Technologies Used</dt>
-<dd>Key Points course deck, its original diagrams, and an interactive web presentation.</dd>
-<dt>Value Proposition</dt>
-<dd>Gives readers a single presentation for exploring model foundations and adoption decisions.</dd>
-<dt>Unique Value</dt>
-<dd>Connects neural-network diagrams with examples of audience tailoring and change leadership.</dd>
-<dt>Relevance</dt>
-<dd>Supports conversations about how models work and how to communicate their use.</dd>
-<dt>References</dt>
-<dd>Key Points course deck and the TensorFlow and MIT references below.</dd>
-</dl>
-</section>
   <dl class="artifact-meta">
 <div>
 <dt>Course</dt>
@@ -591,11 +582,42 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 </dl>
 </div>
 </details>
-  <aside class="ml-sources">
+  <aside class="ml-sources" id="deck-references">
 <span class="sectionlabel">Technical references</span>
 <p>
-<a href="https://www.tensorflow.org/api_docs/python/tf/nn/relu" target="_blank" rel="noopener noreferrer">TensorFlow: ReLU</a> · <a href="https://www.tensorflow.org/guide/keras/working_with_rnns" target="_blank" rel="noopener noreferrer">TensorFlow: recurrent networks</a> · <a href="https://visionbook.mit.edu/convolutional_neural_nets.html" target="_blank" rel="noopener noreferrer">MIT: convolution and pooling</a>. These support the concepts, not the source-deck experiment scores.</p>
+<a href="https://www.tensorflow.org/api_docs/python/tf/nn/relu" target="_blank" rel="noopener noreferrer">TensorFlow: ReLU <span class="new-tab-note">(opens in new tab)</span>
+</a> · <a href="https://www.tensorflow.org/guide/keras/working_with_rnns" target="_blank" rel="noopener noreferrer">TensorFlow: recurrent networks <span class="new-tab-note">(opens in new tab)</span>
+</a> · <a href="https://visionbook.mit.edu/convolutional_neural_nets.html" target="_blank" rel="noopener noreferrer">MIT: convolution and pooling <span class="new-tab-note">(opens in new tab)</span>
+</a>. These support the concepts, not the source-deck experiment scores.</p>
 </aside>
+<details class="artifact-more artifact-information">
+<summary>Coursework details</summary>
+<div class="case-detail">
+<dl>
+<dt>Title</dt>
+<dd>Key Concepts in AI &amp; Machine Learning: From Neural Networks to Leading Change</dd>
+<dt>Introduction</dt>
+<dd>An ALML-500 course presentation on AI foundations and adoption.</dd>
+<dt>Description</dt>
+<dd>11 slides on neural networks, AI ethics, communication, and change</dd>
+<dt>Objective</dt>
+<dd>Explain core AI concepts and connect them to responsible use and communication.</dd>
+<dt>Process</dt>
+<dd>Model foundations, then responsible use and adoption</dd>
+<dt>Tools and Technologies Used</dt>
+<dd>Key Points static deck and interactive web slides</dd>
+<dt>Value Proposition</dt>
+<dd>A guided overview of model foundations and adoption</dd>
+<dt>Unique Value</dt>
+<dd>Connects neural-network diagrams with examples of audience tailoring and change leadership.</dd>
+<dt>Relevance</dt>
+<dd>Explaining AI models and communicating how to use them</dd>
+<dt>References</dt>
+<dd>Key Points course deck and <a href="#deck-references">TensorFlow and MIT references</a>
+</dd>
+</dl>
+</div>
+</details>
 </section>
 <section class="first-artifact" id="artifact-4" aria-labelledby="data-challenges-title">
   <div class="pagehead">
@@ -607,21 +629,25 @@ catch { document.documentElement.dataset.theme = 'dark'; }
     <article class="card">
 <h3>Audit review labels</h3>
 <p>Compare star-derived labels with blind annotations and keep near-duplicates together when splitting the data.</p>
-<a href="data-challenge-scenarios.html#s1">Read the data quality scenario →</a>
+<a href="data-challenge-scenarios.html#s1">Read the data quality scenario <span aria-hidden="true">→</span>
+</a>
 </article>
     <article class="card">
 <h3>Validate a hiring model locally</h3>
 <p>Test whether the model predicts job outcomes and assess subgroup performance before expanding to a new country.</p>
-<a href="data-challenge-scenarios.html#s2">Read the responsible scaling scenario →</a>
+<a href="data-challenge-scenarios.html#s2">Read the responsible scaling scenario <span aria-hidden="true">→</span>
+</a>
 </article>
     <article class="card">
 <h3>Collaborate across hospitals</h3>
 <p>Keep raw records at each hospital, define the privacy guarantees of shared updates, and evaluate results per site.</p>
-<a href="data-challenge-scenarios.html#s3">Read the privacy scenario →</a>
+<a href="data-challenge-scenarios.html#s3">Read the privacy scenario <span aria-hidden="true">→</span>
+</a>
 </article>
   </div>
   <p>
-<a class="button primary" href="data-challenge-scenarios.html">Open the full artifact and interactive demo →</a>
+<a class="button primary" href="data-challenge-scenarios.html">Open the full artifact and interactive demo <span aria-hidden="true">→</span>
+</a>
 </p>
 </section>
 <section id="ai-notes" aria-label="AI notes archive">
@@ -651,7 +677,8 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>OpenAI introduced a conversational system that could respond to follow-up questions. Its launch provided a public way to explore the strengths and limitations of conversational AI.</p>
 <p>
 <strong>Developer perspective:</strong> A conversational interface creates opportunities for assistance inside applications, while making accuracy and user expectations important design concerns.</p>
-<a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener noreferrer">Read OpenAI’s announcement ↗</a>
+<a href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener noreferrer">Read OpenAI’s announcement <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+</a>
 </article>
 <article class="event">
 <div class="sectionlabel">DECEMBER 2023 / GOOGLE</div>
@@ -659,7 +686,8 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>Google introduced Gemini, with developer access to Gemini Pro through Google AI Studio and Vertex AI beginning December 13.</p>
 <p>
 <strong>Developer perspective:</strong> Managed APIs offer a path for integrating model capabilities into software without training a foundation model from scratch.</p>
-<a href="https://developers.googleblog.com/its-time-for-developers-and-enterprises-to-build-with-gemini-pro/" target="_blank" rel="noopener noreferrer">Read Google’s developer announcement ↗</a>
+<a href="https://developers.googleblog.com/its-time-for-developers-and-enterprises-to-build-with-gemini-pro/" target="_blank" rel="noopener noreferrer">Read Google’s developer announcement <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+</a>
 </article>
 <article class="event">
 <div class="sectionlabel">MARCH 4, 2024 / ANTHROPIC</div>
@@ -667,7 +695,8 @@ catch { document.documentElement.dataset.theme = 'dark'; }
 <p>Anthropic announced Claude 3 Haiku, Sonnet, and Opus, presenting different options within one model family.</p>
 <p>
 <strong>Developer perspective:</strong> Choosing a model involves tradeoffs among capability, response time, and cost. Application requirements should guide that choice.</p>
-<a href="https://www.anthropic.com/research/claude-3-family" target="_blank" rel="noopener noreferrer">Read Anthropic’s announcement ↗</a>
+<a href="https://www.anthropic.com/research/claude-3-family" target="_blank" rel="noopener noreferrer">Read Anthropic’s announcement <span aria-hidden="true">↗</span> <span class="new-tab-note">(opens in new tab)</span>
+</a>
 </article>
 </div>
 </section>
