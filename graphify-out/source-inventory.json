@@ -14,9 +14,9 @@
     "sha256": "bf9f7cf89b68f8888574dbc4a31642222094fab5fe2400b0abe1ae1e19e811bf"
   },
   "AUDIT.md": {
-    "coverage_lines": 77,
+    "coverage_lines": 81,
     "kind": "detected",
-    "sha256": "784c05f9fc596f54a9477e41d9ca5fd28f702fcbc5c1a976248022c1003eb0b1"
+    "sha256": "c0b436f91b9e1397b3f576776bc029adf14fd76ae75230afe2728d7f402a76f3"
   },
   "PONYTAIL-LICENSE.txt": {
     "coverage_lines": 21,
