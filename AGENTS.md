@@ -35,7 +35,7 @@ Never cut: validation at trust boundaries, error handling that prevents data los
 
 Ponytail rules sourced from https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md on 2026-11-01. See PONYTAIL-LICENSE.txt for the upstream MIT license. This project uses the instruction-only adapter, not plugin hooks or a token dashboard.
 
-- Keep the public site focused on the three AI learning artifacts. Serve the collection at the homepage and preserve the instructor link at artifact.html.
+- Keep the public site focused on the four AI learning artifacts. Serve the collection at the homepage and preserve the instructor link at artifact.html.
 - Keep the ScreenWise team lab artifact and its team credits. Do not invent individual contributions, employment metrics, credentials, or outcomes.
 - Keep resume downloads and PDF files out of the public build.
 - Preserve the native cursor, reduced-motion handling, keyboard access, and touch-device exclusions.

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="740" viewBox="0 0 1200 740" role="img" aria-labelledby="title desc">
   <title id="title">AI Learning Artifacts project graph</title>
-  <desc id="desc">The three artifact templates feed pages.py. build.py combines the rendered HTML with styles and browser assets, validates the staged output, and writes identical collection pages to index.html and artifact.html. GitHub Actions runs the regression tests and deploys a clean export to GitHub Pages from main.</desc>
+  <desc id="desc">Four artifact sources feed pages.py. build.py combines the rendered HTML with styles and browser assets, validates the staged output, and writes identical collection pages to index.html and artifact.html plus a standalone route for Data Challenge Scenarios. GitHub Actions runs the regression tests and deploys a clean export to GitHub Pages from main.</desc>
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M0 0L8 4L0 8Z" fill="#8ec9ff"/>
@@ -24,29 +24,32 @@
   <path class="flow" d="M760 278H830"/>
   <path class="flow" d="M368 552H438"/>
   <path class="flow" d="M760 552H830"/>
-  <path class="flow" d="M600 468V375"/>
-  <path class="flow" d="M992 374V468"/>
+  <path class="flow" d="M600 468V395"/>
+  <path class="flow" d="M992 394V468"/>
 
-  <rect class="panel" x="48" y="184" width="320" height="190" rx="18"/>
+  <rect class="panel" x="48" y="184" width="320" height="210" rx="18"/>
   <text x="72" y="221" class="eyebrow">ARTIFACT SOURCES</text>
   <text x="72" y="259" class="label">artifacts/*.html</text>
   <text x="72" y="294" class="note">1 · ScreenWise Family Companion</text>
   <text x="72" y="320" class="note">2 · Machine Learning vs. Deep Learning</text>
   <text x="72" y="346" class="note">3 · Key Concepts presentation</text>
 
-  <rect class="panel" x="440" y="184" width="320" height="190" rx="18"/>
+  <text x="72" y="372" class="note">4 · Data Challenge Scenarios</text>
+
+  <rect class="panel" x="440" y="184" width="320" height="210" rx="18"/>
   <text x="464" y="221" class="eyebrow">STATIC BUILD</text>
   <text x="464" y="259" class="label">pages.py → build.py</text>
   <text x="464" y="294" class="note">Render one collection at both URLs</text>
   <text x="464" y="320" class="note">Stage HTML, CSS and browser assets</text>
   <text x="464" y="346" class="note">Validate before writing the export</text>
 
-  <rect class="panel output" x="832" y="184" width="320" height="190" rx="18"/>
+  <rect class="panel output" x="832" y="184" width="320" height="210" rx="18"/>
   <text x="856" y="221" class="eyebrow">PUBLIC EXPORT</text>
   <text x="856" y="259" class="label">dist/</text>
   <text x="856" y="294" class="note">index.html · collection homepage</text>
   <text x="856" y="320" class="note">artifact.html · instructor link</text>
-  <text x="856" y="346" class="note">Identical HTML at both entry points</text>
+  <text x="856" y="346" class="note">data-challenge-scenarios.html</text>
+  <text x="856" y="372" class="note">Artifact 4 · standalone page</text>
 
   <rect class="panel" x="48" y="470" width="320" height="164" rx="18"/>
   <text x="72" y="507" class="eyebrow">REGRESSION CHECKS</text>

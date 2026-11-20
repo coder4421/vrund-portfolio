@@ -7,7 +7,7 @@ from urllib.parse import unquote, urlsplit
 
 from content import ROOT
 
-PUBLIC_PAGES = {"index.html", "artifact.html"}
+PUBLIC_PAGES = {"index.html", "artifact.html", "data-challenge-scenarios.html"}
 
 REQUIRED = (
     *sorted(PUBLIC_PAGES),

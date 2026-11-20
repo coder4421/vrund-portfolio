@@ -20,7 +20,7 @@ class PortfolioBuildTests(unittest.TestCase):
         with TemporaryDirectory() as temp:
             output = Path(temp) / "site"
             build(output)
-            self.assertEqual(validate_site(output), 2)
+            self.assertEqual(validate_site(output), 3)
             first = {path.name: path.read_bytes() for path in output.iterdir()}
             build(output)
             self.assertEqual(first, {path.name: path.read_bytes() for path in output.iterdir()})
@@ -100,12 +100,17 @@ class PortfolioBuildTests(unittest.TestCase):
             build(output)
             self.assertTrue(all(not pdf.exists() for pdf in pdfs))
             self.assertEqual(keep.read_text(encoding="utf-8"), "Keep this file.")
-            self.assertEqual(validate_site(output), 2)
+            self.assertEqual(validate_site(output), 3)
 
     def test_home_and_instructor_link_show_only_the_collection(self):
         pages = render_pages()
-        self.assertEqual(set(pages), {"index.html", "artifact.html"})
+        self.assertEqual(set(pages), {"index.html", "artifact.html", "data-challenge-scenarios.html"})
         self.assertEqual(pages["index.html"], pages["artifact.html"])
+        self.assertIn('href="data-challenge-scenarios.html"', pages["artifact.html"])
+        scenarios = pages["data-challenge-scenarios.html"]
+        for section in ("s1", "s2", "s3", "artifact-info", "references"):
+            self.assertIn(f'id="{section}"', scenarios)
+        self.assertIn('href="artifact.html"', scenarios)
         labels = ["Title", "Introduction", "Description", "Objective", "Process",
                   "Tools and Technologies Used", "Value Proposition", "Unique Value",
                   "Relevance", "References"]

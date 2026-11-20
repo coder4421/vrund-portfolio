@@ -8,15 +8,15 @@ def render_pages():
     site_url = 'https://coder4421.github.io/vrund-portfolio'
     theme_init = (ROOT / 'assets' / 'theme-init.js').read_text(encoding='utf-8')
     title = 'AI Learning Artifacts'
-    description = 'Three AI learning artifacts by Vrund Patel: ScreenWise, a machine learning comparison, and the Key Concepts presentation.'
+    description = 'Four AI learning artifacts by Vrund Patel covering ScreenWise, machine learning and deep learning, AI key concepts, and data challenges.'
     a='''<div class="pagehead learning-head">
 <div class="eyebrow">AI coursework · Vrund Patel</div>
 <h1>AI Learning <em>Artifacts</em></h1>
-<p>A team-built chatbot, a comparison of learning models, and a course presentation on AI and leading change.</p>
-<p class="updated-label">3 artifacts · 11 slides, 9 diagrams · 2 modes</p>
+<p>A team-built chatbot, a comparison of learning models, a course presentation on AI and leading change, and three data challenge scenarios.</p>
+<p class="updated-label">4 artifacts · 11 slides, 9 diagrams · 3 data scenarios</p>
 </div>
 <nav class="artifact-jumps" aria-label="Artifact sections">
-<a href="#artifact-1">Artifact 1</a><a href="#artifact-2">Artifact 2</a><a href="#artifact-3">Artifact 3</a>
+<a href="#artifact-1">Artifact 1</a><a href="#artifact-2">Artifact 2</a><a href="#artifact-3">Artifact 3</a><a href="data-challenge-scenarios.html">Artifact 4</a>
 </nav>
 <div class="grid artifact-index">
 <a class="card artifact-choice" href="#artifact-1">
@@ -43,6 +43,16 @@ def render_pages():
 <p>Eleven slides on neural networks, AI ethics, communication, and leading change.</p>
 <span class="artifact-choice-link">Explore the slides <span aria-hidden="true">↘</span></span></div>
 </a>
+<a class="card artifact-choice" href="data-challenge-scenarios.html">
+<div class="artifact-preview screenwise-preview" aria-hidden="true">
+<div><strong>Split by row</strong><span>Duplicate reviews leak into the test set</span></div>
+<div><strong>Split by cluster</strong><span>Related reviews stay together</span></div>
+</div>
+<div class="artifact-card-copy"><span class="sectionlabel">Artifact 4</span>
+<h2>Data Challenge Scenarios</h2>
+<p>Explore data quality, bias in hiring models, and privacy in collaborative learning.</p>
+<span class="artifact-choice-link">Explore the scenarios <span aria-hidden="true">→</span></span></div>
+</a>
 </div>'''
     first=(ROOT/'artifacts'/'screenwise.html').read_text(encoding='utf-8')
     for level in range(3,0,-1):
@@ -53,7 +63,11 @@ def render_pages():
     body = a
     html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="{escape(description,quote=True)}"><meta name="color-scheme" content="dark light"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)} | Vrund Patel"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{site_url}/artifact.html"><meta property="og:image" content="{site_url}/portfolio-social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Vrund Patel’s AI learning artifacts."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(title,quote=True)} | Vrund Patel"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{site_url}/portfolio-social.png"><meta name="twitter:image:alt" content="Vrund Patel’s AI learning artifacts."><link rel="canonical" href="{site_url}/artifact.html"><title>{escape(title)} | Vrund Patel</title><script>{theme_init}</script><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"><link rel="stylesheet" href="style.css"></head><body class="artifact-page"><div class="safe-area-shield" aria-hidden="true"></div><a class="skip-link" href="#main-content">Skip to content</a><button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button><main id="main-content" tabindex="-1">{body}</main><footer><span>© 2026 Vrund Patel</span><span>AI Learning Artifacts</span></footer><script src="interactions.js" defer></script><script src="cascading-dots.js" defer></script><script src="key-points-deck.js" defer></script></body></html>'''
     html = html.replace('><', '>\n<') + '\n'
-    return {'index.html': html, 'artifact.html': html}
+    return {
+        'index.html': html,
+        'artifact.html': html,
+        'data-challenge-scenarios.html': (ROOT / 'artifacts' / 'data-challenge-scenarios.html').read_text(encoding='utf-8'),
+    }
 
 
 if __name__ == "__main__":

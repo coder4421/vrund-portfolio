@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="favicon.svg" />
+<title>Data Challenge Scenarios — Artifact 04 · Vrund Patel</title>
+<script src="theme-init.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#F4F5F6; --surface:#FFFFFF; --surface2:#ECEEF0; --ink:#101418; --muted:#5B6470; --line:#DEE2E6;
+    --panel:#101418; --panel-text:#F2F4F6; --panel-muted:#9AA3AD;
+    --accent:#0B6BCB; --accent-soft:#E3EEFB;
+    --mint:#0B6B5B; --mint-bg:#D9F2EA; --mint-ink:#06231E;
+    --c1:#0E6B4A; --c1-bg:#E6F2EC; --c1-line:#BFE0D1;
+    --c2:#8A5A00; --c2-bg:#FBF0D3; --c2-line:#EAD9A8;
+    --c3:#1B4F6E; --c3-bg:#E6EFF5; --c3-line:#BCD6E6;
+    --radius:18px;
+  }
+  :root[data-theme="dark"]{
+      color-scheme:dark;
+      --bg:#0A0B0D; --surface:#15181C; --surface2:#1C2026; --ink:#F2F4F6; --muted:#9AA3AD; --line:#262B32;
+      --panel:#15181C; --panel-text:#F2F4F6; --panel-muted:#9AA3AD;
+      --accent:#8AC6FF; --accent-soft:#16222E;
+      --mint:#7FE7D2; --mint-bg:#7FE7D2; --mint-ink:#06231E;
+      --c1:#4CC38A; --c1-bg:#12251D; --c1-line:#234636;
+      --c2:#E8B44A; --c2-bg:#2A2210; --c2-line:#4A3D1F;
+      --c3:#6FB3D6; --c3-bg:#12242F; --c3-line:#23465C;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .skip-link{position:fixed;top:12px;left:12px;z-index:30;padding:10px 14px;background:var(--surface);transform:translateY(-200%)}
+  .skip-link:focus{transform:none}
+  button,[role="button"],summary{min-height:44px}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  /* PORTFOLIO BAR */
+  .portbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 0 0}
+  .backlink{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:13.5px;font-weight:700;padding:10px 14px;border:1px solid var(--line);background:var(--surface);border-radius:999px;min-height:44px}
+  .theme-toggle{justify-content:center;min-width:44px;padding:0;color:var(--ink);cursor:pointer}
+  .backlink:hover{border-color:var(--accent);color:var(--accent)}
+  .portbar .who{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  .portbar .who strong{color:var(--ink)}
+  /* HERO — matches live portfolio hero panel */
+  .hero-panel{margin-top:18px;border-radius:28px;background:var(--panel);color:var(--panel-text);padding:44px 40px 36px;position:relative;overflow:hidden;border:1px solid var(--line)}
+  .hero-panel::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(140,170,220,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(140,170,220,.09) 1px,transparent 1px);background-size:52px 52px;pointer-events:none}
+  .hero-panel::after{content:"";position:absolute;right:36px;top:28px;width:150px;height:150px;background-image:radial-gradient(rgba(138,198,255,.5) 2px,transparent 2.5px);background-size:15px 15px;opacity:.5;pointer-events:none}
+  @media(max-width:640px){.hero-panel{padding:30px 22px 26px}.hero-panel::after{display:none}}
+  .hero-inner{position:relative;z-index:1}
+  .eyebrow{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+  .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--accent);display:block;flex:0 0 7px}
+  h1{font-size:clamp(40px,6.8vw,76px);line-height:.98;letter-spacing:-.035em;font-weight:800;margin:16px 0 14px;max-width:820px}
+  h1 .blue{color:var(--accent)}
+  h1 em{font-family:"Newsreader",serif;font-weight:500;letter-spacing:-.02em}
+  .lede{font-size:18px;line-height:1.55;color:var(--panel-muted);max-width:660px;margin:0}
+  .lede strong{color:var(--panel-text)}
+  .dateline{margin:18px 0 0;font-size:13.5px;color:var(--panel-muted)}
+  .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tagrow span{font-family:"IBM Plex Mono",monospace;font-size:12px;padding:8px 12px;border:1px solid rgba(154,163,173,.35);border-radius:8px;color:var(--panel-text)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:12px;min-height:48px}
+  .btn-primary{background:var(--mint-bg);color:var(--mint-ink)}
+  .btn-ghost{border:1px solid rgba(154,163,173,.45);color:var(--panel-text)}
+  .proofpill{display:inline-flex;margin-top:24px;font-size:13px;color:var(--panel-muted);border:1px solid rgba(154,163,173,.35);padding:8px 14px;border-radius:999px}
+  .throughline{margin-top:22px;border-top:1px solid rgba(154,163,173,.25);padding-top:18px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;position:relative;z-index:1}
+  @media(max-width:640px){.throughline{grid-template-columns:1fr}}
+  .throughline .num{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding-top:6px}
+  .throughline .big{font-family:"Newsreader",serif;font-size:clamp(21px,2.6vw,27px);line-height:1.3;font-style:italic;margin:0}
+  .throughline .small{margin:8px 0 0;font-size:13.5px;line-height:1.5;color:var(--panel-muted);max-width:640px}
+  /* PORTFOLIO CONTEXT STRIP */
+  .context{margin-top:22px}
+  .context-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .context-head h2{font-size:19px;letter-spacing:-.02em;margin:0}
+  .context-head a{font-size:13.5px;font-weight:700;color:var(--accent);text-decoration:none}
+  .context-head a:hover{text-decoration:underline;text-underline-offset:3px}
+  .ctx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+  @media(max-width:900px){.ctx-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.ctx-grid{grid-template-columns:1fr}}
+  .ctx-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;text-decoration:none;display:block}
+  .ctx-card .n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line);display:inline-block;padding:5px 9px;border-radius:999px}
+  .ctx-card h3{margin:12px 0 6px;font-size:16.5px;line-height:1.25;letter-spacing:-.015em}
+  .ctx-card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+  .ctx-card.current{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .ctx-card.current .n{background:var(--accent);color:#fff;border-color:var(--accent)}
+  [data-theme="dark"] .ctx-card.current .n{color:#0A0B0D}
+  .ctx-card .here{margin-top:10px;font-size:12.5px;font-weight:700;color:var(--accent)}
+  /* NAV */
+  .scenav{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:26px}
+  @media(min-width:761px){html{scroll-padding-top:80px}}
+  @media(max-width:760px){.scenav{position:static}}
+  .scenav-inner{display:flex;gap:8px;flex-wrap:wrap;padding:12px 0}
+  .scenav a{flex:0 0 auto;text-decoration:none;font-size:13px;font-weight:700;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);min-height:44px;display:inline-flex;align-items:center;gap:8px}
+  .scenav a span{font-family:"IBM Plex Mono",monospace;font-size:11px;opacity:.7}
+  .scenav a.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  /* SECTIONS */
+  section{padding:56px 0 8px}
+  .sec-head{display:flex;gap:20px;align-items:flex-start}
+  .sec-num{font-size:clamp(56px,9vw,96px);line-height:.85;font-weight:900;letter-spacing:-.05em;opacity:.14;flex:0 0 auto}
+  .sec-head h2{font-size:clamp(28px,4vw,42px);line-height:1.02;letter-spacing:-.03em;margin:4px 0 8px}
+  .sec-head p{margin:0;color:var(--muted);max-width:680px;font-size:16px}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .s1 .tag{color:var(--c1)} .s2 .tag{color:var(--c2)} .s3 .tag{color:var(--c3)}
+  .prompt{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-top:24px;display:grid;grid-template-columns:110px 1fr;gap:18px}
+  @media(max-width:640px){.prompt{grid-template-columns:1fr}}
+  .prompt label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .prompt p{margin:0;font-size:15.5px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  @media(max-width:820px){.grid3{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .card h3{margin:0 0 8px;font-size:15px;letter-spacing:-.01em}
+  .card p,.card li{font-size:14.5px;color:var(--muted)}
+  .card p{margin:0} .card ul{margin:8px 0 0;padding-left:18px} .card li{margin:5px 0}
+  .card .label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:block}
+  .s1 .label{color:var(--c1)} .s2 .label{color:var(--c2)} .s3 .label{color:var(--c3)}
+  .quote{margin:18px 0 0;border-radius:var(--radius);padding:26px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+  .s1 .quote{background:var(--c1-bg);border:1px solid var(--c1-line)} .s2 .quote{background:var(--c2-bg);border:1px solid var(--c2-line)} .s3 .quote{background:var(--c3-bg);border:1px solid var(--c3-line)}
+  .quote-mark{font-family:"Newsreader",serif;font-size:52px;line-height:.7;opacity:.5}
+  .quote blockquote{margin:0;font-family:"Newsreader",serif;font-style:italic;font-size:clamp(20px,2.6vw,26px);line-height:1.3}
+  .quote figcaption{margin-top:8px;font-size:13px;color:var(--muted);font-family:"Archivo",sans-serif;font-style:normal}
+  /* Interactive split demo */
+  .demo{margin-top:14px;background:var(--panel);color:var(--panel-text);border:1px solid var(--line);border-radius:20px;padding:22px;overflow:hidden}
+  .demo-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+  .demo-head h3{margin:0;font-size:17px;letter-spacing:-.02em}
+  .demo-head p{margin:4px 0 0;font-size:13.5px;opacity:.75;max-width:520px}
+  .toggle{display:flex;background:rgba(128,128,128,.22);padding:4px;border-radius:999px;gap:4px}
+  .toggle button{border:0;background:transparent;color:inherit;padding:10px 14px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer}
+  .toggle button[aria-pressed="true"]{background:var(--mint-bg);color:var(--mint-ink)}
+  .splitviz{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  @media(max-width:640px){.splitviz{grid-template-columns:1fr}}
+  .splitbox{border:1px solid rgba(128,128,128,.35);border-radius:14px;padding:16px}
+  .splitbox h4{margin:0 0 10px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:12px;font-weight:600;padding:6px 8px;border-radius:999px;border:1px solid rgba(128,128,128,.45)}
+  .chip.dup{border-style:dashed}
+  .chip.leak{background:#C0392B;color:white;border-color:#C0392B}
+  .chip.safe{background:#0E6B4A;color:white;border-color:#0E6B4A}
+  .demo-foot{margin-top:14px;font-size:13.5px;line-height:1.5;padding:12px 14px;border-radius:12px;background:rgba(128,128,128,.16)}
+  .demo-foot strong{display:block;margin-bottom:2px}
+  /* Federated diagram */
+  .fed{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px}
+  .fed svg{width:100%;height:auto;display:block}
+  .fed-diagram{overflow-x:auto}
+  .fed-hint{display:none}
+  @media(max-width:760px){
+    .fed svg{min-width:760px}
+    .fed-hint{display:block;margin:0 0 8px;color:var(--muted);font-size:13px}
+  }
+  .fed-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .fed-legend span{font-size:12px;font-weight:600;border:1px solid var(--line);background:var(--surface2);padding:7px 10px;border-radius:999px}
+  /* Gate list */
+  .gates{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  @media(max-width:700px){.gates{grid-template-columns:1fr}}
+  .gate{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .gate b{width:36px;height:36px;flex:0 0 36px;border-radius:50%;display:grid;place-items:center;font-size:14px}
+  .s2 .gate b{background:var(--c2-bg);color:var(--c2);border:1px solid var(--c2-line)}
+  .gate h4{margin:1px 0 4px;font-size:14.5px} .gate p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+  /* Synthesis */
+  .synthesis{background:var(--panel);color:var(--panel-text);border:1px solid var(--line);border-radius:24px;padding:28px;margin-top:36px}
+  .synthesis h2{font-size:clamp(26px,3.5vw,38px);letter-spacing:-.03em;line-height:1.05;margin:8px 0 12px}
+  .synthesis p{color:var(--panel-muted);max-width:720px}
+  .synthesis .tag{color:var(--accent)}
+  .syn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+  @media(max-width:760px){.syn-grid{grid-template-columns:1fr}}
+  .syn-grid div{background:rgba(255,255,255,.06);border:1px solid rgba(154,163,173,.25);border-radius:14px;padding:16px}
+  :root:not([data-theme="dark"]) .syn-grid div{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
+  .syn-grid b{display:block;margin-bottom:6px} .syn-grid span{font-size:13.5px;color:var(--panel-muted);line-height:1.5;display:block}
+  /* Artifact info — live portfolio row style */
+  .info{margin-top:16px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface)}
+  .info-head{padding:22px 24px 4px}
+  .info-head h3{margin:0;font-size:22px;letter-spacing:-.02em}
+  .info dl{margin:0;padding:10px 24px 14px}
+  .info .row{display:grid;grid-template-columns:210px 1fr;gap:20px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .info .row:last-child{border-bottom:0}
+  @media(max-width:700px){.info .row{grid-template-columns:1fr;gap:4px}}
+  .info dt{font-size:13.5px;font-weight:700;color:var(--ink)}
+  .info dd{margin:0;font-size:14.5px;line-height:1.55;color:var(--muted)}
+  .info dd strong{color:var(--ink)}
+  .info dd ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+  /* Refs */
+  .refs{counter-reset:ref;list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+  .refs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 52px;position:relative;font-size:14px;line-height:1.55;color:var(--muted)}
+  .refs li::before{counter-increment:ref;content:counter(ref,decimal-leading-zero);position:absolute;left:16px;top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:700;color:var(--ink)}
+  .refs li strong{color:var(--ink)}
+  .refs a{font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  footer{padding:36px 0 44px;color:var(--muted);font-size:13px;line-height:1.6}
+  footer a{color:var(--accent);font-weight:600;text-decoration:none}
+  footer a:hover{text-decoration:underline;text-underline-offset:3px}
+  .next{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:14px}
+  .next h3{margin:0 0 6px} .next p{margin:0;color:var(--muted);font-size:14.5px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to scenarios</a>
+<div class="wrap">
+  <div class="portbar">
+    <a class="backlink" href="artifact.html">← All artifacts</a>
+    <span class="who"><strong>Vrund Patel</strong> · ALML-500 — Fall 2026</span>
+    <button class="backlink theme-toggle" type="button" aria-label="Switch theme">☀</button>
+  </div>
+
+  <header class="hero-panel">
+    <div class="hero-inner">
+      <div class="eyebrow"><i></i> Artifact 4 / Applied judgment</div>
+      <h1>Data doesn’t fail loudly. <span class="blue">It fails</span> <em>quietly.</em></h1>
+      <p class="lede">Three data challenges, worked end-to-end: a messy review dataset, a hiring model that learned the gate instead of the job, and two hospitals that need to collaborate without exposing patients. <strong>The work isn’t cleaning data — it’s deciding what a model is allowed to learn, and proving it.</strong> Written for recruiters, engineering managers, and technical professionals.</p>
+      <p class="dateline">Portfolio updated November 19, 2026</p>
+      <div class="tagrow" aria-label="Topics">
+        <span>Data quality</span><span>Blind annotation</span><span>Bias &amp; shift</span><span>Federated learning</span><span>Differential privacy</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#s1">Start with Scenario 01</a>
+        <a class="btn btn-ghost" href="#artifact-info">See artifact information</a>
+      </div>
+      <span class="proofpill">Artifact 4 of 4 · 3 scenarios · 9 references</span>
+      <div class="throughline">
+        <div class="num">The throughline</div>
+        <div>
+          <p class="big">“Trust has to be earned per group, per language, and per site — not on average.”</p>
+          <p class="small">That instinct runs through all three scenarios: don’t let an average hide what happens to a specific language, subgroup, or hospital.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="context" aria-label="Where this artifact sits in the portfolio">
+    <div class="context-head">
+      <h2>In the portfolio</h2>
+      <a href="artifact.html">View all artifacts ↗</a>
+    </div>
+    <div class="ctx-grid">
+      <a class="ctx-card" href="artifact.html#artifact-1">
+        <span class="n">Artifact 1</span>
+        <h3>ScreenWise Family Companion</h3>
+        <p>Two chatbot modes for children and parents, with a documented offline-game test.</p>
+      </a>
+      <a class="ctx-card" href="artifact.html#artifact-2">
+        <span class="n">Artifact 2</span>
+        <h3>Machine Learning vs. Deep Learning</h3>
+        <p>Compare the data, features, and model tradeoffs across two applications.</p>
+      </a>
+      <a class="ctx-card" href="artifact.html#artifact-3">
+        <span class="n">Artifact 3</span>
+        <h3>Key Concepts in AI &amp; Machine Learning</h3>
+        <p>Eleven slides on neural networks, AI ethics, communication, and leading change.</p>
+      </a>
+      <div class="ctx-card current" aria-current="page">
+        <span class="n">Artifact 4</span>
+        <h3>Data Challenge Scenarios</h3>
+        <p>Data quality, bias &amp; responsible scaling, and privacy in collaborative learning.</p>
+        <div class="here">You’re reading this one ↓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="scenav" aria-label="Scenarios">
+  <div class="wrap"><div class="scenav-inner" id="scenav">
+    <a href="#s1" data-target="s1"><span>01</span> Data Quality</a>
+    <a href="#s2" data-target="s2"><span>02</span> Bias &amp; Scaling</a>
+    <a href="#s3" data-target="s3"><span>03</span> Privacy &amp; Hospitals</a>
+    <a href="#artifact-info" data-target="artifact-info"><span>§</span> Artifact Info</a>
+    <a href="#references" data-target="references"><span>§</span> References</a>
+  </div></div>
+</nav>
+
+<main class="wrap" id="main-content" tabindex="-1">
+
+  <!-- SCENARIO 1 -->
+  <section id="s1" class="s1">
+    <div class="sec-head">
+      <div class="sec-num" aria-hidden="true">01</div>
+      <div>
+        <div class="tag">Scenario 01 — Data Quality &amp; Cleaning</div>
+        <h2>Are the labels lying?</h2>
+        <p>Sentiment labels derived from star ratings, near-duplicates everywhere, and “unusual” reviews that turn out to be real voices. Cleaning here defines whose language counts as valid.</p>
+      </div>
+    </div>
+
+    <div class="prompt"><label>The setup</label><p>A review dataset needs checking before any training: similarities and near-duplicates, missing data, and label quality — especially labels that come partly from star ratings rather than from what the review actually says.</p></div>
+
+    <div class="grid3">
+      <article class="card"><span class="label">1 · Audit the labels</span><h3>Blind human annotation</h3><p>Test star labels against annotators who <strong>cannot see the stars</strong>. If they could, they’d just copy them — and you’d learn nothing about whether the labels are trustworthy.</p></article>
+      <article class="card"><span class="label">2 · Stop the leakage</span><h3>Split by cluster, not by row</h3><ul><li>Detect near-dupes: MinHash / SimHash, TF-IDF cosine, embedding similarity <sup>[1][2]</sup></li><li>Cluster duplicates first, then split by cluster</li><li>Optionally group by reviewer / product / time</li><li>Report rows &amp; clusters removed</li></ul></article>
+      <article class="card"><span class="label">3 · Don’t erase people</span><h3>Tag, don’t delete</h3><ul><li>Keep a raw view <em>and</em> a cleaned view</li><li>Preserve emoji as tokens / features</li><li>Detect language → multilingual annotation &amp; models</li><li>Flag spam separately from “unusual”</li><li>Stratify the audit: emoji-only, non-English, short, oddly formatted</li></ul></article>
+    </div>
+
+    <div class="demo" aria-label="Interactive: row split versus cluster split">
+      <div class="demo-head">
+        <div><h3>Try it: why the split matters</h3><p>Same reviews, two ways to split. Toggle to see what leaks into the test set.</p></div>
+        <div class="toggle" role="group" aria-label="Split method">
+          <button type="button" id="btn-row" aria-pressed="true" onclick="setSplit('row')">Split by row</button>
+          <button type="button" id="btn-cluster" aria-pressed="false" onclick="setSplit('cluster')">Split by cluster ✓</button>
+        </div>
+      </div>
+      <div class="splitviz">
+        <div class="splitbox"><h4>Train</h4><div class="chips" id="trainChips"></div></div>
+        <div class="splitbox"><h4>Test</h4><div class="chips" id="testChips"></div></div>
+      </div>
+      <div class="demo-foot" id="demoFoot" role="status"></div>
+    </div>
+
+    <figure class="quote"><div class="quote-mark" aria-hidden="true">“</div><div><blockquote>If the conclusion changes a lot when you exclude those reviews, that’s a finding — not a cleaning detail.</blockquote><figcaption>Run the star-vs-human comparison with <em>and</em> without exclusions, and report inclusion / exclusion rates. Sensitivity is evidence.</figcaption></div></figure>
+  </section>
+
+  <!-- SCENARIO 2 -->
+  <section id="s2" class="s2">
+    <div class="sec-head">
+      <div class="sec-num" aria-hidden="true">02</div>
+      <div>
+        <div class="tag">Scenario 02 — Bias, Distribution Shift &amp; Responsible Scaling</div>
+        <h2>A model doesn’t get a passport.</h2>
+        <p>TalentBridge trained a résumé screener on ten years of one company’s hiring decisions. It scores well on held-out history. Now: a new country, 10× the volume.</p>
+      </div>
+    </div>
+
+    <div class="prompt"><label>The trap</label><p>“Hired in the past” sounds like a label for talent. It isn’t. The old held-out test can’t reveal the problem — it contains no new-country examples, and it shares the old feature semantics, base rates, and decisions.</p></div>
+
+    <figure class="quote"><div class="quote-mark" aria-hidden="true">“</div><div><blockquote>“Hired in the past” measures past gatekeeping, not talent or future job performance.</blockquote><figcaption>A model trained to reproduce those decisions learns the gate, not the job.</figcaption></div></figure>
+
+    <div class="grid3">
+      <article class="card"><span class="label">Fix the target</span><h3>Validate what “good” means</h3><ul><li>Structured job-performance ratings</li><li>Productivity / quality metrics</li><li>Retention &amp; promotion outcomes</li><li>Supervisor &amp; peer assessments</li><li>Work samples / structured interviews validated against later performance</li></ul></article>
+      <article class="card"><span class="label">Prove it locally</span><h3>Evidence before scale</h3><ul><li>Local validation on target-country applicants</li><li>Scores must predict <em>outcomes</em>, not old decisions</li><li>Subgroup &amp; proxy fairness checks</li><li>Calibration by local selection rates</li><li>Legal review for the new jurisdiction</li></ul></article>
+      <article class="card"><span class="label">What breaks in a new country</span><h3>Shift the test can’t see</h3><ul><li>Different credentials, titles &amp; career paths</li><li>Different language &amp; résumé conventions</li><li>Different base rates &amp; labour markets</li><li>Features that meant one thing there mean another here</li></ul></article>
+    </div>
+
+    <h3 style="margin:26px 0 4px;font-size:16px">The deployment gate — all four, before 10×</h3>
+    <p style="margin:0;color:var(--muted);font-size:14.5px;max-width:680px">Scaling first would convert an unvalidated historical-decision model into a high-volume employment gatekeeper.</p>
+    <div class="gates">
+      <div class="gate"><b>1</b><div><h4>Shadow deployment only</h4><p>Model scores in parallel. It influences nothing while its predictions are compared against real, human-made decisions.</p></div></div>
+      <div class="gate"><b>2</b><div><h4>Limited local pilot</h4><p>Small, bounded rollout in the new country — not a global launch dressed up as a test.</p></div></div>
+      <div class="gate"><b>3</b><div><h4>Humans stay final</h4><p>Human decisions remain the decision of record until local validation and fairness testing pass.</p></div></div>
+      <div class="gate"><b>4</b><div><h4>Safeguards in place</h4><p>Monitoring, appeal / override paths, and stopping rules agreed <em>before</em> volume increases.</p></div></div>
+    </div>
+  </section>
+
+  <!-- SCENARIO 3 -->
+  <section id="s3" class="s3">
+    <div class="sec-head">
+      <div class="sec-num" aria-hidden="true">03</div>
+      <div>
+        <div class="tag">Scenario 03 — Data Sharing, Privacy, Security &amp; Governance</div>
+        <h2>Collaborate without handing over the patients.</h2>
+        <p>Riverbend Hospital and Lakeside Medical Center each have too little data alone. Their records are sensitive, their coding practices differ, and neither will pour raw records into the other’s systems.</p>
+      </div>
+    </div>
+
+    <div class="prompt"><label>The proposal</label><p><strong>A federated learning consortium</strong> — common data model, local preprocessing, secure aggregation, and formal governance. Not a central data lake. Not a naive “just share the weights” arrangement. <sup>[5]</sup></p></div>
+
+    <div class="fed" aria-label="Federated learning diagram">
+      <p class="fed-hint" id="fed-hint">Scroll horizontally to read the full diagram.</p>
+      <div class="fed-diagram" tabindex="0" role="region" aria-label="Federated learning diagram" aria-describedby="fed-hint">
+      <svg viewBox="0 0 900 300" role="img" aria-label="Diagram: Riverbend and Lakeside each train locally; only protected model updates go to secure aggregation; raw records never leave either hospital.">
+        <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" opacity=".6"/></marker></defs>
+        <rect x="20" y="60" width="250" height="150" rx="16" fill="var(--c3-bg)" stroke="var(--c3-line)"/>
+        <text x="145" y="92" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="16" fill="var(--ink)">Riverbend Hospital</text>
+        <text x="145" y="116" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--muted)">LOCAL DATA · LOCAL TRAINING</text>
+        <rect x="45" y="132" width="200" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+        <text x="145" y="154" text-anchor="middle" font-size="12.5" fill="var(--ink)">🔒 Raw records stay here</text>
+        <text x="145" y="188" text-anchor="middle" font-size="12" fill="var(--muted)">Own locked holdout for testing</text>
+        <rect x="630" y="60" width="250" height="150" rx="16" fill="var(--c1-bg)" stroke="var(--c1-line)"/>
+        <text x="755" y="92" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="16" fill="var(--ink)">Lakeside Medical Center</text>
+        <text x="755" y="116" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--muted)">LOCAL DATA · LOCAL TRAINING</text>
+        <rect x="655" y="132" width="200" height="34" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+        <text x="755" y="154" text-anchor="middle" font-size="12.5" fill="var(--ink)">🔒 Raw records stay here</text>
+        <text x="755" y="188" text-anchor="middle" font-size="12" fill="var(--muted)">Own locked holdout for testing</text>
+        <rect x="345" y="78" width="210" height="114" rx="16" fill="var(--ink)"/>
+        <text x="450" y="110" text-anchor="middle" font-family="Archivo,sans-serif" font-weight="800" font-size="15" fill="var(--bg)">Secure Aggregation</text>
+        <text x="450" y="132" text-anchor="middle" font-size="12" fill="var(--bg)" opacity=".8">+ Differential Privacy [3]</text>
+        <text x="450" y="152" text-anchor="middle" font-size="12" fill="var(--bg)" opacity=".8">Common data model</text>
+        <text x="450" y="172" text-anchor="middle" font-size="12" fill="var(--bg)" opacity=".8">Formal governance</text>
+        <g color="var(--ink)"><path d="M270 120 L338 120" stroke="currentColor" stroke-width="2" marker-end="url(#arr)" opacity=".6"/><path d="M623 120 L562 120" stroke="currentColor" stroke-width="2" marker-end="url(#arr)" opacity=".6"/><path d="M338 160 L270 160" stroke="currentColor" stroke-width="2" marker-end="url(#arr)" opacity=".35" stroke-dasharray="5 4"/><path d="M562 160 L623 160" stroke="currentColor" stroke-width="2" marker-end="url(#arr)" opacity=".35" stroke-dasharray="5 4"/></g>
+        <text x="304" y="108" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--muted)">updates only →</text>
+        <text x="592" y="108" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--muted)">← updates only</text>
+        <text x="450" y="248" text-anchor="middle" font-size="13" font-style="italic" font-family="Newsreader,serif" fill="var(--muted)">No central data lake. No raw-record transfer.</text>
+        <text x="450" y="272" text-anchor="middle" font-size="12" fill="var(--muted)">Shared global model returns to each site — then must prove itself at each site.</text>
+      </svg>
+      </div>
+      <div class="fed-legend"><span>✓ Common data model</span><span>✓ Local preprocessing</span><span>✓ Secure aggregation</span><span>✓ Differential privacy</span><span>✓ Privacy-budget accounting</span><span>✕ Central data lake</span></div>
+    </div>
+
+    <div class="grid3">
+      <article class="card"><span class="label">The honest catch</span><h3>Federated ≠ private by default</h3><p>Federated learning removes the raw-record transfer — but replaces it with a <strong>learned-channel leakage surface</strong>:</p><ul><li>Gradients can be inverted to reconstruct patient data <sup>[8]</sup></li><li>Membership can be inferred from updates or the final model <sup>[7]</sup></li><li>The final model can be probed for training-like inputs</li></ul></article>
+      <article class="card"><span class="label">Load-bearing defenses</span><h3>Two, plus proof</h3><ul><li><strong>Secure aggregation</strong> — protects individual inputs during aggregation. The released aggregate can still reveal information about a site, especially with only two participants. Define who can see the output and what the privacy guarantee covers <sup>[9]</sup></li><li><strong>Differential privacy</strong> — formal bound on what any one record can reveal <sup>[3]</sup></li><li>Query restrictions on the released model</li><li>Empirical attack testing — try to break it</li><li>Honest privacy-budget accounting</li></ul></article>
+      <article class="card"><span class="label">Trustworthy = per site</span><h3>Never just on average</h3><ul><li>Test on each hospital’s own locked holdout</li><li>Discrimination, calibration, decision curves &amp; subgroups per site, with CIs</li><li>Leave-one-site-out transportability checks</li><li>Validate the phenotype mapping locally</li><li>Compare against local-only models</li><li>Per-site shadow phase with stopping rules</li></ul></article>
+    </div>
+
+    <figure class="quote"><div class="quote-mark" aria-hidden="true">“</div><div><blockquote>The model is only trustworthy for the consortium if it is trustworthy at each hospital — not on average across them.</blockquote><figcaption>Different coding practices are not a footnote. They are the test.</figcaption></div></figure>
+  </section>
+
+  <!-- SYNTHESIS -->
+  <div class="synthesis">
+    <div class="tag">Synthesis</div>
+    <h2>These challenges don’t arrive one at a time.</h2>
+    <p>Poor-quality or mislabeled data weakens what a model learns. Historical, unrepresentative data reproduces unfair patterns. A model that succeeds under one set of conditions can fail when the population changes. And privacy, security, and governance shape what data may be collected, shared, retained, and used in the first place. Good practitioners anticipate the tradeoffs, validate their assumptions, and monitor systems — instead of waiting for failures after deployment.</p>
+    <div class="syn-grid">
+      <div><b>Where I was strongest</b><span>Questioning what labels actually measure, and refusing to let averages hide subgroup or site-level failures.</span></div>
+      <div><b>How the thinking sharpened</b><span>Short first answers became full workflows under probing — blind annotation, cluster-aware splits, and tag-don’t-delete all emerged that way.</span></div>
+      <div><b>What I’m still building</b><span>Post-deployment monitoring: drift detection and disparity monitoring once a system is live — where shift and site differences reappear first.</span></div>
+    </div>
+  </div>
+
+  <div class="next">
+    <h3>Practical next step</h3>
+    <p>Apply the Scenario 01 workflow to a real dataset I already work with — checking duplicates and label quality in the SMS Spam Collection before training the classifier — and record the inclusion and exclusion rates exactly as described above.</p>
+  </div>
+
+  <!-- ARTIFACT INFO -->
+  <section id="artifact-info">
+    <div class="eyebrow" style="color:var(--muted)"><i style="background:var(--muted)"></i> Artifact 4 / Applied judgment</div>
+    <h2 style="font-size:clamp(28px,4vw,44px);letter-spacing:-.03em;line-height:1.02;margin:10px 0 8px">Data Challenge Scenarios</h2>
+    <p style="margin:0;color:var(--muted);max-width:680px;font-size:16px">Data quality, bias &amp; responsible scaling, and privacy in collaborative learning — the judgment layer behind the portfolio’s models.</p>
+    <p style="margin:14px 0 0;font-size:13.5px;color:var(--muted)">Portfolio updated November 19, 2026</p>
+    <div class="tagrow" style="margin-top:12px" aria-label="Methods">
+      <span style="border-color:var(--line);color:var(--ink)">MinHash / SimHash</span><span style="border-color:var(--line);color:var(--ink)">Blind annotation</span><span style="border-color:var(--line);color:var(--ink)">Fairness testing</span><span style="border-color:var(--line);color:var(--ink)">Federated learning</span>
+    </div>
+    <div class="info">
+      <div class="info-head"><h3>Artifact information</h3></div>
+      <dl>
+        <div class="row"><dt>Title</dt><dd>Data Challenge Scenarios: Data Quality, Bias &amp; Responsible Scaling, and Privacy in Collaborative Learning</dd></div>
+        <div class="row"><dt>Introduction</dt><dd>A guided practice exercise in ALML-500: three realistic data challenges, each probed follow-up by follow-up until the reasoning held up as a complete, defensible workflow.</dd></div>
+        <div class="row"><dt>Description</dt><dd>Covers (1) auditing star-derived sentiment labels with blind human annotation and cluster-aware deduplication, (2) gating a hiring model’s international scale-up behind local validation and fairness evidence, and (3) designing a federated learning consortium for two hospitals with secure aggregation and differential privacy.</dd></div>
+        <div class="row"><dt>Objective</dt><dd>Outline the data challenges in training and deploying ML applications; discuss approaches for data processing and cleaning; and explain the challenges of data sharing, privacy, and security in ML applications.</dd></div>
+        <div class="row"><dt>Process</dt><dd>Worked each scenario conversationally: gave an initial approach, then revised it under targeted probing — e.g., “split by row” became “split by cluster,” and “clean aggressively” became “tag rather than delete, with a stratified audit and sensitivity check.”</dd></div>
+        <div class="row"><dt>Tools and Technologies Used</dt><dd><ul><li>MinHash / SimHash, TF-IDF cosine, embedding similarity</li><li>Blind human annotation &amp; stratified sampling</li><li>Federated learning, secure aggregation, differential privacy</li><li>Fairness &amp; calibration testing, leave-one-site-out validation</li></ul></dd></div>
+        <div class="row"><dt>Value Proposition</dt><dd>Shows applied practitioner judgment — not just model-building: how to keep an evaluation honest, how to refuse an unsafe scale-up, and how to collaborate on sensitive data without centralising it.</dd></div>
+        <div class="row"><dt>Unique Value</dt><dd>Every claim is tied to a checkable step: report clusters removed, run the comparison with and without exclusions, test per site with confidence intervals, and account for the privacy budget.</dd></div>
+        <div class="row"><dt>Relevance</dt><dd>Directly transferable to healthcare IT work — FHIR data quality, per-site validation across facilities, and privacy-preserving collaboration — and to text-classification projects that need reliable labels and leakage-free evaluation.</dd></div>
+        <div class="row"><dt>References</dt><dd>See the nine sources below for the research behind the techniques.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- REFERENCES -->
+  <section id="references">
+    <div class="tag" style="color:var(--muted)">References</div>
+    <h2 style="font-size:clamp(26px,3.5vw,36px);letter-spacing:-.03em;margin:8px 0 4px">Sources behind the techniques</h2>
+    <ol class="refs">
+      <li><strong>[1] Broder, A. Z., Charikar, M. S., Frieze, A. M., &amp; Mitzenmacher, M. (1998).</strong> Min-wise independent permutations. <em>Proceedings of the 30th Annual ACM Symposium on Theory of Computing (STOC ’98)</em>, 327–336.</li>
+      <li><strong>[2] Charikar, M. S. (2002).</strong> Similarity estimation techniques from rounding algorithms. <em>Proceedings of STOC ’02</em>, 380–388 — SimHash / locality-sensitive hashing.</li>
+      <li><strong>[3] Dwork, C. (2006).</strong> Differential privacy. In <em>Automata, Languages and Programming (ICALP)</em>, LNCS 4052, 1–12 — the formal definition used for the privacy budget in Scenario 03.</li>
+      <li><strong>[4] Gebru, T., et al. (2021).</strong> Datasheets for datasets. <em>Communications of the ACM, 64</em>(12), 86–92 — documenting provenance, inclusion, and exclusion for a dataset.</li>
+      <li><strong>[5] McMahan, B., Moore, E., Ramage, D., Hampson, S., &amp; Arcas, B. A. y. (2017).</strong> Communication-efficient learning of deep networks from decentralized data. <em>Proceedings of AISTATS</em>, PMLR 54, 1273–1282 — federated averaging.</li>
+      <li><strong>[6] Mitchell, M., et al. (2019).</strong> Model cards for model reporting. <em>Proceedings of FAT*</em>, 220–229 — reporting performance per group, not just overall.</li>
+      <li><strong>[7] Shokri, R., Stronati, M., Song, C., &amp; Shmatikov, V. (2017).</strong> Membership inference attacks against machine learning models. <em>IEEE Symposium on Security and Privacy</em>, 3–18.</li>
+      <li><strong>[8] Zhu, L., Liu, Z., &amp; Han, S. (2019).</strong> Deep leakage from gradients. <em>Advances in Neural Information Processing Systems, 32</em> — reconstructing training data from shared gradients.</li>
+      <li><strong>[9] Bonawitz, K., et al. (2017).</strong> <a href="https://research.google/pubs/practical-secure-aggregation-for-privacy-preserving-machine-learning/">Practical secure aggregation for privacy-preserving machine learning.</a> <em>Proceedings of ACM CCS</em>, 1175–1191.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p><strong style="color:var(--ink)">Vrund Patel</strong> — ALML-500, Fall 2026 · Artifact 04 of the professional portfolio · <a href="artifact.html">Back to all artifacts</a></p>
+    <p>This page presents an AI-generated practice summary of a guided exercise; it documents the reasoning from that conversation and is not an independent instructor grade. Reflections for this artifact are submitted separately via Brightspace, per course guidance.</p>
+  </footer>
+</main>
+
+<script src="interactions.js" defer></script>
+<script src="data-challenge-scenarios.js" defer></script>
+</body>
+</html>

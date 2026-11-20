@@ -13,7 +13,8 @@ Visit http://localhost:8000.
 
 ## Published files
 - [dist/index.html](dist/index.html): the artifact collection homepage
-- [dist/artifact.html](dist/artifact.html): ScreenWise team lab, ML/deep-learning comparison, Key Concepts in AI & Machine Learning slide presentation, also available through this instructor link
+- [dist/artifact.html](dist/artifact.html): the same collection through the instructor link
+- [dist/data-challenge-scenarios.html](dist/data-challenge-scenarios.html): Artifact 4, with three scenarios and an interactive train/test split demo
 - [dist/style.css](dist/style.css): combined styles
 - [dist/](dist/): also contains JavaScript, favicon
 
@@ -46,7 +47,7 @@ The build uses only the Python standard library. It creates [dist/](dist/) if mi
 | [artifacts/key-concepts.html](artifacts/key-concepts.html), [key-points-deck.css](key-points-deck.css) | Artifact 3 presentation and its scoped styles, adapted from the supplied static deck |
 | [content.py](content.py) | Private résumé data validation and the project root path |
 
-The artifact pages use the three HTML files in [artifacts/](artifacts/). The résumé generator uses the job entries in [content-data.json](content-data.json). The earlier AI notes and expertise data remain in the source archive. Theme styles use `data-theme`.
+The artifact pages use the four HTML files in [artifacts/](artifacts/). The résumé generator uses the job entries in [content-data.json](content-data.json). The earlier AI notes and expertise data remain in the source archive. Theme styles use `data-theme`.
 
 Edits made directly in [dist/](dist/) are overwritten by the next build. Update source JavaScript and the favicon in [assets/](assets/).
 
@@ -83,7 +84,7 @@ The validator also requires every slide diagram and social-preview asset, includ
 
 - [AUDIT.md](AUDIT.md): current findings, fixes, cleanup decisions and validation limits.
 - [FILE-AUDIT.csv](FILE-AUDIT.csv): every inventoried file, its purpose/category and whether it was retained, changed, added or deleted.
-- [Project graph](project-graph.svg) shows the current build and deployment flow. The [Graphify snapshot](graphify-out/GRAPH_REPORT.md) documents the November 13, 2026 architecture with separate career pages.
+- [Project graph](project-graph.svg) shows the current build and deployment flow. The [Graphify report](graphify-out/GRAPH_REPORT.md) and [interactive graph](graphify-out/graph.html) cover the local four-artifact build.
 
 The deck advances every four seconds while visible. Visitors can pause it or use its manual controls. Keyboard focus pauses autoplay, and reduced-motion settings disable autoplay and slide animation.
 

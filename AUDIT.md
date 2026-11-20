@@ -1,5 +1,15 @@
 # AI Learning Artifacts audit
 
+## November 19, 2026 follow-up
+
+Reviewed the local four-artifact update. The homepage and instructor page contain the same collection, and Artifact 4 opens at its own validated route. The four cards use a single column on narrow screens and two columns on wider screens. Chrome checks at 320, 390, 768, and 1440 CSS pixels found no horizontal page overflow. The collection theme switch and 44-pixel navigation targets worked, and the preview images decoded. Artifact 4 uses its own system light or dark setting. Its split demo and five navigation targets passed the earlier Chrome review at 320, 390, 761, and 1440 pixels.
+
+The build and link validator passed for all three public routes. All 13 Python tests passed with the optional PDF dependencies available, along with both Node suites. The architecture SVG now includes the fourth source and public route. Graphify refreshed code extraction and includes manually verified Artifact 4 HTML relationships. The prior file inventory below remains a record of the November 17 audit.
+
+This follow-up covered the local build. Physical devices, assistive technology, and live deployment were outside its scope.
+
+## November 17, 2026 baseline
+
 Reviewed November 17, 2026 against commit `c7577b3`. The public site is an artifact collection built with Python and served by GitHub Pages. Its homepage and instructor URL serve the same three artifacts. The [file inventory](FILE-AUDIT.csv) covers all 75 paths tracked at the start, including generated files and the historical graph snapshot. It records changes, removals, sizes, and SHA-256 hashes.
 
 ## Findings and fixes
